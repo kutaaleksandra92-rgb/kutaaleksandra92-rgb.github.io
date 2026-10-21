@@ -13,6 +13,8 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: rgba(255, 255, 255, 0.8);
   --color-text-accent: #737373;
+  --color-text-tertiary: #8f8f8f;
+  --color-divider: #303031;
   --color-button-secondary-bg: rgba(255, 255, 255, 0.05);
   --color-text-on-accent: #060a12;
   --color-accent-glow: rgba(215, 238, 149, 0.6);
@@ -20,6 +22,7 @@
   /* Typografia */
   --font-body: "Poppins", system-ui, sans-serif;
   --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-md: 16px;
   --font-size-lg: 24px;
@@ -27,11 +30,15 @@
   --font-size-3xl: 48px;
 
   /* Odstępy */
+  --spacing-4: 4px;
   --spacing-8: 8px;
+  --spacing-12: 12px;
   --spacing-16: 16px;
   --spacing-24: 24px;
   --spacing-32: 32px;
+  --spacing-40: 40px;
   --spacing-48: 48px;
+  --spacing-56: 56px;
   --spacing-64: 64px;
   --spacing-80: 80px;
   --spacing-88: 88px;
@@ -359,6 +366,86 @@ body {
   background: #09090a;
 }
 
+
+/* ---------- Stopka ---------- */
+.site-footer {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: var(--spacing-40);
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  padding: var(--spacing-56) var(--spacing-80);
+  border-radius: var(--radius-40);
+  background: var(--color-bg-surface);
+}
+
+.footer__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 212px;
+}
+.footer__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-24);
+  width: 763px;
+}
+.footer__intro img { width: 44px; height: 44px; }
+.footer__title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.footer__contact {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-40);
+  margin: 0;
+  padding-block: var(--spacing-24);
+  border-top: 1px solid var(--color-divider);
+}
+.footer__contact-item {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+.footer__contact dt,
+.footer__label {
+  font-size: var(--font-size-sm);
+  line-height: normal;
+  color: var(--color-text-tertiary);
+}
+.footer__contact dd {
+  margin: 0;
+  line-height: 28px;
+  color: var(--color-text-secondary);
+}
+
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--spacing-56);
+  border-top: 1px solid var(--color-divider);
+}
+.footer__label { white-space: nowrap; }
+.footer__tools { display: contents; }
+.footer__tools img { width: 64px; height: 64px; }
+.footer__copy {
+  font-size: var(--font-size-xs);
+  line-height: 20px;
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -453,4 +540,43 @@ body {
   .case-info { width: 100%; }
   .case-hero__media.container { padding-inline: var(--spacing-16); }
   .case-hero__media img { height: 248px; }
+
+  /* Stopka (makieta mobile 375) */
+  .site-footer { padding: var(--spacing-16); }
+  .footer {
+    padding: var(--spacing-24);
+    border-radius: var(--radius-24);
+  }
+  .footer__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-24);
+    height: auto;
+  }
+  .footer__intro { width: 100%; }
+  .footer__title { font-size: var(--font-size-lg); }
+  .footer__cta {
+    margin-top: 0;
+    padding: var(--spacing-8) var(--spacing-12);
+    font-size: var(--font-size-xs);
+    line-height: 20px;
+  }
+  .footer__contact {
+    flex-direction: column;
+    gap: var(--spacing-8);
+    padding: var(--spacing-24) 0 0;
+  }
+  .footer__contact-item { flex: none; width: 100%; }
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--spacing-16);
+    padding-top: var(--spacing-24);
+  }
+  .footer__tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+  }
 }
