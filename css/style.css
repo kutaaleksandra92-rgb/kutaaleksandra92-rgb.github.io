@@ -475,7 +475,8 @@ body {
 }
 .cv-hero__eyebrow {
   font-family: var(--font-heading);
-  line-height: 28px;
+  font-size: 18px;
+  line-height: normal;
   color: var(--color-text-tertiary);
 }
 .cv-hero__title {
