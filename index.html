@@ -1,12 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aleksandra Kuta – Senior UX Designer</title>
+  <title>Aleksandra Kuta – Senior Product Designer</title>
+  <meta name="description" content="Portfolio Aleksandry Kuty – Senior Product Designer i Team Leader. 10+ lat doświadczenia, 50+ projektów.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Fonty: Poppins (tekst, nawigacja) i Space Grotesk (nagłówki) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Aleksandra Kuta</h1>
-  <p>Senior UX Designer. Portfolio coming soon.</p>
+
+  <!-- ============ NAWIGACJA ============ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Główna nawigacja">
+      <a href="index.html" class="nav__logo" aria-label="Strona główna">
+        <img src="assets/icons/logo.svg" alt="" width="44" height="44">
+      </a>
+
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+        <span></span><span></span>
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <a href="#doswiadczenie" class="nav__link">Doświadczenie i CV</a>
+        <a href="#rozwoj" class="nav__link">Rozwój i szkolenia</a>
+        <a href="#projekty" class="btn btn--cta">
+          Wybrane projekty
+          <img src="assets/icons/arrow-up-right.svg" alt="" width="24" height="24">
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HEADER / HERO ============ -->
+    <section class="hero container" aria-labelledby="hero-title">
+      <ul class="tags" aria-label="Role">
+        <li class="tag"><span class="tag__dot" aria-hidden="true"></span>Senior Product Designer</li>
+        <li class="tag"><span class="tag__dot" aria-hidden="true"></span>Team Leader</li>
+      </ul>
+
+      <h1 id="hero-title" class="hero__title">
+        Podejmuję decyzje, które kształtują rozwój produktów cyfrowych i&nbsp;doświadczenie użytkowników
+      </h1>
+
+      <ul class="highlights">
+        <li>10+ lat doświadczenia</li>
+        <li class="highlights__dot" aria-hidden="true"><img src="assets/icons/dot.svg" alt="" width="11" height="11"></li>
+        <li>50+ projektów</li>
+        <li class="highlights__dot" aria-hidden="true"><img src="assets/icons/dot.svg" alt="" width="11" height="11"></li>
+        <li>Mentoring i Leadership</li>
+        <li class="highlights__break" aria-hidden="true"></li>
+        <li>Projektowanie i wsparcie decyzji biznesowych</li>
+        <li class="highlights__dot" aria-hidden="true"><img src="assets/icons/dot.svg" alt="" width="11" height="11"></li>
+        <li>Współpraca b2b</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
