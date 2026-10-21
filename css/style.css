@@ -36,6 +36,7 @@
   --spacing-8: 8px;
   --spacing-12: 12px;
   --spacing-16: 16px;
+  --spacing-20: 20px;
   --spacing-24: 24px;
   --spacing-32: 32px;
   --spacing-40: 40px;
@@ -47,6 +48,7 @@
   --spacing-120: 120px;
 
   /* Zaokrąglenia */
+  --radius-8: 8px;
   --radius-12: 12px;
   --radius-16: 16px;
   --radius-24: 24px;
@@ -488,6 +490,137 @@ body {
 .cv-hero__media picture { display: block; height: 100%; }
 .cv-hero__media img { background: none; }
 
+
+/* ---------- Tag z indykatorem (badge) ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 15px; /* 12/16 w Figmie – obramowanie 1px mieści się w wymiarach */
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-24);
+  background: var(--color-bg-tag);
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+/* ---------- Doświadczenie: lista rozwijana ---------- */
+.experience__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-64);
+  padding-block: var(--spacing-80);
+}
+.experience__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-8);
+}
+.experience__heading {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  line-height: normal;
+}
+.experience__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--color-text-secondary);
+}
+.experience__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 500;
+}
+
+.jobs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+.job {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-8);
+  overflow: hidden;
+}
+.job[open] { gap: var(--spacing-4); }
+
+.job__head {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-24);
+  padding: var(--spacing-24) var(--spacing-32);
+  background: var(--color-bg-surface);
+  list-style: none;
+  cursor: pointer;
+}
+.job__head::-webkit-details-marker { display: none; }
+
+.job__logo {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-16);
+  background: var(--color-button-secondary-bg);
+}
+.job__logo--goodylabs img { width: 35.835px; height: 22.306px; }
+.job__logo--unit4 img { width: 40px; height: 23.22px; }
+.job__logo--jojo img { width: 40px; height: 40px; border-radius: 4px; object-fit: contain; }
+
+.job__info {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  white-space: nowrap;
+}
+.job__name {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 500;
+  line-height: normal;
+}
+.job__dates {
+  line-height: 28px;
+  color: var(--color-text-accent);
+}
+
+.job__chevron { flex: none; width: 24px; height: 24px; }
+.job__chevron--up,
+.job[open] .job__chevron--down { display: none; }
+.job[open] .job__chevron--up { display: block; }
+
+.job__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  padding: var(--spacing-24) 168px var(--spacing-24) var(--spacing-32);
+  background: var(--color-bg-surface);
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+}
+.job__desc { color: var(--color-text-secondary); }
+.job__roles {
+  padding-left: var(--spacing-16);
+  border-left: 1px solid var(--color-border-subtle);
+}
+.job__role {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--spacing-20);
+  white-space: nowrap;
+}
+.job__role:last-child { padding-bottom: 0; }
+.job__role-title { font-weight: 500; }
+.job__role-dates { color: var(--color-text-accent); }
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -580,7 +713,7 @@ body {
   .case-hero__content.container { padding: var(--spacing-24) var(--spacing-16); }
   .case-hero__title { font-size: var(--font-size-lg); }
   .case-info { width: 100%; }
-  .case-hero__media.container { padding-inline: var(--spacing-16); }
+  .case-hero__media.container { flex: none; padding-inline: var(--spacing-16); }
   .case-hero__media img { height: 248px; }
 
   /* Doświadczenie i CV – header (makieta mobile 375) */
@@ -601,6 +734,41 @@ body {
   }
   .cv-hero { padding-bottom: 0; }
   .cv-hero__media img { height: 246px; border-radius: var(--radius-12); }
+
+  /* Doświadczenie – lista (makieta mobile 375) */
+  .experience__inner.container {
+    gap: var(--spacing-24);
+    padding: var(--spacing-32) var(--spacing-16);
+  }
+  .experience__head {
+    flex-direction: column;
+    gap: var(--spacing-16);
+  }
+  .experience__head .badge { order: -1; }
+  .experience__heading { flex: none; width: 100%; }
+  .experience__title { font-size: var(--font-size-lg); }
+
+  .job__head { padding: var(--spacing-16); }
+  .job[open] .job__head { padding: var(--spacing-24) var(--spacing-32); }
+  .job__logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  .job__logo--goodylabs img { width: 22.397px; height: 13.941px; }
+  .job__logo--unit4 img { width: 25px; height: 14.512px; }
+  .job__logo--jojo img { width: 25px; height: 25px; border-radius: 2.5px; }
+  .job__name {
+    font-family: var(--font-body);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    line-height: 28px;
+  }
+  .job__dates {
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+  }
+  .job__body { padding: var(--spacing-24) var(--spacing-32); }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
