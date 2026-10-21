@@ -15,6 +15,8 @@
   --color-text-accent: #737373;
   --color-text-tertiary: #8f8f8f;
   --color-divider: #303031;
+  --color-button-secondary-bg-2: rgba(75, 84, 92, 0.4);
+  --color-button-secondary-border: #4b545c;
   --color-button-secondary-bg: rgba(255, 255, 255, 0.05);
   --color-text-on-accent: #060a12;
   --color-accent-glow: rgba(215, 238, 149, 0.6);
@@ -45,6 +47,7 @@
   --spacing-120: 120px;
 
   /* Zaokrąglenia */
+  --radius-12: 12px;
   --radius-16: 16px;
   --radius-24: 24px;
   --radius-32: 32px;
@@ -446,6 +449,45 @@ body {
   white-space: nowrap;
 }
 
+
+/* Przycisk drugorzędny (typ=secondary) – obramowanie 1px mieści się w wymiarach z Figmy */
+.btn--secondary {
+  padding: calc(var(--spacing-16) - 1px) calc(var(--spacing-24) - 1px);
+  border: 1px solid var(--color-button-secondary-border);
+  border-radius: var(--radius-32);
+  background: var(--color-button-secondary-bg-2);
+  color: var(--color-text-primary);
+}
+
+/* ---------- Doświadczenie i CV: header ---------- */
+.cv-hero__content {
+  flex-direction: row;
+  align-items: flex-end;
+  gap: var(--spacing-64);
+}
+.cv-hero__text {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+.cv-hero__eyebrow {
+  line-height: 28px;
+  color: var(--color-text-tertiary);
+}
+.cv-hero__title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
+  line-height: normal;
+  background-image: linear-gradient(121.6deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.cv-hero__media picture { display: block; height: 100%; }
+.cv-hero__media img { background: none; }
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -540,6 +582,25 @@ body {
   .case-info { width: 100%; }
   .case-hero__media.container { padding-inline: var(--spacing-16); }
   .case-hero__media img { height: 248px; }
+
+  /* Doświadczenie i CV – header (makieta mobile 375) */
+  .cv-hero__content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-32);
+  }
+  .cv-hero__text { flex: none; width: 100%; }
+  .cv-hero__eyebrow {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+  }
+  .cv-hero__title {
+    font-size: var(--font-size-lg);
+    background-image: linear-gradient(115.6deg, #f7f7f7 0.64%, #838383 92.03%);
+  }
+  .cv-hero { padding-bottom: 0; }
+  .cv-hero__media img { height: 246px; border-radius: var(--radius-12); }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
