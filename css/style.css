@@ -474,6 +474,7 @@ body {
   gap: var(--spacing-8);
 }
 .cv-hero__eyebrow {
+  font-family: var(--font-heading);
   line-height: 28px;
   color: var(--color-text-tertiary);
 }
@@ -724,7 +725,6 @@ body {
   }
   .cv-hero__text { flex: none; width: 100%; }
   .cv-hero__eyebrow {
-    font-family: var(--font-heading);
     font-size: var(--font-size-sm);
     line-height: 22px;
   }
@@ -748,8 +748,6 @@ body {
   .experience__heading { flex: none; width: 100%; }
   .experience__title { font-size: var(--font-size-lg); }
 
-  .job__head { padding: var(--spacing-16); }
-  .job[open] .job__head { padding: var(--spacing-24) var(--spacing-32); }
   .job__logo {
     width: 40px;
     height: 40px;
@@ -759,10 +757,8 @@ body {
   .job__logo--unit4 img { width: 25px; height: 14.512px; }
   .job__logo--jojo img { width: 25px; height: 25px; border-radius: 2.5px; }
   .job__name {
-    font-family: var(--font-body);
-    font-size: var(--font-size-md);
+    font-size: 18px;
     font-weight: 700;
-    line-height: 28px;
   }
   .job__dates {
     font-size: var(--font-size-sm);
