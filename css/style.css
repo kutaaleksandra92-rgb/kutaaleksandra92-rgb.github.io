@@ -15,6 +15,7 @@
   --color-text-accent: #737373;
   --color-text-tertiary: #8f8f8f;
   --color-divider: #303031;
+  --color-border-nav: rgba(255, 255, 255, 0.1);
   --color-button-secondary-bg-2: rgba(75, 84, 92, 0.4);
   --color-button-secondary-border: #4b545c;
   --color-button-secondary-bg: rgba(255, 255, 255, 0.05);
@@ -111,7 +112,7 @@ body {
 
 /* ---------- Nawigacja ---------- */
 .site-header {
-  border-bottom: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-nav);
 }
 .nav {
   display: flex;
@@ -136,13 +137,42 @@ body {
 
 .nav__toggle { display: none; }
 
-/* ---------- Hero / header ---------- */
+/* ---------- Hero / header (Strona Główna) ---------- */
+/* Nawigacja leży na tle headera */
+.page-home .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
 .hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 768px;
+  padding-top: 108px; /* wysokość nawigacji */
+  overflow: hidden;
+  background: var(--color-bg-primary);
+}
+.hero__bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1440px;
+  max-width: none;
+  height: 768px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.hero__content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--spacing-64);
-  padding-block: var(--spacing-120);
+  gap: var(--spacing-48);
 }
 
 .tags {
@@ -154,12 +184,12 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 16px;
+  padding: 11px 15px; /* 12/16 w Figmie – obramowanie 1px mieści się w wymiarach */
   background: var(--color-bg-tag);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-24);
-  font-weight: 500;
-  line-height: normal;
+  font-size: var(--font-size-sm);
+  line-height: 22px;
   white-space: nowrap;
 }
 .tag__dot {
@@ -187,17 +217,16 @@ body {
   flex-wrap: wrap;
   align-items: center;
   align-content: center;
-  gap: var(--spacing-8) var(--spacing-16);
-  max-width: 1200px;
-  padding-left: 80px;
+  gap: 0 var(--spacing-8);
+  width: 100%;
+  padding: 0 160px 0 var(--spacing-80);
   font-family: var(--font-heading);
-  font-size: var(--font-size-lg);
+  font-size: 18px;
   line-height: normal;
 }
 .highlights > li { white-space: nowrap; }
-.highlights__dot img { width: 10.25px; height: 10.42px; }
-.highlights__break { flex-basis: 100%; height: 0; }
-
+.highlights__dot img { width: 4px; height: 4px; }
+.highlights__break { flex-basis: 100%; height: var(--spacing-8); } /* łamie wiersz; sam tworzy odstęp 8px między wierszami */
 
 /* ---------- Sekcja: Wybrane projekty ---------- */
 .projects {
@@ -632,15 +661,14 @@ body {
    ========================================================= */
 @media (max-width: 1200px) {
   :root { --page-gutter: 64px; }
-  .hero { padding-block: 96px; }
 }
 
 @media (max-width: 900px) {
   :root { --page-gutter: 32px; }
   .nav, .nav__menu { gap: 32px; }
-  .hero { padding-block: 72px; gap: 48px; }
   .hero__title { font-size: 40px; }
-  .highlights { padding-left: 0; font-size: 20px; }
+  .highlights { padding: 0; row-gap: var(--spacing-8); }
+  .highlights__break { height: 0; }
 
   /* Projekty – tymczasowo: kafle jeden pod drugim (do czasu makiet mobile) */
   .projects__inner { padding-block: 64px; gap: 48px; }
@@ -687,7 +715,9 @@ body {
   .nav__link { padding: 12px 0; font-size: 18px; }
   .btn--cta { margin-top: 8px; }
 
-  .hero { padding-block: 48px 64px; gap: 32px; }
+  .page-home .site-header { position: relative; }
+  .hero { height: auto; padding: 48px 0 64px; }
+  .hero__content { gap: 32px; }
   .hero__title { font-size: 32px; }
   .tag { font-size: 14px; padding: 10px 14px; }
   .highlights {

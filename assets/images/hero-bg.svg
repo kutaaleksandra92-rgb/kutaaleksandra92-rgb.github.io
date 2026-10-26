@@ -1,0 +1,34 @@
+<svg width="1440" height="768" viewBox="0 0 1440 768" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Tło headera Strony Głównej – poświaty z Figmy (node 3024:12980) -->
+<rect width="1440" height="768" fill="#0D0D0E"/>
+<g filter="url(#f_ring)" style="mix-blend-mode:plus-lighter">
+<path d="M1406.03 -112.975C1406.03 265.907 1098.88 573.051 720 573.051C341.119 573.051 33.9746 265.907 33.9746 -112.975C33.9746 -491.856 341.119 -799 720 -799C1098.88 -799 1406.03 -491.856 1406.03 -112.975ZM185.654 -112.975C185.654 182.136 424.889 421.371 720 421.371C1015.11 421.371 1254.35 182.136 1254.35 -112.975C1254.35 -408.086 1015.11 -647.32 720 -647.32C424.889 -647.32 185.654 -408.086 185.654 -112.975Z" fill="url(#g_ring)"/>
+</g>
+<g filter="url(#f_lime)" style="mix-blend-mode:plus-lighter">
+<circle cx="108.948" cy="162.456" r="302.909" fill="#D3FF57"/>
+</g>
+<g filter="url(#f_dark)" style="mix-blend-mode:plus-lighter">
+<ellipse cx="-61.5552" cy="69" rx="131.929" ry="137.481" fill="#0B0F01"/>
+</g>
+<g id="moving-element" filter="url(#f_moving)">
+<ellipse cx="416.5" cy="19" rx="728.5" ry="562" fill="#0D0D0E"/>
+</g>
+<defs>
+<filter id="f_ring" x="-134.025" y="-967" width="1708.05" height="1708.05" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feGaussianBlur stdDeviation="84"/>
+</filter>
+<filter id="f_lime" x="-428.761" y="-375.252" width="1075.42" height="1075.42" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feGaussianBlur stdDeviation="117.4"/>
+</filter>
+<filter id="f_dark" x="-585.484" y="-460.481" width="1047.86" height="1058.96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feGaussianBlur stdDeviation="196"/>
+</filter>
+<filter id="f_moving" x="-426.2" y="-657.2" width="1685.4" height="1352.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feGaussianBlur stdDeviation="57.1"/>
+</filter>
+<linearGradient id="g_ring" x1="117.629" y1="21.0393" x2="1845.72" y2="424.085" gradientUnits="userSpaceOnUse">
+<stop stop-color="#283505"/>
+<stop offset="1" stop-color="#2C3906"/>
+</linearGradient>
+</defs>
+</svg>
