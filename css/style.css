@@ -8,6 +8,7 @@
   --color-bg-accent: #c7ff2c;
   --color-bg-secondary: #111112;
   --color-bg-surface: #161616;
+  --color-surface-fill: #141517;
   --color-bg-tag: #181919;
   --color-border-subtle: #303031;
   --color-text-primary: #ffffff;
@@ -722,6 +723,79 @@ body {
   color: var(--color-text-secondary);
 }
 
+/* ---------- Rozwój i nauka (kafle szkoleń) ---------- */
+.trainings__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-88);
+  padding-block: var(--spacing-80);
+}
+.trainings__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  line-height: normal;
+}
+.trainings__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-88) var(--spacing-64);
+  align-items: start;
+}
+.training { display: flex; flex-direction: column; }
+.training--offset { padding-top: var(--spacing-64); }
+.training__media {
+  aspect-ratio: 568 / 480;
+  border-radius: var(--radius-8); /* zmiana Oli 26.10 (w Figmie 16) */
+  overflow: hidden;
+  background: var(--color-surface-fill);
+}
+.training__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.training__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  padding-top: var(--spacing-32);
+}
+/* W makiecie opisy w 1. rzędzie mają stałą wysokość 244 px, w 2. rzędzie – dopasowaną do treści */
+.training:nth-child(-n+2) .training__body { min-height: 244px; }
+.training__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-8) var(--spacing-16);
+  height: 24px;
+  color: var(--color-text-tertiary);
+}
+.training__meta img { width: 10.248px; height: 10.416px; }
+.training__dates { line-height: normal; white-space: nowrap; }
+.training__org { flex: 1 0 0; font-weight: 500; line-height: 28px; }
+.training__title {
+  margin: 0 0 calc(var(--spacing-8) - var(--spacing-16));
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 500;
+  line-height: normal;
+}
+.training__desc {
+  line-height: 28px;
+  color: var(--color-text-secondary);
+}
+.trainings__more {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 568 / 480;
+  border-radius: var(--radius-8); /* zmiana Oli 26.10 (w Figmie 16) */
+  background: var(--color-surface-fill);
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -900,6 +974,53 @@ body {
   .school__logo--ul { width: 15px; height: 17.812px; }
   .school__name { font-size: var(--font-size-lg); }
   .school__field {
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+  }
+
+  /* Rozwój i nauka (makieta mobile 375) – kafle przewijane w poziomie */
+  .trainings__inner.container {
+    gap: var(--spacing-24);
+    padding: var(--spacing-32) var(--spacing-16);
+  }
+  .trainings__list {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-16);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .trainings__list::-webkit-scrollbar { display: none; }
+  .training, .trainings__more { flex: none; width: 292px; }
+  .training--offset { padding-top: 0; }
+  .training__media { aspect-ratio: auto; height: 246px; border-radius: var(--radius-4); }
+  .training__body,
+  .training:nth-child(-n+2) .training__body {
+    gap: var(--spacing-8);
+    min-height: 0;
+    padding-top: var(--spacing-24);
+  }
+  .training__meta {
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+  }
+  .training__dates, .training__org { line-height: 22px; font-weight: 400; }
+  .training__title { margin: 0; font-size: var(--font-size-lg); }
+  .training__desc {
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+  }
+  .trainings__more {
+    align-self: flex-start;
+    aspect-ratio: auto;
+    height: 246px;
+    border-radius: var(--radius-4);
+  }
+  .trainings__more .btn--secondary {
+    padding: calc(var(--spacing-12) - 1px) calc(var(--spacing-16) - 1px);
     font-size: var(--font-size-sm);
     line-height: 22px;
   }
