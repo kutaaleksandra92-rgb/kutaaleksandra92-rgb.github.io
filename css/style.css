@@ -157,14 +157,14 @@ body {
   overflow: hidden;
   background: var(--color-bg-primary);
 }
+/* Tło rozciągnięte na całą szerokość okna (na 1440 px wygląda 1:1 jak w Figmie) */
 .hero__bg {
   position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1440px;
+  inset: 0;
+  width: 100%;
   max-width: none;
-  height: 768px;
-  transform: translateX(-50%);
+  height: 100%;
+  object-fit: fill;
   pointer-events: none;
 }
 .hero__content {
