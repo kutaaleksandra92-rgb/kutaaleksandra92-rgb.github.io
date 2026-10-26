@@ -812,6 +812,44 @@ body {
   background: var(--color-surface-fill);
 }
 
+/* ---------- Case study: nawigacja sekcji (sticky) ---------- */
+/* position: sticky – po przewinięciu headera pasek zostaje przyklejony do górnej krawędzi okna */
+.case-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-40) var(--page-gutter);
+  pointer-events: none; /* przezroczyste marginesy nie blokują klikania treści pod spodem */
+}
+.case-nav__bar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: var(--spacing-24) var(--spacing-32);
+  border-radius: 126px;
+  background: var(--color-bg-surface);
+  overflow: hidden;
+  pointer-events: auto;
+}
+.case-nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+.case-nav__link {
+  display: block;
+  line-height: 28px;
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+.case-nav__link.is-active {
+  font-weight: 500;
+  color: var(--color-bg-accent);
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -1040,6 +1078,18 @@ body {
     font-size: var(--font-size-sm);
     line-height: 22px;
   }
+
+  /* Case study – nawigacja sekcji (makieta mobile 375): pełna szerokość, przewijana w poziomie */
+  .case-nav { padding: 0; }
+  .case-nav__bar {
+    justify-content: flex-start;
+    max-width: none;
+    padding: var(--spacing-24) var(--spacing-16);
+    border-radius: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .case-nav__bar::-webkit-scrollbar { display: none; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
