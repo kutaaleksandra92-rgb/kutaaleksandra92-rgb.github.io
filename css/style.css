@@ -48,6 +48,7 @@
   --spacing-120: 120px;
 
   /* Zaokrąglenia */
+  --radius-4: 4px;
   --radius-8: 8px;
   --radius-12: 12px;
   --radius-16: 16px;
@@ -200,13 +201,14 @@ body {
 
 /* ---------- Sekcja: Wybrane projekty ---------- */
 .projects {
-  background: var(--color-bg-secondary);
+  background: linear-gradient(149deg, #0d0d0e 0%, #0d0d0e 70.87%, #12160a 101.57%);
 }
 .projects__inner {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-48);
-  padding-block: var(--spacing-88);
+  gap: var(--spacing-88);
+  padding-top: var(--spacing-80);
+  padding-bottom: var(--spacing-120);
 }
 
 .section-head {
@@ -231,12 +233,14 @@ body {
 /* Kafel projektu */
 .project {
   display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
   color: var(--color-text-primary);
 }
 .project__media {
-  position: relative;
+  display: block;
   overflow: hidden;
-  border-radius: var(--radius-16);
+  border-radius: var(--radius-8);
   background: var(--color-bg-surface);
 }
 .project__media img {
@@ -244,7 +248,6 @@ body {
   height: 100%;
   object-fit: cover;
 }
-
 .project__body {
   display: flex;
   flex-direction: column;
@@ -253,7 +256,7 @@ body {
 .project__title {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: var(--font-size-2xl);
+  font-size: 18px;
   font-weight: 400;
   line-height: normal;
 }
@@ -265,47 +268,48 @@ body {
   align-items: center;
   gap: var(--spacing-8) var(--spacing-16);
   color: var(--color-bg-accent);
-  font-weight: 500;
-  line-height: 28px;
+  font-size: var(--font-size-xs);
+  line-height: 20px;
 }
 .meta > li { white-space: nowrap; }
-.meta__dot img { width: 10.25px; height: 10.42px; }
+.meta__dot img { width: 4px; height: 4px; }
 
-/* 1. Duży kafel – zdjęcie + opis z prawej, wyrównane do dołu */
-.project--featured {
+/* 1. Kafel 4F + tekst z prawej, wyrównane do dołu */
+.projects__feature {
+  display: flex;
   align-items: flex-end;
-  gap: var(--spacing-64);
+  gap: 44px;
 }
-.project--featured .project__media {
-  flex: 1 0 0;
-  height: 624px;
-}
+.project--featured { flex: 0 0 758px; }
+.project--featured .project__media { height: 392px; }
 .project--featured .project__body {
-  flex: 0 0 428px;
+  gap: var(--spacing-8);
+  padding-right: var(--spacing-40);
 }
+.project--featured .meta { max-width: 398px; }
+.project--featured .project__title { font-size: var(--font-size-lg); }
+.projects__note {
+  flex: 1 0 0;
+  padding: 0 var(--spacing-64) 114px 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: normal;
+}
+.projects__note-muted { color: var(--color-text-accent); }
 
 /* 2. i 3. – rząd dwóch kafli */
 .projects__row {
   display: flex;
   align-items: flex-start;
-  gap: var(--spacing-64);
+  gap: var(--spacing-80);
 }
-.project--small,
-.project--large { flex-direction: column; }
-
-.project--small {
-  flex: 0 0 435px;
-  gap: var(--spacing-64);
+.project--small { flex: 0 0 435px; }
+.project--small .project__media {
+  height: 329px;
+  border-radius: var(--radius-4);
 }
-.project--small .project__media { height: 419px; }
-.project--small .project__title { max-width: 428px; }
-
-.project--large {
-  flex: 1 0 0;
-  gap: var(--spacing-24);
-}
-.project--large .project__media { height: 696px; }
-
+.project--large { flex: 1 0 0; }
+.project--large .project__media { height: 392px; }
 
 /* ---------- Case study: header ---------- */
 .case-hero {
@@ -638,16 +642,14 @@ body {
   .hero__title { font-size: 40px; }
   .highlights { padding-left: 0; font-size: 20px; }
 
-  /* Projekty – tymczasowo: kafle jeden pod drugim (do czasu makiet) */
-  .projects__inner { padding-block: 64px; }
+  /* Projekty – tymczasowo: kafle jeden pod drugim (do czasu makiet mobile) */
+  .projects__inner { padding-block: 64px; gap: 48px; }
   .section-head__lead { padding-left: 0; }
-  .project--featured, .projects__row { flex-direction: column; align-items: stretch; gap: 48px; }
-  .project--featured { gap: 24px; }
-  .project--featured .project__body, .project--small { flex: none; }
-  .project--small { gap: 24px; }
+  .projects__feature, .projects__row { flex-direction: column; align-items: stretch; gap: 48px; }
+  .project--featured, .project--small, .project--large { flex: none; }
+  .projects__note { padding: 0; }
   .project__media, .project--featured .project__media,
-  .project--small .project__media, .project--large .project__media { height: auto; aspect-ratio: 1 / 1; }
-  .project__title { font-size: 24px; }
+  .project--small .project__media, .project--large .project__media { height: auto; aspect-ratio: 758 / 392; }
 }
 
 @media (max-width: 720px) {
