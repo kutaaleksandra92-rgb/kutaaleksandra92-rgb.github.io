@@ -910,11 +910,135 @@ body {
 .metric--light { background: var(--color-metric-light); }
 .metric--light .metric__value { color: var(--color-bg-secondary); }
 
+/* ---------- Case study: wspólny rząd 3 kafli (Kontekst zmian, Strategia) ---------- */
+.case-tiles {
+  display: flex;
+  align-items: stretch;
+  gap: var(--spacing-40);
+}
+.case-tiles > li {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+  padding: var(--spacing-40);
+  border-radius: var(--radius-16);
+}
+
+/* ---------- Case study: Kontekst zmian ---------- */
+.case-context { background: var(--color-bg-secondary); }
+.case-context__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-56);
+  padding-block: var(--spacing-80);
+}
+.case-context__top {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-120);
+}
+.case-context__title {
+  flex: 0 1 660px;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 500;
+  line-height: normal;
+}
+.case-context__lead {
+  flex: 0 1 420px;
+  line-height: 28px;
+  color: var(--color-text-secondary);
+}
+.challenge { background: var(--color-bg-primary); }
+.challenge__head {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-24);
+}
+.challenge__text {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+.challenge__label,
+.challenge__num,
+.challenge__desc {
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-tertiary);
+}
+.challenge__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* ---------- Case study: Strategia ---------- */
+.case-strategy__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-56);
+  padding-block: var(--spacing-80);
+}
+.case-strategy__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  max-width: 800px;
+  font-family: var(--font-heading);
+  line-height: normal;
+}
+.case-strategy__eyebrow {
+  font-size: 18px;
+  color: var(--color-text-secondary);
+}
+.case-strategy__title {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: 400;
+}
+.case-strategy__accent { color: var(--color-bg-accent); }
+.decision {
+  background: var(--color-bg-secondary);
+}
+.decision__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-16);
+  background: var(--color-button-secondary-bg);
+}
+.decision__icon img { width: 24px; height: 24px; }
+.decision__title {
+  margin: calc(var(--spacing-24) - var(--spacing-32)) 0 0; /* ikona–tytuł 24, tytuł–opis 32 */
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  line-height: normal;
+}
+.decision__desc {
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-tertiary);
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
 @media (max-width: 1200px) {
   :root { --page-gutter: 64px; }
+  /* Kontekst zmian – węższe ekrany: opis pod tytułem */
+  .case-context__top { flex-direction: column; gap: var(--spacing-24); }
+  .case-context__title, .case-context__lead { flex: none; }
   /* Kluczowe fakty – węższe ekrany: logo nad treścią */
   .case-facts__inner { flex-direction: column; gap: var(--spacing-40); }
   .case-facts__content { flex: none; width: 100%; }
@@ -1176,6 +1300,37 @@ body {
     width: 247.67px;
     border-radius: var(--radius-8);
   }
+
+  /* Case study – Kontekst zmian i Strategia (makiety mobile 375): kafle 320 px przewijane w poziomie */
+  .case-context__inner.container,
+  .case-strategy__inner.container {
+    gap: var(--spacing-24);
+    padding: var(--spacing-32) var(--spacing-16);
+  }
+  .case-context__title { font-size: var(--font-size-lg); }
+  .case-strategy__top { gap: var(--spacing-8); }
+  .case-strategy__eyebrow { font-size: var(--font-size-md); line-height: 22px; }
+  .case-strategy__title { font-size: var(--font-size-lg); }
+  .case-tiles {
+    gap: var(--spacing-16);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .case-tiles::-webkit-scrollbar { display: none; }
+  .case-tiles > li {
+    flex: none;
+    width: 320px;
+    border-radius: var(--radius-8);
+  }
+  .case-tiles > .challenge { gap: var(--spacing-16); }
+  .challenge__title { font-size: 18px; }
+  .case-tiles > .decision { gap: var(--spacing-24); }
+  .decision__icon { width: 40px; height: 40px; border-radius: 10px; }
+  .decision__icon img { width: 15px; height: 15px; }
+  .decision__title { margin: 0; font-size: 18px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
