@@ -415,40 +415,49 @@ body {
 .footer {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-24);
-  padding: var(--spacing-56) var(--spacing-80);
-  border-radius: var(--radius-40);
-  background: var(--color-bg-surface);
+  align-items: flex-start;
+  gap: var(--spacing-32);
+  padding: var(--spacing-64) var(--spacing-80);
+  border-radius: var(--radius-8);
+  background: var(--color-bg-secondary);
 }
+.footer__logo { width: 44px; height: 44px; }
 
 .footer__top {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 212px;
-}
-.footer__intro {
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
   gap: var(--spacing-24);
-  width: 763px;
+  width: 100%;
 }
-.footer__intro img { width: 44px; height: 44px; }
 .footer__title {
+  flex: 0 1 763px;
+  min-width: 0;
   font-family: var(--font-heading);
   font-size: var(--font-size-3xl);
   font-weight: 400;
   line-height: normal;
+  background-image: linear-gradient(103.94deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Przycisk CTA, rozmiar medium */
+.footer__cta {
+  flex: none;
+  padding: var(--spacing-12) var(--spacing-16);
+  font-size: var(--font-size-sm);
+  line-height: 22px;
 }
 
 .footer__contact {
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-40);
+  width: 100%;
   margin: 0;
   padding-block: var(--spacing-24);
-  border-top: 1px solid var(--color-divider);
+  border-top: 0.5px solid var(--color-border-nav);
 }
 .footer__contact-item {
   flex: 1 0 0;
@@ -471,13 +480,15 @@ body {
 .footer__bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: var(--spacing-24);
+  width: 100%;
   padding-top: var(--spacing-56);
-  border-top: 1px solid var(--color-divider);
+  border-top: 0.5px solid var(--color-border-nav);
 }
 .footer__label { white-space: nowrap; }
 .footer__tools { display: contents; }
-.footer__tools img { width: 64px; height: 64px; }
+.footer__tools img { display: block; width: 48px; height: 48px; }
 .footer__copy {
   font-size: var(--font-size-xs);
   line-height: 20px;
@@ -1031,17 +1042,21 @@ body {
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
   .footer {
+    gap: var(--spacing-24);
     padding: var(--spacing-24);
     border-radius: var(--radius-24);
   }
   .footer__top {
     flex-direction: column;
-    align-items: flex-start;
     gap: var(--spacing-24);
-    height: auto;
   }
-  .footer__intro { width: 100%; }
-  .footer__title { font-size: var(--font-size-lg); }
+  .footer__title {
+    flex: none;
+    width: 100%;
+    font-size: var(--font-size-lg);
+    background: none;
+    color: var(--color-text-primary);
+  }
   .footer__cta {
     margin-top: 0;
     padding: var(--spacing-8) var(--spacing-12);
@@ -1064,6 +1079,6 @@ body {
   .footer__tools {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-4);
+    gap: var(--spacing-8);
   }
 }
