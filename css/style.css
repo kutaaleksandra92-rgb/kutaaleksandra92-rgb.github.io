@@ -9,6 +9,8 @@
   --color-bg-secondary: #111112;
   --color-bg-surface: #161616;
   --color-surface-fill: #141517;
+  --color-neutral-1000: #000000;
+  --color-metric-light: #ededed;
   --color-bg-tag: #181919;
   --color-border-subtle: #303031;
   --color-text-primary: #ffffff;
@@ -850,11 +852,72 @@ body {
   color: var(--color-bg-accent);
 }
 
+/* ---------- Case study: Kluczowe fakty ---------- */
+.case-facts { background: var(--color-neutral-1000); }
+.case-facts__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-120);
+  padding-block: var(--spacing-80);
+}
+.case-facts__avatar { flex: none; width: 88px; height: 88px; }
+.case-facts__content {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-56);
+}
+.case-facts__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-text-primary);
+}
+.case-facts__muted { color: var(--color-text-accent); }
+
+.metrics {
+  display: flex;
+  gap: var(--spacing-40);
+  width: 775px;
+  max-width: 100%;
+}
+.metric {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  height: 209px;
+  padding: var(--spacing-24) var(--spacing-32);
+  border-radius: var(--radius-16);
+  background: var(--color-bg-primary);
+  font-family: var(--font-heading);
+  line-height: normal;
+}
+.metric__value {
+  flex: 1 0 0;
+  font-size: var(--font-size-3xl);
+  font-weight: 500;
+  color: var(--color-bg-accent);
+}
+.metric__label {
+  font-size: 18px;
+  color: var(--color-text-accent);
+}
+.metric--light { background: var(--color-metric-light); }
+.metric--light .metric__value { color: var(--color-bg-secondary); }
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
 @media (max-width: 1200px) {
   :root { --page-gutter: 64px; }
+  /* Kluczowe fakty – węższe ekrany: logo nad treścią */
+  .case-facts__inner { flex-direction: column; gap: var(--spacing-40); }
+  .case-facts__content { flex: none; width: 100%; }
   /* Edukacja – węższe ekrany: nagłówek nad kaflami */
   .education__inner { flex-wrap: wrap; }
   .education__heading { flex-basis: 100%; }
@@ -1090,6 +1153,29 @@ body {
     scrollbar-width: none;
   }
   .case-nav__bar::-webkit-scrollbar { display: none; }
+
+  /* Case study – Kluczowe fakty (makieta mobile 375): metryki przewijane w poziomie */
+  .case-facts__inner.container {
+    gap: var(--spacing-24);
+    padding: var(--spacing-32) var(--spacing-16);
+  }
+  .case-facts__title { font-size: var(--font-size-lg); }
+  .case-facts__content { gap: var(--spacing-24); }
+  .metrics {
+    gap: var(--spacing-16);
+    width: calc(100% + 2 * var(--spacing-16));
+    max-width: none;
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .metrics::-webkit-scrollbar { display: none; }
+  .metric {
+    flex: none;
+    width: 247.67px;
+    border-radius: var(--radius-8);
+  }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
