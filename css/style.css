@@ -775,6 +775,9 @@ body {
 .training__meta img { width: 10.248px; height: 10.416px; }
 .training__dates { line-height: normal; white-space: nowrap; }
 .training__org { flex: 1 0 0; font-weight: 500; line-height: 28px; }
+/* „[ation] center” – celowo wyróżniona część nazwy (web i mobile: Medium 16/28, reszta Regular) */
+.training__org--mixed { font-weight: 400; }
+.training__org b { font-size: var(--font-size-md); font-weight: 500; line-height: 28px; }
 .training__title {
   margin: 0 0 calc(var(--spacing-8) - var(--spacing-16));
   font-family: var(--font-heading);
