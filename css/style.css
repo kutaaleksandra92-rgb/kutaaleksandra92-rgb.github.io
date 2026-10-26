@@ -656,11 +656,80 @@ body {
 .job__role-title { font-weight: 500; }
 .job__role-dates { color: var(--color-text-accent); }
 
+/* ---------- Edukacja (kafle uczelni) ---------- */
+.education__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-24);
+  padding-block: var(--spacing-80);
+}
+.education__heading {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  line-height: normal;
+}
+.schools {
+  flex: none;
+  display: flex;
+  align-items: stretch;
+  gap: var(--spacing-24);
+}
+.school {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  width: 365px;
+  min-height: 403px;
+  padding: var(--spacing-40) var(--spacing-32);
+  border-radius: var(--radius-8);
+  background: var(--color-bg-surface);
+}
+.school__logo {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--color-border-nav);
+  border-radius: var(--radius-16);
+  background: var(--color-button-secondary-bg);
+}
+.school__logo--ue { width: 24px; height: 22.973px; }
+.school__logo--ul { width: 24px; height: 28.5px; }
+.school__name {
+  flex: 1 0 auto;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 500;
+  line-height: normal;
+}
+.school__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 25px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+.school__field { line-height: 28px; }
+.school__degree {
+  font-size: var(--font-size-xs);
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
 @media (max-width: 1200px) {
   :root { --page-gutter: 64px; }
+  /* Edukacja – węższe ekrany: nagłówek nad kaflami */
+  .education__inner { flex-wrap: wrap; }
+  .education__heading { flex-basis: 100%; }
 }
 
 @media (max-width: 900px) {
@@ -798,6 +867,42 @@ body {
     line-height: 22px;
   }
   .job__body { padding: var(--spacing-24) var(--spacing-32); }
+
+  /* Edukacja (makieta mobile 375) – kafle przewijane w poziomie */
+  .education__inner.container {
+    flex-direction: column;
+    gap: var(--spacing-24);
+    padding: var(--spacing-32) var(--spacing-16);
+  }
+  .education__heading { flex: none; width: 100%; }
+  .schools {
+    gap: var(--spacing-16);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .schools::-webkit-scrollbar { display: none; }
+  .school {
+    flex: none;
+    width: 264px;
+    min-height: 305px;
+    padding: var(--spacing-24) var(--spacing-16);
+  }
+  .school__logo {
+    width: 40px;
+    height: 40px;
+    border-width: 0.625px;
+    border-radius: 10px;
+  }
+  .school__logo--ue { width: 15px; height: 14.358px; }
+  .school__logo--ul { width: 15px; height: 17.812px; }
+  .school__name { font-size: var(--font-size-lg); }
+  .school__field {
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+  }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
