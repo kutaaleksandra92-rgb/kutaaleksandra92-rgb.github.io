@@ -1041,7 +1041,7 @@ body {
 .case-decision__top {
   display: flex;
   align-items: flex-start;
-  gap: var(--spacing-80);
+  gap: var(--spacing-120);
 }
 .case-decision__text {
   flex: 1 0 0;
@@ -1059,7 +1059,7 @@ body {
 .case-decision__title {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   font-weight: 500;
   line-height: normal;
 }
