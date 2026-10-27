@@ -18,13 +18,14 @@ if (toggle && menu) {
   );
 }
 
-// Case study – slider „przed / po” (Decyzja II): strzałki przełączają zdjęcia i opis
+// Case study – slider „przed / po” (Decyzja II): strzałki przełączają zdjęcia i opis (w pętli)
 document.querySelectorAll('[data-ba-slider]').forEach((slider) => {
   const slides = [...slider.querySelectorAll('[data-slide]')];
   let current = slides.findIndex((s) => !s.hidden);
 
-  const show = (index, focusSelector) => {
-    if (index < 0 || index >= slides.length) return;
+  const show = (requested, focusSelector) => {
+    // pętla: po ostatnim slajdzie wraca do pierwszego i odwrotnie
+    const index = (requested + slides.length) % slides.length;
     slides[current].hidden = true;
     slides[index].hidden = false;
     current = index;
@@ -32,7 +33,7 @@ document.querySelectorAll('[data-ba-slider]').forEach((slider) => {
     const images = slides[index].querySelector('.ba__images');
     if (images) images.scrollLeft = 0;
     const target = slides[index].querySelector(focusSelector);
-    if (target && !target.disabled) target.focus({ preventScroll: true });
+    if (target) target.focus({ preventScroll: true });
   };
 
   slider.addEventListener('click', (event) => {

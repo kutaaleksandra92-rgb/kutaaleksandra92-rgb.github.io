@@ -1189,7 +1189,6 @@ body {
   transform: translateY(-50%);
 }
 .ba__arrow svg { width: 24px; height: 24px; }
-.ba__arrow:disabled { color: var(--color-text-accent); cursor: default; }
 .ba__arrow--prev { left: var(--spacing-32); }
 .ba__arrow--next { right: var(--spacing-32); }
 .ba__content {
