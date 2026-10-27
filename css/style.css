@@ -1117,6 +1117,127 @@ body {
   color: var(--color-text-secondary);
 }
 
+/* ---------- Case study: Decyzja II – przed / po (slider) ---------- */
+.case-ba__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-56);
+  padding-block: var(--spacing-80);
+}
+.case-ba__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  max-width: 660px;
+}
+.case-ba__heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 500;
+  line-height: normal;
+}
+.ba__slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-40);
+}
+.ba__slide[hidden] { display: none; }
+.ba__images {
+  display: flex;
+  gap: var(--spacing-12);
+  width: 100%;
+}
+.ba__box {
+  position: relative;
+  flex: 1 0 0;
+  min-width: 0;
+  aspect-ratio: 594 / 560;
+  margin: 0;
+  border-radius: var(--radius-16);
+  overflow: hidden;
+  background: var(--color-bg-surface);
+}
+.ba__box img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ba__label {
+  position: absolute;
+  top: var(--spacing-32);
+  left: var(--spacing-32);
+  font-family: var(--font-heading);
+  line-height: 22px;
+}
+.ba__arrow {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-16);
+  background: #222222;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.ba__arrow svg { width: 24px; height: 24px; }
+.ba__arrow:disabled { color: var(--color-text-accent); cursor: default; }
+.ba__arrow--prev { left: var(--spacing-32); }
+.ba__arrow--next { right: var(--spacing-32); }
+.ba__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-16);
+  width: 100%;
+  text-align: center;
+}
+.ba__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  width: 100%;
+}
+.ba__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  line-height: 19.5px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+.ba__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  line-height: normal;
+}
+.ba__desc {
+  line-height: 28px;
+  color: var(--color-text-tertiary);
+}
+.ba__stepper {
+  display: flex;
+  gap: 10px;
+  padding: 5px 13px;
+}
+.ba__step {
+  width: 16px;
+  height: 8px;
+  border-radius: var(--radius-24);
+  background: var(--color-button-secondary-bg-2);
+}
+.ba__step.is-active { width: 48px; background: var(--color-bg-accent); }
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -1449,6 +1570,37 @@ body {
   .benefit { flex: none; width: 320px; }
   .benefit__title { font-size: 18px; }
   .benefit__desc { font-size: var(--font-size-sm); line-height: 22px; }
+
+  /* Case study – Decyzja II (makieta mobile 375): zdjęcia przed/po przewijane w poziomie */
+  .case-ba__inner.container {
+    gap: var(--spacing-24);
+    padding: var(--spacing-24) var(--spacing-16);
+  }
+  .case-ba__top { gap: var(--spacing-8); }
+  .case-ba__heading { font-size: var(--font-size-lg); }
+  .ba__slide { gap: var(--spacing-24); }
+  .ba__images {
+    gap: var(--spacing-8);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .ba__images::-webkit-scrollbar { display: none; }
+  .ba__box {
+    flex: none;
+    width: 320px;
+    aspect-ratio: 320 / 300;
+    border-radius: var(--radius-8);
+  }
+  .ba__label { top: var(--spacing-16); left: var(--spacing-16); }
+  .ba__arrow { width: 44px; height: 44px; border-radius: 11px; }
+  .ba__arrow svg { width: 16.5px; height: 16.5px; }
+  .ba__arrow--prev { left: var(--spacing-16); }
+  .ba__arrow--next { right: var(--spacing-16); }
+  .ba__title { font-size: 18px; }
+  .ba__desc { font-size: var(--font-size-sm); line-height: 22px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
