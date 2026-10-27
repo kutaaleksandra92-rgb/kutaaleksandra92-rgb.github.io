@@ -1031,6 +1031,92 @@ body {
   color: var(--color-text-tertiary);
 }
 
+/* ---------- Case study: Decyzja (tekst + zdjęcie + korzyści) ---------- */
+.case-decision__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-56);
+  padding-top: var(--spacing-80); /* w makiecie brak odstępu na dole sekcji */
+}
+.case-decision__top {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-80);
+}
+.case-decision__text {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+.case-decision__eyebrow {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: normal;
+  color: var(--color-text-secondary);
+}
+.case-decision__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 500;
+  line-height: normal;
+}
+.case-decision__lead {
+  line-height: 28px;
+  color: var(--color-text-secondary);
+}
+.case-decision__media {
+  flex: 0 1 516px;
+  aspect-ratio: 516 / 478;
+  border-radius: var(--radius-8);
+  overflow: hidden;
+  background: var(--color-bg-surface);
+}
+.case-decision__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.case-decision__divider {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background: var(--color-border-nav);
+}
+.benefits {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+.benefit {
+  flex: 0 1 368px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+.benefit__icon { display: block; width: 24px; height: 24px; }
+.benefit__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+.benefit__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: normal;
+}
+.benefit__desc {
+  line-height: 28px;
+  color: var(--color-text-secondary);
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -1048,6 +1134,10 @@ body {
 }
 
 @media (max-width: 900px) {
+  /* Decyzja – węższe ekrany: zdjęcie pod tekstem */
+  .case-decision__top { flex-direction: column; gap: var(--spacing-40); }
+  .case-decision__text { flex: none; width: 100%; }
+  .case-decision__media { flex: none; width: 100%; max-width: 516px; }
   :root { --page-gutter: 32px; }
   .nav, .nav__menu { gap: 32px; }
   .hero__title { font-size: 40px; }
@@ -1331,6 +1421,34 @@ body {
   .decision__icon { width: 40px; height: 40px; border-radius: 10px; }
   .decision__icon img { width: 15px; height: 15px; }
   .decision__title { margin: 0; font-size: 18px; }
+
+  /* Case study – Decyzja (makieta mobile 375): korzyści przewijane w poziomie */
+  .case-decision__inner.container {
+    gap: var(--spacing-24);
+    padding: var(--spacing-24) var(--spacing-16);
+  }
+  .case-decision__top { gap: var(--spacing-24); }
+  .case-decision__text { gap: var(--spacing-8); }
+  .case-decision__title { font-size: var(--font-size-lg); }
+  .case-decision__lead {
+    margin-top: var(--spacing-16); /* tytuł–opis 24 */
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+  }
+  .case-decision__media { max-width: none; }
+  .case-decision__divider { height: 0.5px; }
+  .benefits {
+    gap: var(--spacing-16);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .benefits::-webkit-scrollbar { display: none; }
+  .benefit { flex: none; width: 320px; }
+  .benefit__title { font-size: 18px; }
+  .benefit__desc { font-size: var(--font-size-sm); line-height: 22px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
