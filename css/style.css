@@ -9,8 +9,6 @@
   --color-bg-secondary: #111112;
   --color-bg-surface: #161616;
   --color-surface-fill: #141517;
-  --color-neutral-1000: #000000;
-  --color-metric-light: #ededed;
   --color-bg-tag: #181919;
   --color-border-subtle: #303031;
   --color-text-primary: #ffffff;
@@ -852,63 +850,64 @@ body {
   color: var(--color-bg-accent);
 }
 
-/* ---------- Case study: Kluczowe fakty ---------- */
-.case-facts { background: var(--color-neutral-1000); }
+/* ---------- Case study: Kluczowe fakty (wersja z 27.10 – tekst + liczby + zdjęcie buta) ---------- */
+.case-facts { overflow: hidden; }
 .case-facts__inner {
+  position: relative;
   display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-120);
-  padding-block: var(--spacing-80);
+  align-items: center;
+  padding-block: var(--spacing-120);
 }
-.case-facts__avatar { flex: none; width: 88px; height: 88px; }
 .case-facts__content {
-  flex: 1 0 0;
+  flex: 0 1 792px;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-56);
+  gap: var(--spacing-80);
 }
 .case-facts__title {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
   font-weight: 400;
   line-height: normal;
   color: var(--color-text-primary);
 }
 .case-facts__muted { color: var(--color-text-accent); }
-
-.metrics {
+.facts {
   display: flex;
-  gap: var(--spacing-40);
-  width: 775px;
-  max-width: 100%;
+  align-items: stretch;
+  gap: 48px;
 }
-.metric {
+.fact {
   flex: 1 0 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-8);
-  height: 209px;
-  padding: var(--spacing-24) var(--spacing-32);
-  border-radius: var(--radius-16);
-  background: var(--color-bg-primary);
-  font-family: var(--font-heading);
-  line-height: normal;
+  gap: var(--spacing-12);
+  padding-top: var(--spacing-24);
+  border-top: 1px solid var(--color-border-nav);
 }
-.metric__value {
-  flex: 1 0 0;
+.fact__value {
+  font-family: var(--font-heading);
   font-size: var(--font-size-3xl);
   font-weight: 500;
-  color: var(--color-bg-accent);
+  line-height: normal;
 }
-.metric__label {
-  font-size: 18px;
-  color: var(--color-text-accent);
+.fact__label {
+  line-height: 28px;
+  color: var(--color-text-tertiary);
 }
-.metric--light { background: var(--color-metric-light); }
-.metric--light .metric__value { color: var(--color-bg-secondary); }
+/* zdjęcie buta (eksport z obrotem): jak w makiecie nie wpływa na wysokość sekcji,
+   wyśrodkowane w pionie i wychodzi ~30 px poza kolumnę 1200 */
+.case-facts__media {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--page-gutter) + 792px);
+  width: 437.6px;
+  transform: translateY(-50%);
+}
+.case-facts__media img { display: block; width: 100%; height: auto; }
 
 /* ---------- Case study: wspólny rząd 3 kafli (Kontekst zmian, Strategia) ---------- */
 .case-tiles {
@@ -1245,9 +1244,10 @@ body {
   /* Kontekst zmian – węższe ekrany: opis pod tytułem */
   .case-context__top { flex-direction: column; gap: var(--spacing-24); }
   .case-context__title, .case-context__lead { flex: none; }
-  /* Kluczowe fakty – węższe ekrany: logo nad treścią */
-  .case-facts__inner { flex-direction: column; gap: var(--spacing-40); }
+  /* Kluczowe fakty – węższe ekrany: zdjęcie pod treścią */
+  .case-facts__inner { flex-direction: column; align-items: stretch; gap: var(--spacing-40); }
   .case-facts__content { flex: none; width: 100%; }
+  .case-facts__media { position: static; align-self: center; transform: none; }
   /* Edukacja – węższe ekrany: nagłówek nad kaflami */
   .education__inner { flex-wrap: wrap; }
   .education__heading { flex-basis: 100%; }
@@ -1488,28 +1488,26 @@ body {
   }
   .case-nav__bar::-webkit-scrollbar { display: none; }
 
-  /* Case study – Kluczowe fakty (makieta mobile 375): metryki przewijane w poziomie */
+  /* Case study – Kluczowe fakty (makieta mobile 375): liczby przewijane w poziomie */
   .case-facts__inner.container {
     gap: var(--spacing-24);
     padding: var(--spacing-32) var(--spacing-16);
   }
-  .case-facts__title { font-size: var(--font-size-lg); }
   .case-facts__content { gap: var(--spacing-24); }
-  .metrics {
-    gap: var(--spacing-16);
+  .case-facts__title { font-size: var(--font-size-lg); }
+  .facts {
+    gap: var(--spacing-24);
     width: calc(100% + 2 * var(--spacing-16));
-    max-width: none;
     margin-inline: calc(-1 * var(--spacing-16));
     padding-inline: var(--spacing-16);
     overflow-x: auto;
     scrollbar-width: none;
   }
-  .metrics::-webkit-scrollbar { display: none; }
-  .metric {
-    flex: none;
-    width: 247.67px;
-    border-radius: var(--radius-8);
-  }
+  .facts::-webkit-scrollbar { display: none; }
+  .fact { flex: none; width: 164px; }
+  .fact__value { font-size: var(--font-size-2xl); }
+  .case-facts__media { display: flex; justify-content: center; width: auto; height: 410.25px; }
+  .case-facts__media img { flex: none; width: auto; max-width: none; height: 100%; }
 
   /* Case study – Kontekst zmian i Strategia (makiety mobile 375): kafle 320 px przewijane w poziomie */
   .case-context__inner.container,
