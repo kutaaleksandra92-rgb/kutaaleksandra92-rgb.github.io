@@ -345,7 +345,7 @@ body {
 .case-hero {
   display: flex;
   flex-direction: column;
-  height: 920px;
+  padding-bottom: var(--spacing-80);
 }
 .case-hero__content {
   display: flex;
@@ -368,8 +368,14 @@ body {
 .case-hero__title {
   font-family: var(--font-heading);
   font-size: var(--font-size-3xl);
-  font-weight: 500;
+  width: 100%;
+  font-weight: 400;
   line-height: normal;
+  background: linear-gradient(121.6deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .case-info {
@@ -393,11 +399,21 @@ body {
   white-space: nowrap;
 }
 
-.case-hero__media {
-  flex: 1 0 0;
-  min-height: 0;
+.case-hero__media { flex: none; }
+.case-hero__media picture {
+  position: relative;
+  display: block;
+  height: 544px;
 }
-.case-hero__media picture { display: block; height: 100%; }
+/* warstwa gradientu na zdjęciu (makieta: od połowy wysokości do #120b03) */
+.case-hero__media picture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-16);
+  background: linear-gradient(to bottom, rgba(1, 1, 7, 0) 50%, #120b03 100%);
+  pointer-events: none;
+}
 .case-hero__media img {
   width: 100%;
   height: 100%;
@@ -1636,12 +1652,20 @@ body {
   .highlights__dot, .highlights__break { display: none !important; }
 
   /* Case study – header (makieta mobile 375) */
-  .case-hero { height: auto; padding-bottom: var(--spacing-24); }
+  .case-hero { padding-bottom: var(--spacing-32); }
   .case-hero__content.container { padding: var(--spacing-24) var(--spacing-16); }
-  .case-hero__title { font-size: var(--font-size-lg); }
+  .case-hero__title {
+    font-size: var(--font-size-lg);
+    background-image: linear-gradient(115.6deg, #f7f7f7 0.64%, #838383 92.03%);
+  }
   .case-info { width: 100%; }
   .case-hero__media.container { flex: none; padding-inline: var(--spacing-16); }
-  .case-hero__media img { height: 248px; object-position: center; border-radius: var(--radius-8); }
+  .case-hero__media picture { height: 248px; }
+  .case-hero__media picture::after {
+    border-radius: var(--radius-8);
+    background: linear-gradient(to bottom, rgba(1, 1, 7, 0) 46.948%, #120b03 100%);
+  }
+  .case-hero__media img { object-position: center; border-radius: var(--radius-8); }
 
   /* Doświadczenie i CV – header (makieta mobile 375) */
   .cv-hero__content {
