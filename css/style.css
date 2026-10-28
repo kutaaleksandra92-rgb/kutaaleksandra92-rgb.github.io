@@ -1259,7 +1259,7 @@ body {
   flex: none;
   width: 200px;
   height: 200px;
-  border-radius: 10px;
+  border-radius: var(--radius-8);
   overflow: hidden;
   background: var(--color-bg-surface);
 }
@@ -1667,7 +1667,7 @@ body {
     gap: var(--spacing-24);
     padding: var(--spacing-24) 0;
   }
-  .feature__media { width: 120px; height: 120px; border-radius: 6px; }
+  .feature__media { width: 120px; height: 120px; border-radius: var(--radius-4); }
   .feature__label {
     font-family: var(--font-body);
     font-size: var(--font-size-sm);
