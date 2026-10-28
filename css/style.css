@@ -1236,6 +1236,64 @@ body {
 }
 .ba__step.is-active { width: 48px; background: var(--color-bg-accent); }
 
+/* ---------- Case study: Decyzja III – lista, grafika po najechaniu (web) ---------- */
+.case-features__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-40);
+  padding-block: var(--spacing-80);
+}
+.case-features__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-40);
+  padding: var(--spacing-40) var(--spacing-32);
+  border-bottom: 1px solid var(--color-border-nav);
+}
+.feature__media {
+  flex: none;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-bg-surface);
+}
+.feature__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.feature__text {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.feature__label {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: normal;
+  color: var(--color-text-tertiary);
+}
+.feature__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text-secondary);
+}
+.feature__muted { color: var(--color-text-accent); }
+/* Urządzenia z myszą: grafika ukryta, pokazuje się po najechaniu na wiersz (bez animacji) */
+@media (hover: hover) and (min-width: 721px) {
+  .feature__media { display: none; }
+  .feature:hover { padding-block: var(--spacing-24); }
+  .feature:hover .feature__media { display: block; }
+  .feature:hover .feature__title { color: var(--color-text-primary); }
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -1598,6 +1656,24 @@ body {
   .ba__arrow--next { right: var(--spacing-16); }
   .ba__title { font-size: 18px; }
   .ba__desc { font-size: var(--font-size-sm); line-height: 22px; }
+
+  /* Case study – Decyzja III (makieta mobile 375): wszystkie grafiki widoczne */
+  .case-features__inner.container {
+    gap: var(--spacing-24);
+    padding: var(--spacing-24) var(--spacing-16);
+  }
+  .case-features__top { gap: var(--spacing-8); }
+  .feature {
+    gap: var(--spacing-24);
+    padding: var(--spacing-24) 0;
+  }
+  .feature__media { width: 120px; height: 120px; border-radius: 6px; }
+  .feature__label {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+  }
+  .feature__title { font-size: var(--font-size-md); line-height: 22px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
