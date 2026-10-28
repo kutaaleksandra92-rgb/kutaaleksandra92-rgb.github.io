@@ -43,7 +43,7 @@ document.querySelectorAll('[data-ba-slider]').forEach((slider) => {
 });
 
 // Case study – nawigacja sekcji (sticky)
-// • po przyklejeniu: przewijanie w dół chowa pasek, przewijanie w górę go pokazuje
+// • po przyklejeniu: przewijanie w dół – pasek widoczny, w górę – zwinięty do linii z akcentem (.is-collapsed)
 // • aktywny link = sekcja, w której jesteśmy („Decyzje” obejmuje Decyzje I–III – atrybut data-sections)
 // • mobile: pasek przesuwa się w bok, żeby aktywny link był widoczny
 const caseNav = document.querySelector('.case-nav');
@@ -85,9 +85,9 @@ if (caseNav) {
     const anchor = caseNav.previousElementSibling;
     const stuck = anchor ? anchor.getBoundingClientRect().bottom <= 0 : true;
 
-    if (!stuck) caseNav.classList.remove('is-hidden');
-    else if (y > lastY + 4) caseNav.classList.add('is-hidden');
-    else if (y < lastY - 4) caseNav.classList.remove('is-hidden');
+    if (!stuck) caseNav.classList.remove('is-collapsed');
+    else if (y < lastY - 4) caseNav.classList.add('is-collapsed');
+    else if (y > lastY + 4) caseNav.classList.remove('is-collapsed');
     lastY = y;
 
     if (clicked) {

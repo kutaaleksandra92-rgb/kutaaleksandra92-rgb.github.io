@@ -829,8 +829,9 @@ body {
 }
 
 /* ---------- Case study: nawigacja sekcji (sticky, makieta 28.10: web 3106:2405, mobile 3042:18113) ----------
-   Pasek przykleja się do góry po przewinięciu headera. Przy przewijaniu w dół się chowa (.is-hidden),
-   przy przewijaniu w górę wraca. Aktywny link (.is-active) = sekcja, w której jesteśmy. Klasy ustawia js/main.js. */
+   Pasek przykleja się do góry po przewinięciu headera. Przy przewijaniu w dół jest widoczny w całości,
+   przy przewijaniu w górę kurczy się do samej linii z akcentem pod aktywną pozycją
+   (.is-collapsed, makieta 3110:2984). Aktywny link (.is-active) = sekcja, w której jesteśmy. Klasy ustawia js/main.js. */
 .case-nav {
   position: sticky;
   top: 0;
@@ -838,7 +839,8 @@ body {
   background: var(--color-bg-surface);
   box-shadow: inset 0 -1px 0 var(--color-border-nav); /* linia na dole; podkreślenie aktywnego linku leży na niej */
 }
-.case-nav.is-hidden { transform: translateY(-100%); }
+/* zwinięty: pasek wysuwa się w górę tak, że widać tylko dolny 1 px – linię i podkreślenie aktywnego linku */
+.case-nav.is-collapsed { transform: translateY(calc(-100% + 1px)); }
 .case-nav__bar {
   max-width: var(--page-max);
   margin-inline: auto;
