@@ -1460,7 +1460,7 @@ body {
   margin-inline: auto;
   padding: var(--spacing-80);
   border-radius: var(--radius-16);
-  background: #080607;
+  background: #09090a;
   overflow: hidden;
 }
 .case-footer__bg img {
