@@ -345,7 +345,7 @@ body {
 .case-hero {
   display: flex;
   flex-direction: column;
-  padding-bottom: var(--spacing-80);
+  padding-bottom: var(--spacing-120);
 }
 .case-hero__content {
   display: flex;
@@ -405,21 +405,12 @@ body {
   display: block;
   height: 544px;
 }
-/* warstwa gradientu na zdjęciu (makieta: od połowy wysokości do #120b03) */
-.case-hero__media picture::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-16);
-  background: linear-gradient(to bottom, rgba(1, 1, 7, 0) 50%, #120b03 100%);
-  pointer-events: none;
-}
 .case-hero__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
-  border-radius: var(--radius-16);
+  border-radius: var(--radius-4);
   background: #09090a;
 }
 
@@ -1660,11 +1651,7 @@ body {
   .case-info { width: 100%; }
   .case-hero__media.container { flex: none; padding-inline: var(--spacing-16); }
   .case-hero__media picture { height: 248px; }
-  .case-hero__media picture::after {
-    border-radius: var(--radius-8);
-    background: linear-gradient(to bottom, rgba(1, 1, 7, 0) 46.948%, #120b03 100%);
-  }
-  .case-hero__media img { object-position: center; border-radius: var(--radius-8); }
+  .case-hero__media img { object-position: center; }
 
   /* Doświadczenie i CV – header (makieta mobile 375) */
   .cv-hero__content {
