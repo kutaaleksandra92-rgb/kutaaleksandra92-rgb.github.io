@@ -1411,6 +1411,43 @@ body {
   .case-nav.is-hidden { transform: translateY(-100%); }
 }
 
+/* ---------- Case study: Refleksja (zdjęcie + cytat) ---------- */
+.case-reflection { background: var(--color-bg-secondary); }
+.case-reflection__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-64);
+  padding-block: var(--spacing-88);
+}
+.case-reflection__photo {
+  flex: none;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-12);
+  object-fit: cover;
+}
+.case-reflection__text {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  font-family: var(--font-heading);
+  line-height: normal;
+}
+.case-reflection__eyebrow {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+.case-reflection__quote {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+}
+.case-reflection__muted { color: var(--color-text-accent); }
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -1842,6 +1879,16 @@ body {
   .result__desc { font-size: var(--font-size-sm); line-height: 22px; }
   .case-results__media { width: 240px; }
   .case-results__media img { height: 351.83px; object-fit: cover; }
+
+  /* Case study – Refleksja (makieta mobile 375): wyśrodkowany cytat, zdjęcie pod nim */
+  .case-reflection__inner.container {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: var(--spacing-24);
+    padding: var(--spacing-32) var(--spacing-16);
+  }
+  .case-reflection__text { flex: none; width: 100%; text-align: center; }
+  .case-reflection__quote { font-size: var(--font-size-lg); }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
