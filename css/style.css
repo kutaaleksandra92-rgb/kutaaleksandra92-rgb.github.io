@@ -1396,6 +1396,21 @@ body {
 }
 .result__desc strong { font-weight: 500; color: var(--color-text-primary); }
 
+/* ---------- Nawigacja sekcji – WERSJA ROBOCZA do oceny (28.10), tylko web ----------
+   Po przyklejeniu pasek robi się niższy (76 → 42 px) i dosuwa do górnej krawędzi (odstęp 12 px),
+   przy przewijaniu w dół chowa się, przy przewijaniu w górę wraca. Klasy ustawia js/main.js. */
+@media (min-width: 721px) {
+  .case-nav {
+    top: -28px;          /* margines 40 px nad paskiem → po przyklejeniu zostaje 12 px */
+    height: 156px;       /* stała wysokość: zmniejszenie paska nie przesuwa treści */
+    align-items: flex-start;
+    transition: transform 0.25s ease; /* do decyzji Oli – można usunąć */
+  }
+  .case-nav.is-stuck .case-nav__bar { padding: 10px var(--spacing-24); }
+  .case-nav.is-stuck .case-nav__link { font-size: var(--font-size-sm); line-height: 22px; }
+  .case-nav.is-hidden { transform: translateY(-100%); }
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */

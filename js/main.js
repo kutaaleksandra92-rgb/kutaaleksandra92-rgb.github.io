@@ -41,3 +41,38 @@ document.querySelectorAll('[data-ba-slider]').forEach((slider) => {
     else if (event.target.closest('[data-next]')) show(current + 1, '[data-next]');
   });
 });
+
+// Case study – nawigacja sekcji (WERSJA ROBOCZA, tylko web): zmniejszenie po przyklejeniu
+// i chowanie przy przewijaniu w dół / pokazywanie przy przewijaniu w górę
+const caseNav = document.querySelector('.case-nav');
+if (caseNav) {
+  const desktop = window.matchMedia('(min-width: 721px)');
+  const STUCK_TOP = -28; // musi odpowiadać wartości top w CSS
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const y = window.scrollY;
+    if (!desktop.matches) {
+      caseNav.classList.remove('is-stuck', 'is-hidden');
+      lastY = y;
+      return;
+    }
+    // naturalne miejsce paska = dół poprzedzającej go sekcji (niezależnie od przesunięcia przy chowaniu)
+    const anchor = caseNav.previousElementSibling;
+    const naturalTop = anchor ? anchor.getBoundingClientRect().bottom : caseNav.getBoundingClientRect().top;
+    const stuck = naturalTop <= STUCK_TOP;
+    caseNav.classList.toggle('is-stuck', stuck);
+    if (!stuck) caseNav.classList.remove('is-hidden');
+    else if (y > lastY + 4) caseNav.classList.add('is-hidden');
+    else if (y < lastY - 4) caseNav.classList.remove('is-hidden');
+    lastY = y;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  desktop.addEventListener('change', update);
+  update();
+}
