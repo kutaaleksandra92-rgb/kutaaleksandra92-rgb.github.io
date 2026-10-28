@@ -1294,6 +1294,53 @@ body {
   .feature:hover .feature__title { color: var(--color-text-primary); }
 }
 
+/* ---------- Case study: Trade-off (kafle danych) ---------- */
+.case-tradeoff__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-64);
+  padding-top: var(--spacing-80); /* w makiecie brak odstępu na dole sekcji */
+}
+.tradeoff {
+  display: flex;
+  align-items: stretch;
+  gap: var(--spacing-24);
+}
+.data-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+  min-height: 340px;
+  padding: var(--spacing-40);
+  border-radius: var(--radius-16);
+  background: var(--color-bg-secondary);
+}
+.data-tile--main { flex: 1 0 0; min-width: 0; }
+.data-tile--side { flex: none; width: 383px; }
+.data-tile__head {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+.data-tile__head img { flex: none; width: 24px; height: 24px; }
+.data-tile__label {
+  flex: 1 0 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: normal;
+  color: var(--color-text-tertiary);
+}
+.data-tile__label--accent { color: var(--color-bg-accent); }
+.data-tile__lead {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  line-height: normal;
+}
+.data-tile__text {
+  line-height: 28px;
+  color: var(--color-text-secondary);
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -1312,6 +1359,9 @@ body {
 }
 
 @media (max-width: 900px) {
+  /* Trade-off – węższe ekrany: kafle jeden pod drugim */
+  .tradeoff { flex-direction: column; }
+  .data-tile--main, .data-tile--side { flex: none; width: 100%; }
   /* Decyzja – węższe ekrany: zdjęcie pod tekstem */
   .case-decision__top { flex-direction: column; gap: var(--spacing-40); }
   .case-decision__text { flex: none; width: 100%; }
@@ -1674,6 +1724,15 @@ body {
     line-height: 22px;
   }
   .feature__title { font-size: var(--font-size-md); line-height: 22px; }
+
+  /* Case study – Trade-off (makieta mobile 375) */
+  .case-tradeoff__inner.container {
+    gap: var(--spacing-24);
+    padding: var(--spacing-32) var(--spacing-16);
+  }
+  .data-tile--side { min-height: 0; }
+  .data-tile__lead { font-size: var(--font-size-lg); }
+  .data-tile__text { font-size: var(--font-size-sm); line-height: 22px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
