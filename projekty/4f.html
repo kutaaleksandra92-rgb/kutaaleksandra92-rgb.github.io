@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css?v=41">
+  <link rel="stylesheet" href="../css/style.css?v=43">
 </head>
 <body>
 
@@ -73,18 +73,19 @@
         </picture>
       </div>
     </section>
-    <!-- ============ NAWIGACJA CASE STUDY (przykleja się do góry po przewinięciu headera) ============ -->
+    <!-- ============ NAWIGACJA CASE STUDY (sticky; logika w js/main.js) ============ -->
     <nav class="case-nav" aria-label="Sekcje case study">
       <div class="case-nav__bar">
         <ul class="case-nav__list">
-          <li><a href="#kluczowe-fakty" class="case-nav__link is-active" aria-current="true">Kluczowe fakty</a></li>
-          <li><a href="#problem" class="case-nav__link">Problem</a></li>
-          <li><a href="#rozwiazanie" class="case-nav__link">Rozwiązanie</a></li>
-          <li><a href="#decyzje" class="case-nav__link">Decyzje</a></li>
-          <li><a href="#trade-off" class="case-nav__link">Trade-off</a></li>
-          <li><a href="#wyniki" class="case-nav__link">Wyniki</a></li>
-          <li><a href="#refleksja" class="case-nav__link">Refleksja</a></li>
-          <li><a href="#nastepny-projekt" class="case-nav__link">Następny projekt</a></li>
+          <li><a href="#kluczowe-fakty" class="case-nav__link" data-label="Dane">Dane</a></li>
+          <li><a href="#kontekst" class="case-nav__link" data-label="Kontekst zmian">Kontekst zmian</a></li>
+          <li><a href="#strategia" class="case-nav__link" data-label="Strategia">Strategia</a></li>
+          <li><a href="#decyzja-1" class="case-nav__link" data-label="Decyzje" data-sections="decyzja-1 decyzja-2 decyzja-3">Decyzje</a></li>
+          <li><a href="#trade-off" class="case-nav__link" data-label="Trade-off">Trade-off</a></li>
+          <li><a href="#wyniki" class="case-nav__link" data-label="Wyniki">Wyniki</a></li>
+          <li><a href="#refleksja" class="case-nav__link" data-label="Refleksja">Refleksja</a></li>
+          <li><a href="#linki" class="case-nav__link" data-label="Linki">Linki</a></li>
+          <li><a href="#nastepny-projekt" class="case-nav__link" data-label="Następny projekt">Następny projekt</a></li>
         </ul>
       </div>
     </nav>
@@ -397,7 +398,7 @@
         </div>
       </div>
     </section>
-    <section class="case-footer" aria-label="Oceny aplikacji 4F">
+    <section class="case-footer" id="linki" aria-label="Oceny aplikacji 4F">
       <div class="case-footer__box">
         <picture class="case-footer__bg">
           <source media="(max-width: 720px)" srcset="../assets/images/projekty/4f-footer-mobile.jpg">
@@ -433,6 +434,6 @@
     </section>
   </main>
 
-  <script src="../js/main.js?v=41"></script>
+  <script src="../js/main.js?v=43"></script>
 </body>
 </html>
