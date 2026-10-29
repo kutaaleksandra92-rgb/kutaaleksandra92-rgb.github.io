@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css?v=49">
+  <link rel="stylesheet" href="../css/style.css?v=53">
 </head>
 <body>
 
@@ -42,13 +42,15 @@
     <!-- ============ HEADER CASE STUDY ============ -->
     <section class="case-hero" aria-labelledby="case-title">
       <div class="case-hero__content container">
-        <div class="case-hero__logo">
-          <img src="../assets/icons/logo-4f.svg" alt="4F" width="40" height="40">
-        </div>
+        <div class="case-hero__heading">
+          <div class="case-hero__logo">
+            <img src="../assets/icons/logo-4f.svg" alt="4F" width="40" height="40">
+          </div>
 
-        <h1 id="case-title" class="case-hero__title">
-          Aplikacja mobilna 4F. Ewolucja z kanału sprzedaży w ekosystem lojalnościowy
-        </h1>
+          <h1 id="case-title" class="case-hero__title">
+            Aplikacja mobilna 4F. Ewolucja z kanału sprzedaży w ekosystem lojalnościowy
+          </h1>
+        </div>
 
         <dl class="case-info">
           <div class="case-info__item">
@@ -84,8 +86,8 @@
           <li><a href="#trade-off" class="case-nav__link" data-label="Trade-off">Trade-off</a></li>
           <li><a href="#wyniki" class="case-nav__link" data-label="Wyniki">Wyniki</a></li>
           <li><a href="#refleksja" class="case-nav__link" data-label="Refleksja">Refleksja</a></li>
-          <li><a href="#linki" class="case-nav__link" data-label="Linki">Linki</a></li>
-          <li><a href="#nastepny-projekt" class="case-nav__link" data-label="Następny projekt">Następny projekt</a></li>
+          <li><a href="#linki" class="case-nav__link" data-label="Przetestuj rozwiązanie">Przetestuj rozwiązanie</a></li>
+          <li><a href="#nastepny-projekt" class="case-nav__link" data-label="Odkryj więcej">Odkryj więcej</a></li>
         </ul>
       </div>
     </nav>
@@ -398,12 +400,12 @@
         </div>
       </div>
     </section>
-    <section class="case-footer" id="linki" aria-label="Oceny aplikacji 4F">
+    <section class="case-footer" id="linki" aria-labelledby="footer-title">
       <div class="case-footer__box">
-        <picture class="case-footer__bg">
-          <source media="(max-width: 720px)" srcset="../assets/images/projekty/4f-footer-mobile.jpg">
-          <img src="../assets/images/projekty/4f-footer.jpg?v=2" alt="" loading="lazy">
-        </picture>
+        <div class="case-footer__bg">
+          <img src="../assets/images/projekty/4f-footer.jpg?v=4" alt="" loading="lazy">
+        </div>
+        <h2 id="footer-title" class="case-footer__title">Przetestuj rozwiązanie</h2>
         <ul class="ratings">
           <li>
             <a class="rating" href="https://play.google.com/store/apps/details?id=pl.com.fourf.ecommerce" target="_blank" rel="noopener">
@@ -412,7 +414,6 @@
                 <span class="rating__value">4,8</span>
                 <span class="rating__row">
                   <span class="rating__label">Ocena w Google Play (6,62 tys. ocen)</span>
-                  <svg class="rating__arrow" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M14.1002 33.899L33.8992 14.1001M22.5855 14.1001H33.8992V25.4138" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
               </span>
             </a>
@@ -424,7 +425,6 @@
                 <span class="rating__value">4,1</span>
                 <span class="rating__row">
                   <span class="rating__label">Ocena w App Store (436 ocen)</span>
-                  <svg class="rating__arrow" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M14.1002 33.899L33.8992 14.1001M22.5855 14.1001H33.8992V25.4138" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
               </span>
             </a>
@@ -434,6 +434,6 @@
     </section>
   </main>
 
-  <script src="../js/main.js?v=49"></script>
+  <script src="../js/main.js?v=53"></script>
 </body>
 </html>

@@ -32,6 +32,7 @@
   --font-size-lg: 24px;
   --font-size-2xl: 32px;
   --font-size-3xl: 48px;
+  --font-size-4xl: 56px;
 
   /* Odstępy */
   --spacing-4: 4px;
@@ -346,7 +347,7 @@ body {
 .case-hero {
   display: flex;
   flex-direction: column;
-  padding-bottom: var(--spacing-120);
+  padding-bottom: var(--spacing-80);
 }
 .case-hero__content {
   display: flex;
@@ -354,6 +355,13 @@ body {
   align-items: flex-start;
   gap: var(--spacing-8);
   padding-block: var(--spacing-64);
+}
+.case-hero__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-8);
+  width: 100%;
 }
 .case-hero__logo {
   display: flex;
@@ -398,6 +406,25 @@ body {
   font-weight: 500;
   line-height: 28px;
   white-space: nowrap;
+}
+
+/* Header 4F – układ web (makieta 29.10, 3042:17963): logo + tytuł 56 px po lewej, informacje w kolumnie po prawej */
+@media (min-width: 901px) {
+  .case-hero__content {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: var(--spacing-80);
+  }
+  .case-hero__heading { flex: 1 0 0; min-width: 0; gap: var(--spacing-40); }
+  .case-hero__title {
+    font-size: var(--font-size-4xl);
+    background-image: linear-gradient(98.73deg, #f7f7f7 0.64%, #838383 92.03%);
+  }
+  .case-info {
+    flex: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 }
 
 .case-hero__media { flex: none; }
@@ -1460,20 +1487,37 @@ body {
 }
 .case-footer__box {
   position: relative;
-  min-height: 465px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--spacing-24);
+  min-height: 640px;
   padding: var(--spacing-80);
   border-radius: var(--radius-16);
+  overflow: hidden;
+}
+/* zdjęcie (50% krycia na tle #09090a – wtopione w JPG) (makieta 29.10: 3135:3166 / 3091:5437) */
+.case-footer__bg {
+  position: absolute;
+  inset: 0;
   background: #09090a;
+  border-radius: inherit;
   overflow: hidden;
 }
 .case-footer__bg img {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   max-width: none;
-  object-fit: cover;
-  object-position: right center;
+  object-fit: cover; /* 50% krycia z makiety jest już wtopione w plik (PNG na #09090a) */
+}
+.case-footer__title {
+  position: relative;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text-primary);
 }
 .ratings {
   position: relative;
@@ -1523,13 +1567,11 @@ body {
   gap: var(--spacing-16);
 }
 .rating__label {
-  flex: 1 0 0;
-  min-width: 0;
+  max-width: 192px; /* szerokość z makiety */
   font-size: var(--font-size-md);
   line-height: 28px;
   color: var(--color-text-tertiary);
 }
-.rating__arrow { flex: none; color: var(--color-text-primary); }
 
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
@@ -1971,18 +2013,20 @@ body {
   /* Case study – stopka z ocenami (makieta mobile 375): kafle nachodzą na zdjęcie, przewijane w poziomie */
   .case-footer { padding: var(--spacing-24) var(--spacing-16); }
   .case-footer__box {
+    gap: var(--spacing-16);
     min-height: 0;
-    padding: 487px 0 0;   /* 717 (wys. zdjęcia) − 230 (nachodzenie kafli) */
+    padding: 448px 0 0;   /* tytuł na zdjęciu; kafle zaczynają się 487 px = 717 − 230 (nachodzenie) */
     border-radius: 0;
-    background: none;
     overflow: visible;
   }
-  .case-footer__bg img {
+  .case-footer__bg {
     inset: 0 0 auto;
     height: 717px;
     border-radius: var(--radius-16);
-    object-position: center;
   }
+  .case-footer__bg img { object-position: 79.4% center; } /* kadr z makiety mobile */
+  .case-footer__title { padding-inline: var(--spacing-16); font-size: 18px; }
+  .rating__label { max-width: 164px; }
   .ratings {
     flex-wrap: nowrap;
     gap: var(--spacing-8);
