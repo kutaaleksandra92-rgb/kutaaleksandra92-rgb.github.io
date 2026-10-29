@@ -826,10 +826,10 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #e8eae2; /* jasny pasek (zmiana Oli 29.10 – lepiej widoczny) */
-  box-shadow: inset 0 -1px 0 var(--color-divider); /* linia na dole #303031; podkreślenie aktywnego linku leży na niej */
+  background: var(--color-bg-surface);
+  box-shadow: inset 0 -1px 0 var(--color-border-nav); /* linia na dole; podkreślenie aktywnego linku leży na niej */
 }
-/* zwinięty: pasek wysuwa się w górę tak, że widać tylko dolne 4 px – jasny pasek i podkreślenie aktywnego linku */
+/* zwinięty: pasek wysuwa się w górę tak, że widać tylko dolne 4 px – linię i podkreślenie aktywnego linku */
 .case-nav.is-collapsed { transform: translateY(calc(-100% + 4px)); }
 .case-nav__bar {
   max-width: var(--page-max);
@@ -851,7 +851,7 @@ body {
   border-bottom: 4px solid transparent;
   font-size: var(--font-size-sm);
   line-height: 22px;
-  color: var(--color-text-on-accent);
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }
 /* rezerwuje szerokość pogrubionej wersji, żeby linki nie przesuwały się przy zmianie aktywnego */
@@ -864,7 +864,8 @@ body {
 }
 .case-nav__link.is-active {
   font-weight: 500;
-  border-bottom-color: #5b7809;
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-bg-accent); /* 4 px (29.10 – grubsze niż wcześniej 1 px) */
 }
 /* sekcje nie chowają się pod paskiem po kliknięciu w link */
 .case-nav ~ section[id] { scroll-margin-top: 70px; }
