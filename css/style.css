@@ -1573,6 +1573,64 @@ body {
   color: var(--color-text-tertiary);
 }
 
+/* ---------- Case study: Odkryj więcej (web 3143:3475, mobile 3143:3493) – karty bez linków ---------- */
+.case-more { background: var(--color-bg-primary); }
+.case-more__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-40);
+  padding-block: var(--spacing-80);
+}
+.case-more__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
+  line-height: normal;
+}
+.more-list {
+  display: flex;
+  gap: var(--spacing-40);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.more {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+.more__media {
+  aspect-ratio: 373 / 329; /* 373×329 na 1440 – skaluje się z szerokością */
+  border-radius: var(--radius-4);
+  overflow: hidden;
+}
+.more__media img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+.more__img--ctrl { object-position: 83% center; } /* kadr z makiety */
+.more__media--placeholder { background: var(--color-bg-accent); }
+.more__label {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: normal;
+  color: var(--color-text-secondary);
+}
+.more__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text-primary);
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -2040,6 +2098,23 @@ body {
   .ratings > li { flex: none; }
   .rating { width: 292px; }
   .rating__value { font-size: var(--font-size-2xl); }
+
+  /* Case study – Odkryj więcej (makieta mobile 375): karty 320 px przewijane w poziomie */
+  .case-more__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
+  .case-more__title { font-size: var(--font-size-lg); }
+  .more-list {
+    gap: var(--spacing-16);
+    width: calc(100% + 32px);
+    margin-inline: -16px;
+    padding-inline: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .more-list::-webkit-scrollbar { display: none; }
+  .more { flex: none; width: 320px; }
+  .more__media { aspect-ratio: auto; height: 329px; }
+  .more__label { font-size: var(--font-size-md); line-height: 22px; }
+  .more__title { font-size: 18px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
