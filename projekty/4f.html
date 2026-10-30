@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css?v=57">
+  <link rel="stylesheet" href="../css/style.css?v=58">
 </head>
 <body>
 
@@ -430,6 +430,11 @@
     </section>
     <!-- ============ ODKRYJ WIĘCEJ (inne projekty; na razie bez linków) ============ -->
     <section class="case-more" id="odkryj-wiecej" aria-labelledby="more-title">
+      <!-- Przycisk „do góry”: wyśrodkowany na górnej krawędzi sekcji; napis po okręgu się obraca, strzałka lekko podskakuje (js/main.js – płynny powrót na górę) -->
+      <a href="#top" class="up-btn" data-scroll-top aria-label="Chyba jestem za daleko, wracamy! Przewiń na górę strony">
+        <img class="up-btn__ring" src="../assets/icons/4f/up-ring.svg" alt="" width="108" height="108">
+        <svg class="up-btn__arrow" width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true"><path d="M20.8635 8.69336V33.0343M10.4316 19.1252L20.8635 8.69336L31.2953 19.1252" stroke="currentColor" stroke-width="3.47727" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
       <div class="container case-more__inner">
         <h2 id="more-title" class="case-more__title">Odkryj więcej</h2>
         <ul class="more-list">
@@ -453,6 +458,6 @@
     </section>
   </main>
 
-  <script src="../js/main.js?v=57"></script>
+  <script src="../js/main.js?v=58"></script>
 </body>
 </html>

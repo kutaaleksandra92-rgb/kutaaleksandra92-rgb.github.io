@@ -115,3 +115,30 @@ if (caseNav) {
   window.addEventListener('resize', update);
   update();
 }
+
+// Przycisk „do góry” – płynny powrót na górę strony (ease-in-out, czas zależny od odległości)
+document.querySelectorAll('[data-scroll-top]').forEach((btn) => {
+  btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    const startY = window.scrollY;
+    if (startY <= 0) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const duration = Math.min(1600, Math.max(600, startY / 6)); // ok. 1,6 s z dołu strony 4F
+    const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    let start = null;
+    let cancelled = false;
+    const cancel = () => { cancelled = true; };
+    ['wheel', 'touchstart', 'keydown'].forEach((type) => window.addEventListener(type, cancel, { once: true, passive: true }));
+    const step = (now) => {
+      if (cancelled) return;
+      if (start === null) start = now;
+      const t = Math.min(1, (now - start) / duration);
+      window.scrollTo(0, Math.round(startY * (1 - easeInOut(t))));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+});

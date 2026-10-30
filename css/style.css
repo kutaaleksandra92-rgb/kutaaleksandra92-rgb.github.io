@@ -1561,7 +1561,46 @@ body {
 }
 
 /* ---------- Case study: Odkryj więcej (web 3143:3475, mobile 3143:3493) – karty bez linków ---------- */
-.case-more { background: var(--color-bg-primary); }
+.case-more { position: relative; background: var(--color-bg-primary); }
+
+/* Przycisk „do góry” (web 3153:2465, mobile 3153:2460; umiejscowienie z pełnej ramki 3042:18190):
+   środek przycisku na górnej krawędzi sekcji „Odkryj więcej”, prawa krawędź na linii treści */
+.up-btn {
+  position: absolute;
+  top: 0;
+  right: var(--page-gutter);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  background: var(--color-bg-accent);
+  color: var(--color-bg-primary);
+  transform: translateY(-50%);
+}
+.up-btn__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: up-btn-spin 24s linear infinite; /* wolno – tekst da się przeczytać */
+}
+.up-btn__arrow {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  animation: up-btn-nudge 1.6s ease-in-out infinite;
+}
+@keyframes up-btn-spin { to { transform: rotate(360deg); } }
+@keyframes up-btn-nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .up-btn__ring, .up-btn__arrow { animation: none; }
+}
 .case-more__inner {
   display: flex;
   flex-direction: column;
@@ -2096,6 +2135,10 @@ body {
   .more__media { aspect-ratio: auto; height: 329px; }
   .more__label { font-size: var(--font-size-md); line-height: 22px; }
   .more__title { font-size: 18px; }
+
+  /* Przycisk „do góry” – mobile: 80 px, przy prawej krawędzi treści (16 px) */
+  .up-btn { right: var(--spacing-16); width: 80px; height: 80px; }
+  .up-btn__arrow { width: 31px; height: 31px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
