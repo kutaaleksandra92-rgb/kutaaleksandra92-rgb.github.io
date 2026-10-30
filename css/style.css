@@ -990,7 +990,7 @@ body {
   margin: 0;
   font-family: var(--font-heading);
   font-size: var(--font-size-3xl);
-  font-weight: 500;
+  font-weight: 400; /* 30.10: nagłówki sekcji 4F na webie ujednolicone – 48 Regular */
   line-height: normal;
 }
 .case-context__lead {
@@ -1047,7 +1047,7 @@ body {
 }
 .case-strategy__title {
   margin: 0;
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
   font-weight: 400;
 }
 .case-strategy__accent { color: var(--color-bg-accent); }
@@ -1105,8 +1105,8 @@ body {
 .case-decision__title {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: var(--font-size-2xl);
-  font-weight: 500;
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
   line-height: normal;
 }
 .case-decision__lead {
@@ -1180,7 +1180,7 @@ body {
   margin: 0;
   font-family: var(--font-heading);
   font-size: var(--font-size-3xl);
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
 }
 .ba__slide {
@@ -1902,7 +1902,7 @@ body {
     gap: var(--spacing-24);
     padding: var(--spacing-32) var(--spacing-16);
   }
-  .case-context__title { font-size: var(--font-size-lg); }
+  .case-context__title { font-size: var(--font-size-lg); font-weight: 500; } /* mobile bez zmian */
   .case-strategy__top { gap: var(--spacing-8); }
   .case-strategy__eyebrow { font-size: var(--font-size-md); line-height: 22px; }
   .case-strategy__title { font-size: var(--font-size-lg); }
@@ -1934,7 +1934,7 @@ body {
   }
   .case-decision__top { gap: var(--spacing-24); }
   .case-decision__text { gap: var(--spacing-8); }
-  .case-decision__title { font-size: var(--font-size-lg); }
+  .case-decision__title { font-size: var(--font-size-lg); font-weight: 500; }
   .case-decision__lead {
     margin-top: var(--spacing-16); /* tytuł–opis 24 */
     font-size: var(--font-size-sm);
@@ -1961,7 +1961,7 @@ body {
     padding: var(--spacing-24) var(--spacing-16);
   }
   .case-ba__top { gap: var(--spacing-8); }
-  .case-ba__heading { font-size: var(--font-size-lg); }
+  .case-ba__heading { font-size: var(--font-size-lg); font-weight: 500; }
   .ba__slide { gap: var(--spacing-24); }
   .ba__images {
     gap: var(--spacing-8);
