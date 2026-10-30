@@ -1480,54 +1480,47 @@ body {
 }
 .case-reflection__muted { color: var(--color-text-accent); }
 
-/* ---------- Case study: stopka z ocenami aplikacji (zdjęcie + kafle) ---------- */
-.case-footer {
-  background: var(--color-bg-secondary);
-  padding: 0 var(--spacing-40) var(--spacing-40);
+/* ---------- Case study: „Przetestuj rozwiązanie” – oceny aplikacji (wersja 30.10: web 3150:1960, mobile 3150:1998) ---------- */
+.case-footer { background: var(--color-bg-secondary); }
+.case-footer__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-32);
+  padding-block: var(--spacing-80);
 }
-.case-footer__box {
-  position: relative;
+.case-footer__heading {
+  flex: 1 0 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   gap: var(--spacing-24);
-  min-height: 640px;
-  padding: var(--spacing-80);
-  border-radius: var(--radius-16);
-  overflow: hidden;
+  font-family: var(--font-heading);
+  line-height: normal;
 }
-/* zdjęcie (50% krycia na tle #09090a – wtopione w JPG) (makieta 29.10: 3135:3166 / 3091:5437) */
-.case-footer__bg {
-  position: absolute;
-  inset: 0;
-  background: #09090a;
-  border-radius: inherit;
-  overflow: hidden;
-}
-.case-footer__bg img {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover; /* 50% krycia z makiety jest już wtopione w plik (PNG na #09090a) */
+.case-footer__eyebrow {
+  margin: 0;
+  font-size: 18px;
+  color: var(--color-text-secondary);
 }
 .case-footer__title {
-  position: relative;
   margin: 0;
-  font-family: var(--font-heading);
-  font-size: var(--font-size-lg);
-  font-weight: 500;
-  line-height: normal;
-  color: var(--color-text-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
+  background: linear-gradient(99.16deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 .ratings {
-  position: relative;
+  flex: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-16);
+  gap: var(--spacing-32);
   margin: 0;
   padding: 0;
   list-style: none;
 }
+.ratings > li { display: flex; }
 .rating {
   display: flex;
   flex-direction: column;
@@ -1551,23 +1544,17 @@ body {
 .rating__data {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-8);
-  padding-top: var(--spacing-24);
+  gap: var(--spacing-16);
 }
 .rating__value {
   font-family: var(--font-heading);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   font-weight: 500;
   line-height: normal;
   color: var(--color-text-secondary);
 }
-.rating__row {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-16);
-}
 .rating__label {
-  max-width: 192px; /* szerokość z makiety */
+  max-width: 192px; /* szerokość z makiety (obie etykiety jednakowo – Ola 29.10) */
   font-size: var(--font-size-md);
   line-height: 28px;
   color: var(--color-text-tertiary);
@@ -1649,6 +1636,9 @@ body {
 }
 
 @media (max-width: 900px) {
+  /* „Przetestuj rozwiązanie” – węższe ekrany: nagłówek nad kaflami */
+  .case-footer__inner { flex-direction: column; }
+  .case-footer__heading { flex: none; width: 100%; }
   /* Wyniki – węższe ekrany: telefon pod liczbami */
   .case-results__body { flex-direction: column-reverse; align-items: center; gap: var(--spacing-56); }
   .case-results__media { flex: none; width: 100%; max-width: 524px; }
@@ -2068,26 +2058,19 @@ body {
   .case-reflection__text { flex: none; width: 100%; text-align: center; }
   .case-reflection__quote { font-size: var(--font-size-lg); }
 
-  /* Case study – stopka z ocenami (makieta mobile 375): kafle nachodzą na zdjęcie, przewijane w poziomie */
-  .case-footer { padding: var(--spacing-24) var(--spacing-16); }
-  .case-footer__box {
-    gap: var(--spacing-16);
-    min-height: 0;
-    padding: 448px 0 0;   /* tytuł na zdjęciu; kafle zaczynają się 487 px = 717 − 230 (nachodzenie) */
-    border-radius: 0;
-    overflow: visible;
+  /* Case study – „Przetestuj rozwiązanie” (makieta mobile 375): nagłówek nad kaflami, kafle przewijane w poziomie */
+  .case-footer__inner.container {
+    flex-direction: column;
+    gap: var(--spacing-24);
+    padding: var(--spacing-32) var(--spacing-16);
   }
-  .case-footer__bg {
-    inset: 0 0 auto;
-    height: 717px;
-    border-radius: var(--radius-16);
+  .case-footer__heading { flex: none; width: 100%; gap: var(--spacing-8); }
+  .case-footer__title {
+    font-size: var(--font-size-lg);
+    background-image: linear-gradient(113.7deg, #f7f7f7 0.64%, #838383 92.03%);
   }
-  .case-footer__bg img { object-position: 79.4% center; } /* kadr z makiety mobile */
-  .case-footer__title { padding-inline: var(--spacing-16); font-size: 18px; }
-  .rating__label { max-width: 164px; }
   .ratings {
-    flex-wrap: nowrap;
-    gap: var(--spacing-8);
+    gap: var(--spacing-24);
     width: calc(100% + 32px);
     margin-inline: -16px;
     padding-inline: 16px;
@@ -2096,8 +2079,6 @@ body {
   }
   .ratings::-webkit-scrollbar { display: none; }
   .ratings > li { flex: none; }
-  .rating { width: 292px; }
-  .rating__value { font-size: var(--font-size-2xl); }
 
   /* Case study – Odkryj więcej (makieta mobile 375): karty 320 px przewijane w poziomie */
   .case-more__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
