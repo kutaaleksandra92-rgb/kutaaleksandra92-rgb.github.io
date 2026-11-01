@@ -1940,11 +1940,11 @@ body {
   text-align: center;
   color: var(--color-text-accent);
 }
-.quotes { overflow: hidden; padding-block: 16px; margin-block: -16px; } /* zapas na powiększony kafel */
+.quotes { overflow: hidden; padding-block: 24px; margin-block: -24px; } /* zapas na powiększony kafel (scale 1.1) */
 .quotes__track {
   display: flex;
   width: max-content;
-  animation: quotes-scroll 180s linear infinite; /* ok. 37 px/s */
+  animation: quotes-scroll 168s linear infinite; /* 01.11: ok. 40 px/s – kafel co ok. 15 s (wcześniej 16,5 s) */
 }
 .quotes__list {
   display: flex;
@@ -1990,7 +1990,8 @@ body {
 .quote-card__desc { font-size: var(--font-size-md); line-height: 22px; color: var(--color-text-tertiary); }
 @media (hover: hover) and (pointer: fine) {
   .quotes__track:hover { animation-play-state: paused; }
-  .quote-card:hover { transform: scale(1.04); }
+  .quote-card { position: relative; }
+  .quote-card:hover { z-index: 1; transform: scale(1.1); } /* 01.11: +10% */
 }
 @media (prefers-reduced-motion: reduce) {
   .quotes { overflow-x: auto; }
