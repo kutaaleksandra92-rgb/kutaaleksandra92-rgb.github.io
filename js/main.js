@@ -151,8 +151,8 @@ document.querySelectorAll('[data-parallax]').forEach((board) => {
   const area = board.closest('section') || board;
   let tx = 0, ty = 0, x = 0, y = 0, raf = null;
   const render = () => {
-    x += (tx - x) * 0.08; // wygładzenie – kafle „doganiają” kursor
-    y += (ty - y) * 0.08;
+    x += (tx - x) * 0.025; // 01.11: wolniej i delikatniej – kafle powoli „dopływają” za kursorem
+    y += (ty - y) * 0.025;
     items.forEach(({ el, depth }) => { el.style.transform = `translate3d(${(x * depth).toFixed(2)}px, ${(y * depth).toFixed(2)}px, 0)`; });
     if (Math.abs(tx - x) > 0.001 || Math.abs(ty - y) > 0.001) raf = requestAnimationFrame(render);
     else raf = null;
