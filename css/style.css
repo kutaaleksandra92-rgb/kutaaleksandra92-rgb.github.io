@@ -430,7 +430,7 @@ body {
     flex-wrap: nowrap;
   }
   /* CTRL+ (makieta 30.10): informacje wyrównane do góry tytułu, odstęp 100 */
-  .case-hero--ctrl .case-hero__content { align-items: flex-start; gap: var(--spacing-100); padding-top: var(--spacing-120); } /* 30.10 20:10: większy padding górny (Figma 120, dolny 64 bez zmian) */
+  .case-hero--ctrl .case-hero__content { gap: var(--spacing-64); padding-top: var(--spacing-120); } /* 01.11: wg pełnej makiety 3153:3224 – informacje wyrównane do dołu (jak 4F), gap 64, padding górny 120 */
   .case-hero--ctrl .case-hero__title { background-image: linear-gradient(100.08deg, #f7f7f7 0.64%, #838383 92.03%); }
 }
 
@@ -1682,107 +1682,150 @@ body {
 }
 .case-facts--ctrl .case-facts__media img { aspect-ratio: 1; object-fit: cover; }
 
-/* ---------- Case study CTRL+: Proces (makieta web 3162:4047) ---------- */
-.case-process { background: var(--color-bg-secondary); }
-.case-process__inner {
+/* ---------- Case study CTRL+: Kontekst biznesowy (makieta web 3228:6567) ---------- */
+.case-business { background: var(--color-bg-secondary); }
+.case-business__inner {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-40);
+  gap: var(--spacing-64);
   padding-block: var(--spacing-80);
 }
-.case-process__title {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: var(--font-size-3xl);
-  font-weight: 400; /* jak pozostałe nagłówki sekcji na webie (decyzja 30.10) */
-  line-height: normal;
-}
-.process-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.process-step {
+.case-business__top {
   display: flex;
   align-items: flex-start;
-  gap: var(--spacing-16);
-  padding: var(--spacing-24) var(--spacing-32);
-  border-bottom: 1px solid var(--color-border-nav);
+  gap: var(--spacing-80);
 }
-.process-step:last-child { border-bottom: 0; }
-.process-step__dot {
-  position: relative;
-  flex: none;
-  width: 10px;
-  height: 10px;
-  margin-top: 10px;
-  border-radius: 50%;
-  background: var(--color-text-primary);
+.case-business__media {
+  flex: 0 0 43%; /* 516 / 1200 */
+  aspect-ratio: 516 / 478;
+  border-radius: var(--radius-8);
+  overflow: hidden;
 }
-.process-step__text {
+.case-business__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.case-business__text {
   flex: 1 1 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--spacing-24);
 }
-.process-step__title {
+.case-business__heading { display: flex; flex-direction: column; gap: var(--spacing-24); }
+.case-business__eyebrow {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: normal;
+  color: var(--color-text-secondary);
+}
+.case-business__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
+  line-height: normal;
+}
+.case-business__lead { margin: 0; line-height: 28px; color: var(--color-text-secondary); }
+.case-business__goal {
+  max-width: 600px;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: normal;
+}
+.case-business__goal span { color: var(--color-bg-accent); }
+.case-business__idea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+  padding-top: var(--spacing-32); /* odstęp od linii podziału */
+  border-top: 1px solid var(--color-border-nav);
+}
+.case-business__subtitle {
   margin: 0;
   font-family: var(--font-heading);
   font-size: var(--font-size-lg);
   font-weight: 500;
   line-height: normal;
 }
-.process-step__desc {
+.idea-steps {
+  display: flex;
+  gap: var(--spacing-40);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.idea-step {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+.idea-step__num { line-height: 28px; color: var(--color-text-secondary); }
+.idea-step__title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* ---------- Case study CTRL+: Etapy prac (makieta web 3225:6126) ---------- */
+.case-stages { background: var(--color-bg-primary); }
+.case-stages__inner {
+  display: grid;
+  grid-template-columns: 524px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    "title title"
+    "media sub"
+    "media steps";
+  column-gap: 104px;
+  padding-block: var(--spacing-120);
+}
+.case-stages__title {
+  grid-area: title;
+  margin: 0 0 var(--spacing-64);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 400; /* jak pozostałe nagłówki sekcji na webie (decyzja 30.10) */
+  line-height: normal;
+}
+.case-stages__sub {
+  grid-area: sub;
+  margin: 0 0 var(--spacing-80);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  line-height: normal;
+  color: var(--color-text-secondary);
+}
+.case-stages__media { grid-area: media; align-self: start; aspect-ratio: 524 / 600; overflow: hidden; }
+.case-stages__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 74%; }
+.stage-list {
+  grid-area: steps;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-80);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  padding-left: var(--spacing-32);
+  border-left: 1px solid var(--color-border-nav);
+}
+.stage__title {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: var(--font-size-2xl);
+  font-weight: 500;
   line-height: normal;
-  color: var(--color-text-tertiary);
 }
-.process-step__highlight { font-weight: inherit; color: var(--color-bg-accent); } /* 30.10: część tytułu (Medium jak tytuł) */
-/* decyzja strategiczna: punkt w kolorze akcentu + pulsowanie wg pliku Oli pulse_green.lottie (30.10):
-   dwie fale wypełnione kolorem akcentu wychodzą spod punktu i znikają; pętla 62 klatki / 30 fps ≈ 2,07 s,
-   druga fala opóźniona o 14 klatek i słabsza (27% zamiast 49%). Rozmiar fali względem punktu jak w pliku (do ~2×). */
-.process-step--key .process-step__dot { background: var(--color-bg-accent); }
-.process-step--key .process-step__dot::before,
-.process-step--key .process-step__dot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: 50%;
-  background: var(--color-bg-accent);
-  opacity: 0;
-  animation: process-pulse-1 2.067s linear infinite;
-}
-.process-step--key .process-step__dot::after {
-  animation-name: process-pulse-2;
-  animation-delay: 0.467s;
-}
-.process-step--key .process-step__dot { isolation: isolate; }
-@keyframes process-pulse-1 {
-  0%     { transform: scale(0.73); opacity: 0.49; }
-  32.26% { transform: scale(1.61); opacity: 0.49; }
-  72.58% { transform: scale(1.97); opacity: 0; }
-  100%   { transform: scale(1.97); opacity: 0; }
-}
-@keyframes process-pulse-2 {
-  0%     { transform: scale(0.73); opacity: 0.27; }
-  32.26% { transform: scale(1.61); opacity: 0.27; }
-  72.58% { transform: scale(1.97); opacity: 0; }
-  100%   { transform: scale(1.97); opacity: 0; }
-}
-/* bez animacji: statyczna poświata z makiety */
-@media (prefers-reduced-motion: reduce) {
-  .process-step--key .process-step__dot::after { display: none; }
-  .process-step--key .process-step__dot::before {
-    inset: -5px;
-    opacity: 1;
-    animation: none;
-    background: radial-gradient(circle closest-side, rgba(199, 255, 44, 0) 0%, rgba(199, 255, 44, 0.32) 100%);
-  }
-}
+.stage__accent { color: var(--color-bg-accent); }
+.stage__desc { margin: 0; line-height: 28px; color: var(--color-text-secondary); }
+.stage__strong { font-weight: 500; color: var(--color-text-primary); }
 
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
@@ -1805,6 +1848,13 @@ body {
 }
 
 @media (max-width: 900px) {
+  /* CTRL+ Kontekst biznesowy i Etapy prac – węższe ekrany: zdjęcie nad treścią */
+  .case-business__top { flex-direction: column; gap: var(--spacing-40); }
+  .case-business__media { flex: none; width: 100%; max-width: 516px; }
+  .idea-steps { flex-wrap: wrap; row-gap: var(--spacing-32); }
+  .idea-step { flex: 1 1 160px; }
+  .case-stages__inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "media" "sub" "steps"; grid-template-rows: none; }
+  .case-stages__media { width: 100%; max-width: 524px; margin-bottom: var(--spacing-56); }
   /* „Przetestuj rozwiązanie” – węższe ekrany: nagłówek nad kaflami */
   .case-footer__inner { flex-direction: column; }
   .case-footer__heading { flex: none; width: 100%; }
@@ -2278,16 +2328,62 @@ body {
   .case-facts--ctrl .case-facts__media { width: 100%; max-width: 343px; height: auto; }
   .case-facts--ctrl .case-facts__media img { width: 100%; height: auto; }
 
-  /* Case study CTRL+ – Proces (makieta mobile 3162:4339) */
-  .case-process__inner.container {
-    gap: var(--spacing-24);
+  /* Case study CTRL+ – Kontekst biznesowy (makieta mobile 3229:6940) */
+  .case-business__inner.container { gap: var(--spacing-24); padding: var(--spacing-24) var(--spacing-16); }
+  .case-business__top { gap: var(--spacing-24); }
+  .case-business__media { order: 2; width: 100%; max-width: none; aspect-ratio: 343 / 318; }
+  .case-business__heading { gap: var(--spacing-8); }
+  .case-business__title { font-size: var(--font-size-lg); font-weight: 500; }
+  .case-business__lead { font-size: var(--font-size-sm); line-height: 22px; }
+  .case-business__goal { line-height: 22px; }
+  .case-business__idea { gap: var(--spacing-24); padding-top: var(--spacing-24); border-top-width: 0.5px; }
+  .case-business__subtitle { font-size: 18px; }
+  .idea-steps {
+    flex-wrap: nowrap;
+    gap: var(--spacing-16);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .idea-steps::-webkit-scrollbar { display: none; }
+  .idea-step { flex: none; width: 104px; }
+  .idea-step__num { font-size: var(--font-size-sm); line-height: 22px; }
+  .idea-step__title { font-size: 18px; }
+
+  /* Case study CTRL+ – Etapy prac (makieta mobile 3228:6617): etapy przewijane w poziomie, zdjęcie na końcu */
+  .case-stages__inner.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     padding: var(--spacing-32) var(--spacing-16);
   }
-  .case-process__title { font-size: var(--font-size-lg); font-weight: 500; }
-  .process-step { padding-inline: var(--spacing-16); }
-  .process-step__text { gap: var(--spacing-8); }
-  .process-step__title { font-size: 18px; }
-  .process-step__desc { font-size: var(--font-size-md); line-height: 22px; }
+  .case-stages__title { margin: 0 0 var(--spacing-8); font-size: var(--font-size-lg); font-weight: 500; }
+  .case-stages__sub { margin: 0 0 var(--spacing-24); font-family: var(--font-body); font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-tertiary); }
+  .case-stages__media { order: 2; max-width: none; margin: var(--spacing-24) 0 0; aspect-ratio: 1; }
+  .case-stages__media img { object-position: 50% 72%; }
+  .stage-list {
+    flex-direction: row;
+    gap: var(--spacing-24);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .stage-list::-webkit-scrollbar { display: none; }
+  .stage {
+    flex: none;
+    width: 240px;
+    gap: var(--spacing-12);
+    padding: var(--spacing-24) 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--color-border-nav);
+  }
+  .stage__title { font-size: var(--font-size-lg); }
+  .stage__desc { font-size: var(--font-size-sm); line-height: 22px; }
+  .stage__strong { font-weight: 400; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
