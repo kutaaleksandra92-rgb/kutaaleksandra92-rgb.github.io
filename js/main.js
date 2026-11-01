@@ -142,3 +142,29 @@ document.querySelectorAll('[data-scroll-top]').forEach((btn) => {
     requestAnimationFrame(step);
   });
 });
+
+// Research (CTRL+) – kafle delikatnie podążają za kursorem z różną głębią (tylko web z myszą, wg nagrania Oli 01.11)
+document.querySelectorAll('[data-parallax]').forEach((board) => {
+  const web = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1201px)');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const items = [...board.querySelectorAll('[data-depth]')].map((el) => ({ el, depth: parseFloat(el.dataset.depth) || 0 }));
+  const area = board.closest('section') || board;
+  let tx = 0, ty = 0, x = 0, y = 0, raf = null;
+  const render = () => {
+    x += (tx - x) * 0.08; // wygładzenie – kafle „doganiają” kursor
+    y += (ty - y) * 0.08;
+    items.forEach(({ el, depth }) => { el.style.transform = `translate3d(${(x * depth).toFixed(2)}px, ${(y * depth).toFixed(2)}px, 0)`; });
+    if (Math.abs(tx - x) > 0.001 || Math.abs(ty - y) > 0.001) raf = requestAnimationFrame(render);
+    else raf = null;
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(render); };
+  area.addEventListener('mousemove', (e) => {
+    if (!web.matches || reduce.matches) return;
+    const r = area.getBoundingClientRect();
+    tx = ((e.clientX - r.left) / r.width - 0.5) * 2;   // -1 … 1
+    ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    kick();
+  });
+  area.addEventListener('mouseleave', () => { tx = 0; ty = 0; kick(); });
+  web.addEventListener('change', () => { if (!web.matches) { tx = ty = x = y = 0; items.forEach(({ el }) => { el.style.transform = ''; }); } });
+});

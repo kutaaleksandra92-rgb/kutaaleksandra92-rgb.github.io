@@ -1827,6 +1827,90 @@ body {
 .stage__desc { margin: 0; line-height: 28px; color: var(--color-text-secondary); }
 .stage__strong { font-weight: 500; color: var(--color-text-primary); }
 
+/* ---------- Case study CTRL+: Research (makieta web 3233:7602) ---------- */
+.case-research { background: var(--color-bg-primary); overflow: hidden; }
+.case-research__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-64);
+  padding-block: var(--spacing-80);
+}
+.case-research__heading { display: flex; flex-direction: column; gap: var(--spacing-24); }
+.case-research__eyebrow {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: normal;
+  color: var(--color-text-secondary);
+}
+.case-research__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
+  line-height: normal;
+  background-image: linear-gradient(111.32deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* plansza z kaflami: na szerokim ekranie rozłożenie jak w makiecie (1200 × 886), x w % szerokości */
+.research-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-24);
+}
+.research-intro { grid-column: 1 / -1; display: flex; align-items: flex-start; gap: var(--spacing-16); }
+.research-intro__avatars { flex: none; width: 192px; height: 64px; }
+.research-intro__text {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-secondary);
+}
+.research-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+  padding: var(--spacing-40);
+  border-radius: var(--radius-16);
+  background: var(--color-bg-secondary);
+}
+.research-tile__num { font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-tertiary); }
+.research-tile__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: normal;
+}
+.research-tile__desc {
+  max-width: 220px;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-tertiary);
+}
+.research-tile--3 .research-tile__desc { max-width: none; }
+.research-tile--accent { background: var(--color-bg-accent); }
+.research-tile--accent .research-tile__num,
+.research-tile--accent .research-tile__title { color: var(--color-text-on-accent); }
+.research-tile--accent .research-tile__desc { color: #48512f; } /* z makiety – brak tokenu */
+@media (min-width: 1201px) {
+  .research-board { display: block; height: 886px; }
+  .research-intro, .research-tile { position: absolute; will-change: transform; }
+  .research-intro { left: 35%; top: 0; width: 65%; }               /* 420 / 1200 */
+  .research-tile { width: 300px; }
+  .research-tile--1 { left: 0; top: 0; }
+  .research-tile--2 { left: 34.333%; top: 233px; }                 /* 412 */
+  .research-tile--3 { right: 0; top: 141px; width: 377px; }
+  .research-tile--4 { left: 0; top: 365px; }
+  .research-tile--5 { left: 66%; top: 557px; }                     /* 792 */
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -2384,6 +2468,15 @@ body {
   .stage__title { font-size: var(--font-size-lg); }
   .stage__desc { font-size: var(--font-size-sm); line-height: 22px; }
   .stage__strong { font-weight: 400; }
+
+  /* Case study CTRL+ – Research: brak makiety mobile – tymczasowo kafle jeden pod drugim */
+  .case-research__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
+  .case-research__heading { gap: var(--spacing-8); }
+  .case-research__title { font-size: var(--font-size-lg); }
+  .research-board { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-16); }
+  .research-intro { flex-direction: column; }
+  .research-tile { padding: var(--spacing-24); gap: var(--spacing-16); }
+  .research-tile__desc { max-width: none; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
