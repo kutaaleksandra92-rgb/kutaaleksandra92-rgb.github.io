@@ -1728,11 +1728,9 @@ body {
 .case-business__goal {
   max-width: 600px;
   margin: 0;
-  font-family: var(--font-heading);
-  font-size: 18px;
-  line-height: normal;
+  line-height: 28px; /* 02.11: Poppins 16/28 biały, „Cel:” Bold */
 }
-.case-business__goal span { color: var(--color-bg-accent); }
+.case-business__goal strong { font-weight: 700; }
 .case-business__idea {
   display: flex;
   flex-direction: column;
@@ -1764,8 +1762,7 @@ body {
 .idea-step__num { line-height: 28px; color: var(--color-text-secondary); }
 .idea-step__title {
   font-family: var(--font-heading);
-  font-size: var(--font-size-lg);
-  font-weight: 500;
+  font-size: 18px; /* 02.11: SG Regular 18 */
   line-height: normal;
 }
 
@@ -1773,7 +1770,7 @@ body {
 .case-stages { background: var(--color-bg-primary); }
 .case-stages__inner {
   display: grid;
-  grid-template-columns: 524px minmax(0, 1fr);
+  grid-template-columns: 516px minmax(0, 1fr); /* 02.11: zdjęcie 516 × 478 r8 */
   grid-template-rows: auto auto 1fr;
   grid-template-areas:
     "title title"
@@ -1798,8 +1795,8 @@ body {
   line-height: normal;
   color: var(--color-text-secondary);
 }
-.case-stages__media { grid-area: media; align-self: start; aspect-ratio: 524 / 600; overflow: hidden; }
-.case-stages__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 74%; }
+.case-stages__media { grid-area: media; align-self: start; aspect-ratio: 516 / 478; border-radius: var(--radius-8); overflow: hidden; }
+.case-stages__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 59%; }
 .stage-list {
   grid-area: steps;
   display: flex;
@@ -1861,6 +1858,8 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--spacing-24);
 }
+.research-tiles { display: contents; } /* web: kafle pozycjonowane względem planszy; mobile: karuzela */
+.research-vial { display: none; opacity: 0.1; pointer-events: none; } /* dekoracja z makiety (krycie 10%) */
 .research-intro { grid-column: 1 / -1; display: flex; align-items: flex-start; gap: var(--spacing-16); }
 .research-intro__avatars { flex: none; width: 192px; height: 64px; }
 .research-intro__text {
@@ -1901,6 +1900,7 @@ body {
 .research-tile--accent .research-tile__desc { color: #48512f; } /* z makiety – brak tokenu */
 @media (min-width: 1201px) {
   .research-board { display: block; height: 886px; }
+  .research-vial { display: block; position: absolute; left: 19.25%; top: 576px; width: 460px; height: 390px; object-fit: cover; } /* 231 / 1200 */
   .research-intro, .research-tile { position: absolute; will-change: transform; }
   .research-intro { left: 35%; top: 0; width: 65%; }               /* 420 / 1200 */
   .research-tile { width: 300px; }
@@ -1927,11 +1927,7 @@ body {
   font-size: var(--font-size-2xl);
   font-weight: 400;
   line-height: normal;
-  text-align: center;
-  background-image: linear-gradient(139.27deg, #f7f7f7 0.64%, #838383 92.03%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  text-align: center; /* 02.11: biały, bez gradientu */
 }
 .case-quotes__note {
   margin: 0;
@@ -2000,6 +1996,52 @@ body {
   .quote-card { transition: none; }
 }
 
+/* ---------- Case study CTRL+: Rynek (makieta web 3257:3926) ---------- */
+.case-market { background: var(--color-bg-secondary); }
+.case-market__inner { display: flex; flex-direction: column; gap: var(--spacing-40); padding-block: var(--spacing-80); }
+.case-market__top { display: flex; align-items: flex-start; gap: var(--spacing-80); }
+.case-market__text { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-24); }
+.case-market__eyebrow { margin: 0; font-family: var(--font-heading); font-size: 18px; line-height: normal; color: var(--color-text-secondary); }
+.case-market__title { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-3xl); font-weight: 400; line-height: normal; }
+.case-market__lead { margin: 0; line-height: 28px; }
+.case-market__media { flex: 0 0 43%; aspect-ratio: 516 / 478; border-radius: var(--radius-8); overflow: hidden; } /* 516 / 1200 */
+.case-market__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.case-market__features { display: flex; flex-direction: column; gap: var(--spacing-40); padding-top: var(--spacing-40); border-top: 1px solid var(--color-border-nav); }
+.case-market__subtitle { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-lg); font-weight: 500; line-height: normal; }
+.case-market__scroll { display: flex; flex-direction: column; gap: var(--spacing-40); } /* rzędy kafli: 40 (jak odstępy sekcji), w rzędzie 20 */
+.market-grid { display: flex; gap: 20px; margin: 0; padding: 0; list-style: none; }
+.market-tile {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 305px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-16);
+  padding: 4px var(--spacing-24);
+  border-radius: var(--radius-4);
+  background: var(--color-bg-primary);
+  text-align: center;
+}
+.market-tile--fixed { flex: 0 1 305px; }
+.market-tile--wide { background: var(--color-bg-surface); }
+.market-tile__icon { width: 24px; height: 24px; }
+.market-tile__title { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-lg); font-weight: 400; line-height: normal; }
+.market-tile__desc { margin: 0; line-height: 28px; color: var(--color-text-secondary); }
+.case-market__conclusion { display: flex; flex-direction: column; gap: var(--spacing-16); padding-top: var(--spacing-40); border-top: 1px solid var(--color-border-nav); }
+.case-market__label { margin: 0; font-family: var(--font-heading); font-size: 18px; line-height: normal; color: var(--color-bg-accent); }
+.case-market__claim {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  line-height: normal;
+  background-image: linear-gradient(111.32deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -2021,13 +2063,18 @@ body {
 }
 
 @media (max-width: 900px) {
+  /* CTRL+ Rynek – węższe ekrany: zdjęcie pod tekstem, kafle po 2 */
+  .case-market__top { flex-direction: column; gap: var(--spacing-40); }
+  .case-market__media { flex: none; width: 100%; max-width: 516px; }
+  .market-grid { flex-wrap: wrap; }
+  .market-tile, .market-tile--fixed { flex: 1 1 calc(50% - 10px); }
   /* CTRL+ Kontekst biznesowy i Etapy prac – węższe ekrany: zdjęcie nad treścią */
   .case-business__top { flex-direction: column; gap: var(--spacing-40); }
   .case-business__media { flex: none; width: 100%; max-width: 516px; }
   .idea-steps { flex-wrap: wrap; row-gap: var(--spacing-32); }
   .idea-step { flex: 1 1 160px; }
   .case-stages__inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "media" "sub" "steps"; grid-template-rows: none; }
-  .case-stages__media { width: 100%; max-width: 524px; margin-bottom: var(--spacing-56); }
+  .case-stages__media { width: 100%; max-width: 516px; margin-bottom: var(--spacing-56); }
   /* „Przetestuj rozwiązanie” – węższe ekrany: nagłówek nad kaflami */
   .case-footer__inner { flex-direction: column; }
   .case-footer__heading { flex: none; width: 100%; }
@@ -2508,7 +2555,7 @@ body {
   .case-business__heading { gap: var(--spacing-8); }
   .case-business__title { font-size: var(--font-size-lg); font-weight: 500; }
   .case-business__lead { font-size: var(--font-size-sm); line-height: 22px; }
-  .case-business__goal { line-height: 22px; }
+  .case-business__goal { font-size: var(--font-size-sm); line-height: 22px; }
   .case-business__idea { gap: var(--spacing-24); padding-top: var(--spacing-24); border-top-width: 0.5px; }
   .case-business__subtitle { font-size: 18px; }
   .idea-steps {
@@ -2523,7 +2570,7 @@ body {
   .idea-steps::-webkit-scrollbar { display: none; }
   .idea-step { flex: none; width: 104px; }
   .idea-step__num { font-size: var(--font-size-sm); line-height: 22px; }
-  .idea-step__title { font-size: 18px; }
+  .idea-step__title { font-size: var(--font-size-md); line-height: 22px; }
 
   /* Case study CTRL+ – Etapy prac (makieta mobile 3228:6617): etapy przewijane w poziomie, zdjęcie na końcu */
   .case-stages__inner.container {
@@ -2532,8 +2579,9 @@ body {
     gap: 0;
     padding: var(--spacing-32) var(--spacing-16);
   }
-  .case-stages__title { margin: 0 0 var(--spacing-8); font-size: var(--font-size-lg); font-weight: 500; }
-  .case-stages__sub { margin: 0 0 var(--spacing-24); font-family: var(--font-body); font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-tertiary); }
+  .case-stages__title { margin: 0 0 var(--spacing-24); font-size: var(--font-size-lg); font-weight: 500; }
+  .case-stages__sub { margin: 0 0 var(--spacing-24); font-family: var(--font-body); font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-secondary); }
+  .case-stages__media { border-radius: 0; }
   .case-stages__media { order: 2; max-width: none; margin: var(--spacing-24) 0 0; aspect-ratio: 1; }
   .case-stages__media img { object-position: 50% 72%; }
   .stage-list {
@@ -2558,23 +2606,69 @@ body {
   .stage__desc { font-size: var(--font-size-sm); line-height: 22px; }
   .stage__strong { font-weight: 400; }
 
-  /* Case study CTRL+ – Research: brak makiety mobile – tymczasowo kafle jeden pod drugim */
-  .case-research__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
+  /* Case study CTRL+ – Research (makieta mobile 3257:3265): kafle w karuzeli, fiolka pod spodem */
+  .case-research__inner.container { gap: var(--spacing-24); padding: var(--spacing-24) var(--spacing-16); }
   .case-research__heading { gap: var(--spacing-8); }
-  .case-research__title { font-size: var(--font-size-lg); }
-  .research-board { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-16); }
+  .case-research__title { font-size: var(--font-size-lg); background-image: none; color: var(--color-text-primary); }
+  .research-board { display: flex; flex-direction: column; gap: var(--spacing-24); }
   .research-intro { flex-direction: column; }
-  .research-tile { padding: var(--spacing-24); gap: var(--spacing-16); }
-  .research-tile__desc { max-width: none; }
+  .research-tiles {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+    gap: var(--spacing-16);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .research-tiles::-webkit-scrollbar { display: none; }
+  .research-tile { flex: none; width: 300px; gap: var(--spacing-24); }
+  .research-tile__title { flex: 1 1 auto; }
+  .research-tile--3 .research-tile__desc { max-width: 220px; }
+  .research-vial { display: block; order: 2; width: 100%; height: auto; aspect-ratio: 460 / 390; object-fit: cover; margin-top: -180px; } /* fiolka wystaje spod kafli jak w makiecie */
 
-  /* Case study CTRL+ – Cytaty: brak makiety mobile – tymczasowo węższe kafle */
+  /* Case study CTRL+ – Cytaty uczestników (makieta mobile 3257:3307) */
   .case-quotes { gap: var(--spacing-24); padding-block: var(--spacing-32); }
+  .case-quotes .container { padding-inline: var(--spacing-16); }
   .case-quotes__title { font-size: var(--font-size-lg); }
-  .quotes__list { gap: var(--spacing-16); padding-right: var(--spacing-16); }
-  .quote-card { width: 300px; gap: var(--spacing-24); padding: var(--spacing-24); }
-  .quote-card__text { font-size: var(--font-size-md); }
-  .quote-card__name { font-size: var(--font-size-md); }
-  .quote-card__desc { font-size: var(--font-size-sm); line-height: 20px; }
+  .quotes__list { align-items: center; gap: var(--spacing-12); padding-right: var(--spacing-12); }
+  .quote-card { width: 320px; gap: var(--spacing-24); padding: var(--spacing-32); }
+  .quote-card__text { font-size: var(--font-size-md); line-height: 22px; }
+  .quote-card__person { flex-direction: column; align-items: flex-start; }
+  .quote-card__name { font-size: var(--font-size-md); line-height: 22px; }
+  .quote-card__desc { font-family: var(--font-body); font-size: var(--font-size-sm); line-height: 22px; }
+
+  /* Case study CTRL+ – Rynek (makieta mobile 3257:3848) */
+  .case-market__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
+  .case-market__top { gap: var(--spacing-24); }
+  .case-market__text { gap: var(--spacing-8); }
+  .case-market__title { font-size: var(--font-size-lg); }
+  .case-market__lead { font-size: var(--font-size-sm); line-height: 22px; }
+  .case-market__media { max-width: none; aspect-ratio: 343 / 318; }
+  .case-market__features { gap: var(--spacing-24); padding-top: var(--spacing-24); }
+  .case-market__subtitle { font-size: 18px; }
+  .market-grid { display: contents; }
+  .case-market__scroll {
+    gap: var(--spacing-16);
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--spacing-16);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .case-market__scroll::-webkit-scrollbar { display: none; }
+  .market-tile, .market-tile--fixed { flex: none; width: 305px; height: auto; padding: var(--spacing-40); }
+  .market-tile__title { font-size: 18px; }
+  .market-tile__desc { font-size: var(--font-size-sm); line-height: 22px; }
+  .case-market__conclusion { padding-top: var(--spacing-24); }
+  .case-market__label { font-size: var(--font-size-md); line-height: 22px; }
+  .case-market__claim { font-size: var(--font-size-lg); background-image: linear-gradient(98.33deg, #f7f7f7 0.64%, #838383 92.03%); }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
