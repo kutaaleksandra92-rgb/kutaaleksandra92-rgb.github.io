@@ -2077,6 +2077,22 @@ body {
 .verdict-tile--accent .verdict-tile__title { color: var(--color-text-on-accent); }
 .verdict-tile--accent .verdict-tile__desc { color: #48512f; } /* jak w Research – brak tokenu */
 
+/* ---------- Case study CTRL+: Ograniczenia (makieta web 3268:4415) ---------- */
+.case-limits { background: var(--color-bg-primary); }
+.case-limits__inner { display: flex; align-items: flex-start; gap: var(--spacing-80); padding-block: var(--spacing-80); } /* 02.11: Figma 80/120 */
+.case-limits__side { flex: 1 1 0; min-width: 0; align-self: stretch; display: flex; flex-direction: column; align-items: center; gap: 140px; }
+.case-limits__heading { width: 100%; display: flex; flex-direction: column; gap: var(--spacing-24); }
+.case-limits__eyebrow { margin: 0; font-family: var(--font-heading); font-size: 18px; line-height: normal; color: var(--color-text-secondary); }
+.case-limits__title { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-3xl); font-weight: 400; line-height: normal; }
+.case-limits__img { width: 259px; height: 259px; object-fit: contain; }
+.limits { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-32); margin: 0; padding: 0; list-style: none; }
+.limit { display: flex; align-items: flex-start; gap: var(--spacing-24); padding-bottom: var(--spacing-24); border-bottom: 1px solid var(--color-border-nav); }
+.limit:last-child { padding-bottom: 0; border-bottom: 0; }
+.limit__num { flex: none; min-width: 2ch; font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-tertiary); } /* stała szerokość – tytuły w jednej linii pionowej */
+.limit__text { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-8); }
+.limit__title { margin: 0; font-family: var(--font-heading); font-size: 18px; font-weight: 500; line-height: normal; }
+.limit__desc { margin: 0; line-height: 28px; color: var(--color-text-secondary); }
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -2098,6 +2114,10 @@ body {
 }
 
 @media (max-width: 900px) {
+  /* CTRL+ Ograniczenia – węższe ekrany: lista pod nagłówkiem */
+  .case-limits__inner { flex-direction: column; gap: var(--spacing-56); }
+  .case-limits__side { align-self: auto; width: 100%; gap: var(--spacing-40); }
+  .limits { flex: none; width: 100%; }
   /* CTRL+ Decyzja – węższe ekrany: kafle jeden pod drugim */
   .verdict-list { flex-direction: column; }
   /* CTRL+ Rynek – węższe ekrany: zdjęcie pod tekstem, kafle po 2 */
@@ -2716,6 +2736,16 @@ body {
   .verdict-tile { gap: var(--spacing-16); padding: var(--spacing-32); }
   .verdict-tile__title { font-size: 18px; }
   .verdict-tile__desc { font-size: var(--font-size-sm); line-height: 22px; }
+
+  /* Case study CTRL+ – Ograniczenia (makieta mobile 3269:4588) */
+  .case-limits__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
+  .case-limits__side { gap: var(--spacing-24); }
+  .case-limits__heading { gap: var(--spacing-8); }
+  .case-limits__title { font-size: var(--font-size-lg); }
+  .case-limits__img { width: 160px; height: 160px; margin-block: 5px 3px; } /* ramka 168 px w makiecie */
+  .limits { gap: var(--spacing-16); }
+  .limit__title { font-size: var(--font-size-md); line-height: 22px; }
+  .limit__desc { font-size: var(--font-size-sm); line-height: 22px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
