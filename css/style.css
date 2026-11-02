@@ -1996,51 +1996,18 @@ body {
   .quote-card { transition: none; }
 }
 
-/* ---------- Case study CTRL+: Rynek (makieta web 3257:3926) ---------- */
+/* ---------- Case study CTRL+: Rynek (makieta web 3257:2758 – wersja skrócona 02.11; lista jak w Ograniczeniach: .limits/.limit) ---------- */
 .case-market { background: var(--color-bg-secondary); }
-.case-market__inner { display: flex; flex-direction: column; gap: var(--spacing-40); padding-block: var(--spacing-80); }
-.case-market__top { display: flex; align-items: flex-start; gap: var(--spacing-80); }
-.case-market__text { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-24); }
+.case-market__inner { display: flex; align-items: stretch; gap: var(--spacing-80); padding-block: var(--spacing-80); }
+.case-market__side { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: var(--spacing-24); }
+.case-market__text { display: flex; flex-direction: column; gap: var(--spacing-24); }
 .case-market__eyebrow { margin: 0; font-family: var(--font-heading); font-size: 18px; line-height: normal; color: var(--color-text-secondary); }
 .case-market__title { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-3xl); font-weight: 400; line-height: normal; }
 .case-market__lead { margin: 0; line-height: 28px; }
-.case-market__media { flex: 0 0 43%; aspect-ratio: 516 / 478; border-radius: var(--radius-8); overflow: hidden; } /* 516 / 1200 */
+.case-market__media { width: 71.43%; max-width: 400px; aspect-ratio: 400 / 320; border-radius: var(--radius-8); overflow: hidden; } /* 400 / 560 */
 .case-market__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.case-market__features { display: flex; flex-direction: column; gap: var(--spacing-40); padding-top: var(--spacing-40); border-top: 1px solid var(--color-border-nav); }
-.case-market__subtitle { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-lg); font-weight: 500; line-height: normal; }
-.case-market__scroll { display: flex; flex-direction: column; gap: var(--spacing-40); } /* rzędy kafli: 40 (jak odstępy sekcji), w rzędzie 20 */
-.market-grid { display: flex; gap: 20px; margin: 0; padding: 0; list-style: none; }
-.market-tile {
-  flex: 1 1 0;
-  min-width: 0;
-  height: 305px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-16);
-  padding: 4px var(--spacing-24);
-  border-radius: var(--radius-4);
-  background: var(--color-bg-primary);
-  text-align: center;
-}
-.market-tile--fixed { flex: 0 1 305px; }
-.market-tile--wide { background: var(--color-bg-surface); }
-.market-tile__icon { width: 24px; height: 24px; }
-.market-tile__title { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-lg); font-weight: 400; line-height: normal; }
-.market-tile__desc { margin: 0; line-height: 28px; color: var(--color-text-secondary); }
-.case-market__conclusion { display: flex; flex-direction: column; gap: var(--spacing-16); padding-top: var(--spacing-40); border-top: 1px solid var(--color-border-nav); }
-.case-market__label { margin: 0; font-family: var(--font-heading); font-size: 18px; line-height: normal; color: var(--color-bg-accent); }
-.case-market__claim {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: var(--font-size-3xl);
-  line-height: normal;
-  background-image: linear-gradient(111.32deg, #f7f7f7 0.64%, #838383 92.03%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+.case-market__features { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-32); }
+.case-market__subtitle { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-lg); font-weight: 400; line-height: normal; color: var(--color-text-secondary); }
 
 /* ---------- Case study CTRL+: Decyzja (makieta web 3265:2270) ---------- */
 .case-verdict { background: var(--color-bg-primary); }
@@ -2120,11 +2087,9 @@ body {
   .limits { flex: none; width: 100%; }
   /* CTRL+ Decyzja – węższe ekrany: kafle jeden pod drugim */
   .verdict-list { flex-direction: column; }
-  /* CTRL+ Rynek – węższe ekrany: zdjęcie pod tekstem, kafle po 2 */
-  .case-market__top { flex-direction: column; gap: var(--spacing-40); }
-  .case-market__media { flex: none; width: 100%; max-width: 516px; }
-  .market-grid { flex-wrap: wrap; }
-  .market-tile, .market-tile--fixed { flex: 1 1 calc(50% - 10px); }
+  /* CTRL+ Rynek – węższe ekrany: lista pod tekstem i zdjęciem */
+  .case-market__inner { flex-direction: column; gap: var(--spacing-56); }
+  .case-market__side, .case-market__features { flex: none; width: 100%; }
   /* CTRL+ Kontekst biznesowy i Etapy prac – węższe ekrany: zdjęcie nad treścią */
   .case-business__top { flex-direction: column; gap: var(--spacing-40); }
   .case-business__media { flex: none; width: 100%; max-width: 516px; }
@@ -2698,34 +2663,15 @@ body {
   .quote-card__name { font-size: var(--font-size-md); line-height: 22px; }
   .quote-card__desc { font-family: var(--font-body); font-size: var(--font-size-sm); line-height: 22px; }
 
-  /* Case study CTRL+ – Rynek (makieta mobile 3257:3848) */
+  /* Case study CTRL+ – Rynek (makieta mobile 3257:3517) */
   .case-market__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
-  .case-market__top { gap: var(--spacing-24); }
+  .case-market__side { gap: var(--spacing-24); }
   .case-market__text { gap: var(--spacing-8); }
   .case-market__title { font-size: var(--font-size-lg); }
   .case-market__lead { font-size: var(--font-size-sm); line-height: 22px; }
-  .case-market__media { max-width: none; aspect-ratio: 343 / 318; }
-  .case-market__features { gap: var(--spacing-24); padding-top: var(--spacing-24); }
+  .case-market__media { width: 100%; max-width: none; aspect-ratio: 343 / 318; }
+  .case-market__features { gap: var(--spacing-16); }
   .case-market__subtitle { font-size: 18px; }
-  .market-grid { display: contents; }
-  .case-market__scroll {
-    gap: var(--spacing-16);
-    flex-direction: row;
-    align-items: stretch;
-    gap: var(--spacing-16);
-    width: calc(100% + 2 * var(--spacing-16));
-    margin-inline: calc(-1 * var(--spacing-16));
-    padding-inline: var(--spacing-16);
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .case-market__scroll::-webkit-scrollbar { display: none; }
-  .market-tile, .market-tile--fixed { flex: none; width: 305px; height: auto; padding: var(--spacing-40); }
-  .market-tile__title { font-size: 18px; }
-  .market-tile__desc { font-size: var(--font-size-sm); line-height: 22px; }
-  .case-market__conclusion { padding-top: var(--spacing-24); }
-  .case-market__label { font-size: var(--font-size-md); line-height: 22px; }
-  .case-market__claim { font-size: var(--font-size-lg); background-image: linear-gradient(98.33deg, #f7f7f7 0.64%, #838383 92.03%); }
 
   /* Case study CTRL+ – Decyzja (makieta mobile 3265:2380) */
   .case-verdict__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
