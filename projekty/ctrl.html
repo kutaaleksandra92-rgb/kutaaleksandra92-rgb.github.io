@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css?v=78">
+  <link rel="stylesheet" href="../css/style.css?v=80">
 </head>
 <body>
 
@@ -90,31 +90,27 @@
       </div>
     </nav>
     <!-- ============ WPROWADZENIE (makieta: web 3156:3617, mobile 3158:3878) ============ -->
-    <section class="case-facts case-facts--ctrl" id="wprowadzenie" aria-labelledby="intro-title">
-      <div class="container case-facts__inner">
-        <div class="case-facts__content">
-          <h2 id="intro-title" class="case-facts__title">Product discovery dla nowego produktu <span class="case-facts__muted">na rynku suplementów diety</span></h2>
-          <ul class="facts">
-            <li class="fact">
-              <span class="fact__value">122</span>
-              <span class="fact__label">Odpowiedzi w ankiecie rekrutacyjnej</span>
-            </li>
-            <li class="fact">
-              <span class="fact__value">18</span>
-              <span class="fact__label">Wywiadów pogłębionych</span>
-            </li>
-            <li class="fact">
-              <span class="fact__value">5</span>
-              <span class="fact__label">Obszarów oceny szans</span>
-            </li>
-            <li class="fact">
-              <span class="fact__value">1</span>
-              <span class="fact__label">Strategiczna decyzja</span>
-            </li>
-          </ul>
+    <!-- ============ WPROWADZENIE (03.11: web 3299:8600, mobile 3299:8565) ============ -->
+    <section class="case-intro" id="wprowadzenie" aria-labelledby="intro-title">
+      <div class="container case-intro__inner">
+        <div class="case-intro__main">
+          <h2 id="intro-title" class="case-intro__title">Product discovery dla nowego produktu <span class="case-intro__muted">na rynku suplementów diety</span></h2>
+          <picture class="case-intro__media">
+            <source media="(max-width: 720px)" srcset="../assets/images/projekty/ctrl-wprowadzenie-mobile.jpg">
+            <img src="../assets/images/projekty/ctrl-wprowadzenie.jpg" alt="Przezroczysta kapsułka suplementu z płynem" width="319" height="201" loading="lazy">
+          </picture>
         </div>
-        <div class="case-facts__media">
-          <img src="../assets/images/projekty/ctrl-kapsula.jpg" alt="Przezroczysta kapsułka suplementu z płynem" width="810" height="810" loading="lazy">
+        <div class="case-intro__side">
+          <ul class="intro-facts">
+            <li class="intro-fact"><span class="intro-fact__value">122</span><span class="intro-fact__label">Odpowiedzi w ankiecie rekrutacyjnej</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">18</span><span class="intro-fact__label">Wywiadów pogłębionych</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">5</span><span class="intro-fact__label">Obszarów oceny szans</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">1</span><span class="intro-fact__label">Strategiczna decyzja</span></li>
+          </ul>
+          <div class="case-intro__action">
+            <!-- web: otwiera drawer (js/main.js [data-drawer-open]); mobile: osobna strona -->
+            <a href="ctrl-w-pigulce.html" class="btn btn--cta case-intro__btn" data-drawer-open="pigulka" aria-haspopup="dialog">Case Study w pigułce <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </div>
       </div>
     </section>
@@ -627,8 +623,42 @@
         </ul>
       </div>
     </section>
+    <!-- ============ DRAWER „Case Study w pigułce” (web 3276:7342, maska 3276:7282) – tylko web; na mobile osobna strona ctrl-w-pigulce.html ============ -->
+    <div class="drawer" id="pigulka" role="dialog" aria-modal="true" aria-labelledby="pill-title" hidden>
+      <div class="drawer__mask" data-drawer-close></div>
+      <div class="drawer__panel pill">
+        <div class="pill__scroll">
+          <div class="pill__head">
+            <div class="pill__heading">
+              <p class="pill__meta">Product Designer · Discovery · 18 IDI</p>
+              <h2 id="pill-title" class="pill__title">CTRL+ | Product Discovery dla nowego produktu</h2>
+            </div>
+            <button type="button" class="pill__close" data-drawer-close aria-label="Zamknij i wróć do case study"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M30 10L10 30M10 10L30 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <section class="pill__block" aria-labelledby="pill-challenge">
+            <h3 id="pill-challenge" class="pill__subtitle">Wyzwanie biznesowe</h3>
+            <p class="pill__text">Marka spożywcza planowała wejście na rynek spersonalizowanej suplementacji. Discovery miało zweryfikować potencjał biznesowy i zasadność inwestycji.</p>
+          </section>
+          <section class="pill__tile" aria-labelledby="pill-findings">
+            <h3 id="pill-findings" class="pill__subtitle">3 kluczowe odkrycia</h3>
+            <ol class="findings">
+              <li class="finding"><h4 class="finding__title">Potrzeba ≠ gotowość do zakupu</h4><p class="finding__desc">15 z 18 badanych dostrzegało wartość personalizacji, ale barierą było zaufanie do marki i wiarygodności medycznej.</p></li>
+              <li class="finding"><h4 class="finding__title">Brak realnej przewagi</h4><p class="finding__desc">Planowane funkcjonalności były już standardem u konkurencji.</p></li>
+              <li class="finding"><h4 class="finding__title">Nieopłacalny model wejścia</h4><p class="finding__desc">Projekt wymagał kosztownej budowy całego ekosystemu: technologii, ekspertyzy medycznej i marketingu.</p></li>
+            </ol>
+          </section>
+          <section class="pill__decision" aria-labelledby="pill-decision">
+            <h3 id="pill-decision" class="pill__subtitle pill__subtitle--decision">Decyzja biznesowa</h3>
+            <p class="pill__decision-text"><span class="pill__decision-lead">Zatrzymanie projektu przed fazą UI/DEV</span><br>Zamiast inwestować w produkt o niepotwierdzonym potencjale, firma uniknęła kosztownego wdrożenia i mogła przekierować budżet na inne inicjatywy.</p>
+          </section>
+        </div>
+        <div class="pill__bar">
+          <button type="button" class="btn btn--cta pill__cta" data-drawer-close>Przeczytaj pełne Case Study <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </div>
   </main>
 
-  <script src="../js/main.js?v=78"></script>
+  <script src="../js/main.js?v=80"></script>
 </body>
 </html>

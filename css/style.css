@@ -1671,16 +1671,6 @@ body {
   color: var(--color-text-primary);
 }
 
-/* ---------- Case study CTRL+: Wprowadzenie (makieta web 3156:3617) – wspólny układ z Kluczowymi faktami 4F ---------- */
-.case-facts--ctrl .case-facts__inner { gap: var(--spacing-40); }
-.case-facts--ctrl .case-facts__content { flex: 1 1 0; }
-.case-facts--ctrl .case-facts__media {
-  position: static;
-  flex: none;
-  width: 440px;
-  transform: none;
-}
-.case-facts--ctrl .case-facts__media img { aspect-ratio: 1; object-fit: cover; }
 
 /* ---------- Case study CTRL+: Kontekst biznesowy (makieta web 3228:6567) ---------- */
 .case-business { background: var(--color-bg-secondary); }
@@ -2080,13 +2070,108 @@ body {
 .more__media picture { display: block; width: 100%; height: 100%; }
 .case-reflection--ctrl { background: var(--color-bg-primary); } /* CTRL+: tło #0d0d0e (4F: #111112) */
 
+/* ---------- Case study CTRL+: Wprowadzenie (03.11, web 3299:8600) – tytuł + kapsułka | liczby + przycisk „Case Study w pigułce” ---------- */
+.case-intro { background: var(--color-bg-primary); }
+.case-intro__inner { display: flex; gap: var(--spacing-80); padding-block: var(--spacing-120); }
+.case-intro__main { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-80); }
+.case-intro__title { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-3xl); font-weight: 400; line-height: normal; color: var(--color-text-primary); }
+.case-intro__muted { color: var(--color-text-accent); }
+.case-intro__media { display: block; width: 319px; }
+.case-intro__media img { display: block; width: 100%; height: auto; }
+.case-intro__side { flex: 0 1 505px; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-16); }
+.intro-facts { display: flex; flex-direction: column; gap: var(--spacing-16); margin: 0; padding: 0; list-style: none; }
+.intro-fact { display: flex; flex-direction: column; gap: var(--spacing-16); padding-left: var(--spacing-32); border-left: 1px solid var(--color-border-nav); }
+.intro-fact__value { font-family: var(--font-heading); font-size: var(--font-size-2xl); font-weight: 500; line-height: normal; color: var(--color-text-primary); }
+.intro-fact__label { line-height: 28px; color: var(--color-text-tertiary); }
+.case-intro__action { display: flex; padding-left: var(--spacing-32); }
+.btn__icon { flex: none; }
+
+/* ---------- CTRL+: „Case Study w pigułce” – drawer (web 3276:7342, maska 3276:7282) i strona mobile (3299:8717) ---------- */
+.drawer { position: fixed; inset: 0; z-index: 100; }
+.drawer[hidden] { display: none; }
+.drawer__mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(712px, 100%);
+  height: 100vh;
+  height: 100dvh;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.55, 0, 0.75, 0.2); /* zamykanie: szybciej, z przyspieszeniem */
+  box-shadow: -24px 0 64px rgba(0, 0, 0, 0.35);
+}
+.drawer.is-open .drawer__mask { opacity: 1; }
+.drawer.is-open .drawer__panel { transform: none; transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1); } /* otwieranie: płynne wyhamowanie */
+/* treść wjeżdża za panelem kolejno, z lekkim opóźnieniem */
+.drawer .pill__scroll > * { opacity: 0; transform: translateX(32px); transition: opacity 0.2s ease, transform 0.2s ease; }
+.drawer.is-open .pill__scroll > * { opacity: 1; transform: none; transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.drawer.is-open .pill__scroll > :nth-child(1) { transition-delay: 0.12s; }
+.drawer.is-open .pill__scroll > :nth-child(2) { transition-delay: 0.18s; }
+.drawer.is-open .pill__scroll > :nth-child(3) { transition-delay: 0.24s; }
+.drawer.is-open .pill__scroll > :nth-child(4) { transition-delay: 0.30s; }
+@media (prefers-reduced-motion: reduce) {
+  .drawer__mask, .drawer__panel, .drawer.is-open .drawer__panel,
+  .drawer .pill__scroll > *, .drawer.is-open .pill__scroll > * { transition: none; }
+}
+html.has-drawer { overflow: hidden; }
+
+.pill { display: flex; flex-direction: column; background: var(--color-bg-primary); }
+.pill__scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: var(--spacing-40); padding: 56px; }
+.pill__head { display: flex; align-items: flex-start; gap: var(--spacing-24); }
+.pill__heading { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.pill__meta { margin: 0; font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-primary); }
+.pill__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 400;
+  line-height: normal;
+  background-image: linear-gradient(104.54deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pill__close {
+  flex: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+.pill__close svg { display: block; width: 100%; height: 100%; }
+.pill__block { display: flex; flex-direction: column; gap: var(--spacing-12); }
+.pill__subtitle { margin: 0; font-family: var(--font-heading); font-size: 18px; font-weight: 400; line-height: normal; color: var(--color-text-primary); }
+.pill__text { margin: 0; font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-secondary); }
+.pill__tile { display: flex; flex-direction: column; gap: var(--spacing-16); padding: var(--spacing-32); border-radius: var(--radius-16); background: var(--color-bg-secondary); }
+.findings { margin: 0; padding-left: 21px; font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-primary); }
+.finding + .finding { margin-top: var(--spacing-16); }
+.finding__title { margin: 0; font-size: var(--font-size-sm); font-weight: 500; line-height: 22px; }
+.finding__desc { margin: var(--spacing-8) 0 0; color: var(--color-text-secondary); }
+.pill__decision { display: flex; flex-direction: column; gap: var(--spacing-8); padding-left: var(--spacing-16); border-left: 4px solid var(--color-bg-accent); }
+.pill__decision-text { margin: 0; line-height: 28px; color: var(--color-text-secondary); }
+.pill__decision-lead { color: var(--color-text-primary); }
+.pill__bar { flex: none; display: flex; justify-content: center; padding: 23px 56px var(--spacing-24); /* 96 px z obramowaniem */ border-top: 1px solid var(--color-border-nav); background: var(--color-bg-primary); }
+.pill__cta { padding: var(--spacing-12) var(--spacing-24); border: 0; font-size: var(--font-size-sm); line-height: 22px; text-decoration: none; cursor: pointer; }
+/* strona mobile: przewija się cała strona, przycisk przyklejony do dołu ekranu */
+.pill-page .pill { min-height: 100vh; min-height: 100dvh; max-width: 712px; margin-inline: auto; }
+.pill-page .pill__scroll { flex: 1 0 auto; overflow: visible; }
+.pill-page .pill__bar { position: sticky; bottom: 0; }
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
 @media (max-width: 1200px) {
-  /* CTRL+ Wprowadzenie – węższe ekrany: kapsułka pod treścią, wyśrodkowana */
-  .case-facts--ctrl .case-facts__content { flex: none; }
-  .case-facts--ctrl .case-facts__media { align-self: center; }
   :root { --page-gutter: 64px; }
   /* Kontekst zmian – węższe ekrany: opis pod tytułem */
   .case-context__top { flex-direction: column; gap: var(--spacing-24); }
@@ -2101,6 +2186,10 @@ body {
 }
 
 @media (max-width: 900px) {
+  /* CTRL+ Wprowadzenie – węższe ekrany: liczby i przycisk pod tytułem */
+  .case-intro__inner { flex-direction: column; gap: var(--spacing-56); }
+  .case-intro__main { flex: none; gap: var(--spacing-40); }
+  .case-intro__side { flex: none; }
   /* CTRL+ Wynik – węższe ekrany: tekst pod nagłówkiem */
   .case-outcome__inner { flex-direction: column; align-items: stretch; gap: var(--spacing-24); }
   .case-outcome__heading, .case-outcome__text { flex: none; }
@@ -2588,10 +2677,6 @@ body {
   /* Header CTRL+ – mobile: kadr zdjęcia z makiety */
   .case-hero--ctrl .case-hero__media img { object-position: 67.4% center; }
 
-  /* Case study CTRL+ – Wprowadzenie (makieta mobile 3158:3878): liczby jak w 4F, kapsułka 343 px */
-  .case-facts--ctrl .case-facts__inner.container { gap: var(--spacing-24); }
-  .case-facts--ctrl .case-facts__media { width: 100%; max-width: 343px; height: auto; }
-  .case-facts--ctrl .case-facts__media img { width: 100%; height: auto; }
 
   /* Case study CTRL+ – Kontekst biznesowy (makieta mobile 3229:6940) */
   .case-business__inner.container { gap: var(--spacing-24); padding: var(--spacing-24) var(--spacing-16); }
@@ -2721,6 +2806,37 @@ body {
   .case-outcome__heading { gap: var(--spacing-8); }
   .case-outcome__title { font-size: var(--font-size-lg); background-image: linear-gradient(115.64deg, #f7f7f7 0.64%, #838383 92.03%); }
   .case-outcome__text { font-size: var(--font-size-sm); line-height: 22px; }
+
+  /* Case study CTRL+ – Wprowadzenie (makieta mobile 3299:8565): tytuł, liczby przewijane w bok, przycisk, kapsułka */
+  .case-intro__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
+  .case-intro__main, .case-intro__side { display: contents; }
+  .case-intro__title { order: 1; font-size: var(--font-size-lg); }
+  .intro-facts {
+    order: 2;
+    flex-direction: row;
+    gap: var(--spacing-16);
+    width: calc(100% + 2 * var(--spacing-16));
+    margin-inline: calc(-1 * var(--spacing-16));
+    padding-inline: var(--spacing-16);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .intro-facts::-webkit-scrollbar { display: none; }
+  .intro-fact { flex: none; width: 124px; gap: var(--spacing-12); padding: var(--spacing-24) 0 0; border-left: 0; border-top: 1px solid var(--color-border-nav); }
+  .case-intro__action { order: 3; padding-left: 0; }
+  .case-intro__btn, .pill__cta { margin-top: 0; } /* globalny odstęp .btn--cta z headera SG nie dotyczy tych przycisków */
+  .case-intro__btn { padding: var(--spacing-12) var(--spacing-16); font-size: var(--font-size-sm); line-height: 22px; }
+  .case-intro__media { order: 4; width: 100%; }
+
+  /* CTRL+ – „Case Study w pigułce” (makieta mobile 3299:8717) */
+  .pill__scroll { gap: var(--spacing-24); padding: var(--spacing-24) var(--spacing-16); }
+  .pill__title { font-size: 18px; background-image: linear-gradient(104.28deg, #f7f7f7 0.64%, #838383 92.03%); }
+  .pill__close { width: 24px; height: 24px; }
+  .pill__tile { padding: var(--spacing-24); }
+  .pill__subtitle--decision { font-size: var(--font-size-md); line-height: 22px; }
+  .pill__decision-text { font-size: var(--font-size-sm); line-height: 22px; }
+  .pill__bar { padding: 23px var(--spacing-16) var(--spacing-24); }
+  .pill__cta { width: 100%; padding: var(--spacing-8) var(--spacing-24); font-size: 12px; line-height: 20px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }

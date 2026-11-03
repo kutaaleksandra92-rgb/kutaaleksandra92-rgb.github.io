@@ -168,3 +168,66 @@ document.querySelectorAll('[data-parallax]').forEach((board) => {
   area.addEventListener('mouseleave', () => { tx = 0; ty = 0; kick(); });
   web.addEventListener('change', () => { if (!web.matches) { tx = ty = x = y = 0; items.forEach(({ el }) => { el.style.transform = ''; }); } });
 });
+
+// CTRL+ „Case Study w pigułce” – na webie drawer z prawej (maska, płynne wysunięcie), na mobile zwykły link do ctrl-w-pigulce.html
+document.querySelectorAll('[data-drawer-open]').forEach((trigger) => {
+  const drawer = document.getElementById(trigger.dataset.drawerOpen);
+  if (!drawer) return;
+  const web = window.matchMedia('(min-width: 721px)');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const panel = drawer.querySelector('.drawer__panel');
+  const scroller = drawer.querySelector('.pill__scroll');
+  let closeTimer = null;
+  const focusables = () => [...panel.querySelectorAll('a[href], button:not([disabled])')];
+  const onKey = (e) => {
+    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+    if (e.key !== 'Tab') return;
+    const items = focusables();
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  };
+  const open = () => {
+    clearTimeout(closeTimer);
+    const gap = window.innerWidth - document.documentElement.clientWidth; // bez „skoku” strony po ukryciu paska przewijania
+    document.documentElement.style.paddingRight = gap ? gap + 'px' : '';
+    document.documentElement.classList.add('has-drawer');
+    drawer.hidden = false;
+    scroller.scrollTop = 0;
+    void drawer.offsetWidth; // start animacji od stanu zamkniętego
+    drawer.classList.add('is-open');
+    document.addEventListener('keydown', onKey);
+    focusables()[0].focus({ preventScroll: true });
+  };
+  const close = () => {
+    if (!drawer.classList.contains('is-open')) return;
+    drawer.classList.remove('is-open');
+    document.removeEventListener('keydown', onKey);
+    const done = () => {
+      drawer.hidden = true;
+      document.documentElement.classList.remove('has-drawer');
+      document.documentElement.style.paddingRight = '';
+    };
+    closeTimer = setTimeout(done, reduce.matches ? 0 : 420);
+    trigger.focus({ preventScroll: true });
+  };
+  trigger.addEventListener('click', (e) => {
+    if (!web.matches) return; // mobile: osobna strona
+    e.preventDefault();
+    open();
+  });
+  drawer.querySelectorAll('[data-drawer-close]').forEach((el) => el.addEventListener('click', close));
+});
+
+// Strona „w pigułce” (mobile): X i przycisk wracają do case study – jeśli przyszliśmy z niego, cofamy historię (zachowana pozycja przewinięcia)
+document.querySelectorAll('[data-pill-back]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    let ref = null;
+    try { ref = new URL(document.referrer); } catch (err) { ref = null; }
+    if (ref && ref.origin === location.origin && /\/ctrl\.html$/.test(ref.pathname) && history.length > 1) {
+      e.preventDefault();
+      history.back();
+    }
+  });
+});
