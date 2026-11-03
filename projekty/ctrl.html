@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css?v=76">
+  <link rel="stylesheet" href="../css/style.css?v=78">
 </head>
 <body>
 
@@ -83,6 +83,9 @@
           <li><a href="#rynek" class="case-nav__link" data-label="Rynek">Rynek</a></li>
           <li><a href="#decyzja" class="case-nav__link" data-label="Decyzja">Decyzja</a></li>
           <li><a href="#ograniczenia" class="case-nav__link" data-label="Ograniczenia">Ograniczenia</a></li>
+          <li><a href="#wynik" class="case-nav__link" data-label="Wynik">Wynik</a></li>
+          <li><a href="#refleksja" class="case-nav__link" data-label="Refleksja">Refleksja</a></li>
+          <li><a href="#odkryj-wiecej" class="case-nav__link" data-label="Odkryj więcej">Odkryj więcej</a></li>
         </ul>
       </div>
     </nav>
@@ -570,8 +573,62 @@
         </ol>
       </div>
     </section>
+    <!-- ============ WYNIK (web 3296:8054, mobile 3296:8132) ============ -->
+    <section class="case-outcome" id="wynik" aria-labelledby="outcome-title">
+      <div class="container case-outcome__inner">
+        <div class="case-outcome__heading">
+          <p class="case-outcome__eyebrow">Wynik</p>
+          <h2 id="outcome-title" class="case-outcome__title">Zamknięcie projektu przed fazą projektową</h2>
+        </div>
+        <p class="case-outcome__text">Potrzeba istniała, ale brak przewagi rynkowej nie uzasadniał inwestycji. Wstrzymanie projektu pozwoliło uniknąć kosztownego wdrożenia.</p>
+      </div>
+    </section>
+    <!-- ============ REFLEKSJA (web 3275:5347, mobile 3296:8067) – wspólny układ z 4F ============ -->
+    <section class="case-reflection case-reflection--ctrl" id="refleksja" aria-labelledby="reflection-title">
+      <div class="container case-reflection__inner">
+        <img class="case-reflection__photo" src="../assets/images/aleksandra-kuta.jpg" alt="Aleksandra Kuta" width="120" height="120" loading="lazy">
+        <div class="case-reflection__text">
+          <h2 id="reflection-title" class="case-reflection__eyebrow">Refleksja</h2>
+          <blockquote class="case-reflection__quote"><span class="case-reflection__muted">“Nie zawsze projektujemy rozwiązanie, </span>czasami<span class="case-reflection__muted"> </span>pomagamy w podjęciu świadomej decyzji, żeby go nie budować”</blockquote>
+        </div>
+      </div>
+    </section>
+    <!-- ============ ODKRYJ WIĘCEJ (web 3296:8162, mobile 3296:8270) – wspólny układ z 4F ============ -->
+    <section class="case-more" id="odkryj-wiecej" aria-labelledby="more-title">
+      <a href="#top" class="up-btn" data-scroll-top aria-label="Chyba jestem za daleko, wracamy! Przewiń na górę strony">
+        <img class="up-btn__ring" src="../assets/icons/4f/up-ring.svg" alt="" width="108" height="108">
+        <svg class="up-btn__arrow" width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true"><path d="M20.8635 8.69336V33.0343M10.4316 19.1252L20.8635 8.69336L31.2953 19.1252" stroke="currentColor" stroke-width="3.47727" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="container case-more__inner">
+        <h2 id="more-title" class="case-more__title">Odkryj więcej</h2>
+        <ul class="more-list">
+          <li class="more">
+            <div class="more__media"><img src="../assets/images/projekty/odkryj-csr.jpg" alt="Aplikacja mobilna CSR na ekranie telefonu" loading="lazy"></div>
+            <p class="more__label">Aplikacja mobilna CSR</p>
+            <h3 class="more__title">Strategiczne wykorzystanie grywalizacji w budowaniu zaangażowania użytkowników</h3>
+          </li>
+          <li class="more">
+            <a class="more__link" href="4f.html">
+              <div class="more__media">
+                <picture>
+                  <source media="(max-width: 720px)" srcset="../assets/images/projekty/4f-header-mobile.jpg?v=3">
+                  <img src="../assets/images/projekty/4f-header.jpg?v=3" alt="Aplikacja mobilna 4F na ekranie telefonu" loading="lazy">
+                </picture>
+              </div>
+              <p class="more__label">Konwersja | Omnichannel | Lojalność</p>
+              <h3 class="more__title">Aplikacja mobilna 4F. Ewolucja z kanału sprzedaży w ekosystem lojalnościowy</h3>
+            </a>
+          </li>
+          <li class="more">
+            <div class="more__media more__media--placeholder"></div>
+            <p class="more__label">Placeholder</p>
+            <h3 class="more__title">Placeholder</h3>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
 
-  <script src="../js/main.js?v=76"></script>
+  <script src="../js/main.js?v=78"></script>
 </body>
 </html>

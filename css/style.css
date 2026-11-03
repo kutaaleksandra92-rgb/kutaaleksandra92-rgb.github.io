@@ -2060,6 +2060,26 @@ body {
 .limit__title { margin: 0; font-family: var(--font-heading); font-size: 18px; font-weight: 500; line-height: normal; }
 .limit__desc { margin: 0; line-height: 28px; color: var(--color-text-secondary); }
 
+/* ---------- Case study CTRL+: Wynik (web 3296:8054) ---------- */
+.case-outcome { background: var(--color-bg-secondary); }
+.case-outcome__inner { display: flex; align-items: flex-end; gap: var(--spacing-88); padding-block: var(--spacing-80); }
+.case-outcome__heading { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-24); }
+.case-outcome__eyebrow { margin: 0; font-family: var(--font-heading); font-size: 18px; line-height: normal; color: var(--color-text-secondary); }
+.case-outcome__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
+  line-height: normal;
+  background-image: linear-gradient(100.25deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.case-outcome__text { flex: 1 0 0; min-width: 0; margin: 0; font-size: var(--font-size-md); line-height: 28px; color: var(--color-text-secondary); }
+.more__media picture { display: block; width: 100%; height: 100%; }
+.case-reflection--ctrl { background: var(--color-bg-primary); } /* CTRL+: tło #0d0d0e (4F: #111112) */
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -2081,6 +2101,9 @@ body {
 }
 
 @media (max-width: 900px) {
+  /* CTRL+ Wynik – węższe ekrany: tekst pod nagłówkiem */
+  .case-outcome__inner { flex-direction: column; align-items: stretch; gap: var(--spacing-24); }
+  .case-outcome__heading, .case-outcome__text { flex: none; }
   /* CTRL+ Ograniczenia – węższe ekrany: lista pod nagłówkiem */
   .case-limits__inner { flex-direction: column; gap: var(--spacing-56); }
   .case-limits__side { align-self: auto; width: 100%; gap: var(--spacing-40); }
@@ -2692,6 +2715,12 @@ body {
   .limits { gap: var(--spacing-16); }
   .limit__title { font-size: var(--font-size-md); line-height: 22px; }
   .limit__desc { font-size: var(--font-size-sm); line-height: 22px; }
+
+  /* Case study CTRL+ – Wynik (makieta mobile 3296:8132) */
+  .case-outcome__inner.container { gap: var(--spacing-8); padding: var(--spacing-32) var(--spacing-16); }
+  .case-outcome__heading { gap: var(--spacing-8); }
+  .case-outcome__title { font-size: var(--font-size-lg); background-image: linear-gradient(115.64deg, #f7f7f7 0.64%, #838383 92.03%); }
+  .case-outcome__text { font-size: var(--font-size-sm); line-height: 22px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
