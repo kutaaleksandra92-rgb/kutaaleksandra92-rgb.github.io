@@ -10,9 +10,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css?v=80">
+  <link rel="stylesheet" href="../css/style.css?v=82">
 </head>
 <body>
 
@@ -40,7 +40,7 @@
 
   <main>
     <!-- ============ HEADER CASE STUDY ============ -->
-    <section class="case-hero" aria-labelledby="case-title">
+    <section class="case-hero case-hero--4f" aria-labelledby="case-title">
       <div class="case-hero__content container">
         <div class="case-hero__heading">
           <div class="case-hero__logo">
@@ -92,27 +92,26 @@
       </div>
     </nav>
     <!-- ============ KLUCZOWE FAKTY ============ -->
-    <section class="case-facts" id="kluczowe-fakty" aria-labelledby="facts-title">
-      <div class="container case-facts__inner">
-        <div class="case-facts__content">
-          <h2 id="facts-title" class="case-facts__title"><span class="case-facts__muted">Aplikacja mobilna generowała sprzedaż, ale</span> nie budowała długofalowej relacji z klientem</h2>
-          <ul class="facts">
-            <li class="fact">
-              <span class="fact__value">87%</span>
-              <span class="fact__label">Porzuceń koszyka w aplikacji</span>
-            </li>
-            <li class="fact">
-              <span class="fact__value">15%</span>
-              <span class="fact__label">Klientów skanowało kartę lojalnościową w salonach</span>
-            </li>
-            <li class="fact">
-              <span class="fact__value">5%</span>
-              <span class="fact__label">Stała zniżka dla zalogowanych (pasywny program lojalnościowy)</span>
-            </li>
-          </ul>
+    <!-- ============ DANE / WPROWADZENIE (04.11: web 3314:9631, mobile 3314:10570) – układ jak CTRL+ (.case-intro) ============ -->
+    <section class="case-intro case-intro--4f" id="kluczowe-fakty" aria-labelledby="facts-title">
+      <div class="container case-intro__inner">
+        <div class="case-intro__main">
+          <h2 id="facts-title" class="case-intro__title"><span class="case-intro__muted">Aplikacja mobilna generowała sprzedaż, ale</span> nie budowała długofalowej relacji z klientem</h2>
+          <picture class="case-intro__media">
+            <source media="(max-width: 720px)" srcset="../assets/images/projekty/4f-wprowadzenie-mobile.jpg">
+            <img src="../assets/images/projekty/4f-wprowadzenie.jpg" alt="Biały but 4F" width="400" height="400" loading="lazy">
+          </picture>
         </div>
-        <div class="case-facts__media">
-          <img src="../assets/images/projekty/4f-but.jpg" alt="Biały but 4F" width="438" height="472" loading="lazy">
+        <div class="case-intro__side">
+          <ul class="intro-facts">
+            <li class="intro-fact"><span class="intro-fact__value">87%</span><span class="intro-fact__label">Porzuceń koszyka w aplikacji</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">15%</span><span class="intro-fact__label">Klientów skanowało kartę lojalnościową w salonach</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">5%</span><span class="intro-fact__label">Stała zniżka dla zalogowanych (pasywny program lojalnościowy)</span></li>
+          </ul>
+          <div class="case-intro__action">
+            <!-- web: otwiera drawer (js/main.js [data-drawer-open]); mobile: osobna strona -->
+            <a href="4f-w-pigulce.html" class="btn btn--cta case-intro__btn" data-drawer-open="pigulka" aria-haspopup="dialog">Case Study w pigułce <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </div>
       </div>
     </section>
@@ -355,7 +354,7 @@
       </div>
     </section>
     <!-- ============ WYNIKI ============ -->
-    <section class="case-results" id="wyniki" aria-labelledby="results-title">
+    <section class="case-results case-results--4f" id="wyniki" aria-labelledby="results-title">
       <div class="container case-results__inner">
         <h2 id="results-title" class="case-ba__heading">Wyniki po wdrożeniu zmian</h2>
         <div class="case-results__body">
@@ -391,7 +390,7 @@
       </div>
     </section>
     <!-- ============ REFLEKSJA ============ -->
-    <section class="case-reflection" id="refleksja" aria-labelledby="reflection-title">
+    <section class="case-reflection case-reflection--4f" id="refleksja" aria-labelledby="reflection-title">
       <div class="container case-reflection__inner">
         <img class="case-reflection__photo" src="../assets/images/aleksandra-kuta.jpg" alt="Aleksandra Kuta" width="120" height="120" loading="lazy">
         <div class="case-reflection__text">
@@ -458,8 +457,46 @@
         </ul>
       </div>
     </section>
+    <!-- ============ DRAWER „Case Study w pigułce” (web 3317:10635) – tylko web; na mobile osobna strona 4f-w-pigulce.html (3317:10602) ============ -->
+    <div class="drawer" id="pigulka" role="dialog" aria-modal="true" aria-labelledby="pill-title" hidden>
+      <div class="drawer__mask" data-drawer-close></div>
+      <div class="drawer__panel pill">
+        <div class="pill__scroll">
+          <div class="pill__head">
+            <div class="pill__heading">
+              <p class="pill__meta">Senior Product Designer · Strategia · Omnichannel · Lojalność</p>
+              <h2 id="pill-title" class="pill__title">Aplikacja mobilna 4F | Od sprzedaży do ekosystemu lojalnościowego</h2>
+            </div>
+            <button type="button" class="pill__close" data-drawer-close aria-label="Zamknij i wróć do case study"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M30 10L10 30M10 10L30 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <section class="pill__block" aria-labelledby="pill-challenge">
+            <h3 id="pill-challenge" class="pill__subtitle">Wyzwanie biznesowe</h3>
+            <p class="pill__text">Aplikacja sprzedawała, ale nie budowała długofalowej relacji z klientami. 87% porzuceń koszyka i niewykorzystany potencjał lojalności w salonach</p>
+          </section>
+          <section class="pill__tile" aria-labelledby="pill-findings">
+            <h3 id="pill-findings" class="pill__subtitle">3 kluczowe decyzje</h3>
+            <ol class="findings">
+              <li class="finding"><h4 class="finding__title">4F TEAM</h4><p class="finding__desc">Program lojalnościowy oparty na punktach i benefitach</p></li>
+              <li class="finding"><h4 class="finding__title">Skrócenie checkoutu z 4 do 2 kroków</h4><p class="finding__desc">Mniej kroków, BLIK na pierwszym planie wraz z portfelami cyfrowymi</p></li>
+              <li class="finding"><h4 class="finding__title">Konto jako centrum relacji</h4><p class="finding__desc">Personalizacja, grywalizacja i omnichannel</p></li>
+            </ol>
+          </section>
+          <section class="pill__effects" aria-labelledby="pill-effects">
+            <h3 id="pill-effects" class="pill__subtitle pill__subtitle--decision">Efekty biznesowe</h3>
+            <ul class="effects">
+              <li class="effect"><span class="effect__value">+50%</span><span class="effect__label">Przychodów ze sprzedaży w aplikacji r/r</span></li>
+              <li class="effect"><span class="effect__value">1,05M</span><span class="effect__label">Nowych członków programu 4F TEAM</span></li>
+              <li class="effect"><span class="effect__value">9,37/10</span><span class="effect__label">Na podstawie 32 tys. odpowiedzi</span></li>
+            </ul>
+          </section>
+        </div>
+        <div class="pill__bar">
+          <button type="button" class="btn btn--cta pill__cta" data-drawer-close>Przeczytaj pełne Case Study (ok. 5 min.) <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </div>
   </main>
 
-  <script src="../js/main.js?v=80"></script>
+  <script src="../js/main.js?v=82"></script>
 </body>
 </html>

@@ -904,65 +904,6 @@ body {
 /* sekcje nie chowają się pod paskiem po kliknięciu w link */
 .case-nav ~ section[id] { scroll-margin-top: 70px; }
 
-/* ---------- Case study: Kluczowe fakty (wersja z 27.10 – tekst + liczby + zdjęcie buta) ---------- */
-.case-facts { overflow: hidden; }
-.case-facts__inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding-block: var(--spacing-120);
-}
-.case-facts__content {
-  flex: 0 1 792px;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-80);
-}
-.case-facts__title {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: var(--font-size-3xl);
-  font-weight: 400;
-  line-height: normal;
-  color: var(--color-text-primary);
-}
-.case-facts__muted { color: var(--color-text-accent); }
-.facts {
-  display: flex;
-  align-items: stretch;
-  gap: 48px;
-}
-.fact {
-  flex: 1 0 0;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-12);
-  padding-top: var(--spacing-24);
-  border-top: 1px solid var(--color-border-nav);
-}
-.fact__value {
-  font-family: var(--font-heading);
-  font-size: var(--font-size-3xl);
-  font-weight: 500;
-  line-height: normal;
-}
-.fact__label {
-  line-height: 28px;
-  color: var(--color-text-tertiary);
-}
-/* zdjęcie buta (eksport z obrotem): jak w makiecie nie wpływa na wysokość sekcji,
-   wyśrodkowane w pionie i wychodzi ~30 px poza kolumnę 1200 */
-.case-facts__media {
-  position: absolute;
-  top: 50%;
-  left: calc(var(--page-gutter) + 792px);
-  width: 437.6px;
-  transform: translateY(-50%);
-}
-.case-facts__media img { display: block; width: 100%; height: auto; }
-
 /* ---------- Case study: wspólny rząd 3 kafli (Kontekst zmian, Strategia) ---------- */
 .case-tiles {
   display: flex;
@@ -2168,6 +2109,24 @@ html.has-drawer { overflow: hidden; }
 .pill-page .pill__scroll { flex: 1 0 auto; overflow: visible; }
 .pill-page .pill__bar { position: sticky; bottom: 0; }
 
+/* 4F – Dane (04.11, web 3314:9631): wspólny układ .case-intro z CTRL+; węższa kolumna liczb przyklejona do dołu, but 400×400 */
+.case-intro--4f .case-intro__inner { gap: var(--spacing-64); }
+.case-intro--4f .case-intro__side { flex-basis: 409px; align-self: flex-end; }
+.case-intro--4f .case-intro__media { width: 400px; }
+/* 4F – Wyniki (04.11): odstęp pod tytułem 80, zdjęcie 460 px, liczby Bold (web i mobile) */
+.case-results--4f .case-results__inner { gap: var(--spacing-80); }
+.case-results--4f .case-results__body { gap: var(--spacing-120); }
+.case-results--4f .case-results__media { flex-basis: 460px; }
+.case-results--4f .result__value { font-weight: 700; }
+/* 4F – Refleksja (04.11): cytat 48 px */
+.case-reflection--4f .case-reflection__quote { font-size: var(--font-size-3xl); }
+/* „W pigułce” 4F – efekty biznesowe */
+.pill__effects { display: flex; flex-direction: column; gap: 20px; }
+.effects { display: flex; gap: var(--spacing-24); margin: 0; padding: 0; list-style: none; }
+.effect { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-16); padding-top: var(--spacing-32); border-top: 1px solid var(--color-bg-accent); }
+.effect__value { font-family: var(--font-heading); font-size: var(--font-size-2xl); font-weight: 500; line-height: normal; color: var(--color-text-primary); }
+.effect__label { line-height: 28px; color: var(--color-text-tertiary); }
+
 /* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
@@ -2176,16 +2135,14 @@ html.has-drawer { overflow: hidden; }
   /* Kontekst zmian – węższe ekrany: opis pod tytułem */
   .case-context__top { flex-direction: column; gap: var(--spacing-24); }
   .case-context__title, .case-context__lead { flex: none; }
-  /* Kluczowe fakty – węższe ekrany: zdjęcie pod treścią */
-  .case-facts__inner { flex-direction: column; align-items: stretch; gap: var(--spacing-40); }
-  .case-facts__content { flex: none; width: 100%; }
-  .case-facts__media { position: static; align-self: center; transform: none; }
   /* Edukacja – węższe ekrany: nagłówek nad kaflami */
   .education__inner { flex-wrap: wrap; }
   .education__heading { flex-basis: 100%; }
 }
 
 @media (max-width: 900px) {
+  /* 4F Dane – węższe ekrany: liczby pod tytułem i butem */
+  .case-intro--4f .case-intro__side { align-self: stretch; flex-basis: auto; }
   /* CTRL+ Wprowadzenie – węższe ekrany: liczby i przycisk pod tytułem */
   .case-intro__inner { flex-direction: column; gap: var(--spacing-56); }
   .case-intro__main { flex: none; gap: var(--spacing-40); }
@@ -2214,6 +2171,8 @@ html.has-drawer { overflow: hidden; }
   .case-footer__heading { flex: none; width: 100%; }
   /* Wyniki – węższe ekrany: telefon pod liczbami */
   .case-results__body { flex-direction: column-reverse; align-items: center; gap: var(--spacing-56); }
+  .case-results--4f .case-results__body { gap: var(--spacing-56); }
+  .case-results--4f .case-results__media { flex-basis: auto; max-width: 460px; }
   .case-results__media { flex: none; width: 100%; max-width: 524px; }
   .case-results__content { flex: none; width: 100%; }
   /* Trade-off – węższe ekrany: kafle jeden pod drugim */
@@ -2447,27 +2406,6 @@ html.has-drawer { overflow: hidden; }
 
   /* Case study – nawigacja sekcji (makieta mobile): boczny padding 16 */
   .case-nav__bar { padding-inline: var(--spacing-16); }
-
-  /* Case study – Kluczowe fakty (makieta mobile 375): liczby przewijane w poziomie */
-  .case-facts__inner.container {
-    gap: var(--spacing-24);
-    padding: var(--spacing-32) var(--spacing-16);
-  }
-  .case-facts__content { gap: var(--spacing-24); }
-  .case-facts__title { font-size: var(--font-size-lg); }
-  .facts {
-    gap: var(--spacing-24);
-    width: calc(100% + 2 * var(--spacing-16));
-    margin-inline: calc(-1 * var(--spacing-16));
-    padding-inline: var(--spacing-16);
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .facts::-webkit-scrollbar { display: none; }
-  .fact { flex: none; width: 164px; }
-  .fact__value { font-size: var(--font-size-2xl); }
-  .case-facts__media { display: flex; justify-content: center; width: auto; height: 410.25px; }
-  .case-facts__media img { flex: none; width: auto; max-width: none; height: 100%; }
 
   /* Case study – Kontekst zmian i Strategia (makiety mobile 375): kafle 320 px przewijane w poziomie */
   .case-context__inner.container,
@@ -2837,6 +2775,20 @@ html.has-drawer { overflow: hidden; }
   .pill__decision-text { font-size: var(--font-size-sm); line-height: 22px; }
   .pill__bar { padding: 23px var(--spacing-16) var(--spacing-24); }
   .pill__cta { width: 100%; padding: var(--spacing-8) var(--spacing-24); font-size: 12px; line-height: 20px; }
+
+  /* 4F – mobile (04.11, makieta 3314:10124): header bez dolnego odstępu, liczby co 24 px, Wyniki i Refleksja jak wcześniej (liczby Wyników Bold) */
+  .case-hero--4f { padding-bottom: 0; }
+  .case-intro--4f .intro-facts { gap: var(--spacing-24); }
+  .case-intro--4f .case-intro__media { width: 100%; }
+  .case-results--4f .case-results__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
+  .case-results--4f .case-results__body { gap: var(--spacing-24); }
+  .case-results--4f .case-results__media { flex-basis: auto; }
+  .case-reflection--4f .case-reflection__quote { font-size: var(--font-size-lg); }
+  .pill__effects { gap: 20px; }
+  .effects { gap: var(--spacing-24); }
+  .effect { padding-top: var(--spacing-24); }
+  .effect__value { font-size: var(--font-size-lg); }
+  .effect__label { font-size: var(--font-size-sm); line-height: 22px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }

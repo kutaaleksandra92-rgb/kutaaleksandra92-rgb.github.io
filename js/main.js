@@ -225,7 +225,8 @@ document.querySelectorAll('[data-pill-back]').forEach((link) => {
   link.addEventListener('click', (e) => {
     let ref = null;
     try { ref = new URL(document.referrer); } catch (err) { ref = null; }
-    if (ref && ref.origin === location.origin && /\/ctrl\.html$/.test(ref.pathname) && history.length > 1) {
+    const target = '/' + link.getAttribute('href');
+    if (ref && ref.origin === location.origin && ref.pathname.endsWith(target) && history.length > 1) {
       e.preventDefault();
       history.back();
     }
