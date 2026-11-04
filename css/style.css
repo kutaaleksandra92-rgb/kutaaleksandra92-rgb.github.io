@@ -1587,7 +1587,6 @@ body {
   max-width: none;
   object-fit: cover;
 }
-.more__img--ctrl { object-position: 83% center; } /* kadr z makiety */
 .more__link {
   display: flex;
   flex-direction: column;
