@@ -2127,6 +2127,56 @@ html.has-drawer { overflow: hidden; }
 .effect__label { line-height: 28px; color: var(--color-text-tertiary); }
 
 /* =========================================================
+   Rozwój i szkolenia (rozwoj.html, makieta web 3324:12344)
+   ========================================================= */
+.page-hero { display: flex; flex-direction: column; padding-bottom: var(--spacing-80); background: var(--color-bg-primary); }
+.page-hero__content { display: flex; flex-direction: column; gap: var(--spacing-8); padding-block: var(--spacing-64); }
+.page-hero__eyebrow { margin: 0; line-height: 28px; color: var(--color-text-tertiary); }
+.page-hero__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-4xl);
+  font-weight: 400;
+  line-height: normal;
+  background-image: linear-gradient(121.6deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.courses { background: linear-gradient(161deg, #0d0d0e 0%, #0d0d0e 71.33%, #12160a 102.19%); }
+.courses__list { display: flex; flex-direction: column; gap: var(--spacing-80); margin: 0; padding-top: var(--spacing-80); padding-bottom: var(--spacing-120); list-style: none; }
+/* wiersz: zdjęcie 758 + podpis pod nim | opis z przyciskiem wyrównany do dołu zdjęcia (kolumna 402, gap 40); co drugi odwrócony */
+.course {
+  display: grid;
+  grid-template-columns: minmax(0, 758fr) minmax(0, 402fr);
+  grid-template-areas: "media info" "caption .";
+  column-gap: var(--spacing-40);
+  row-gap: var(--spacing-24);
+}
+.course--reverse { grid-template-columns: minmax(0, 402fr) minmax(0, 758fr); grid-template-areas: "info media" ". caption"; }
+.course__media { grid-area: media; aspect-ratio: 758 / 392; border-radius: var(--radius-4); overflow: hidden; background: var(--color-bg-surface); }
+.course__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.course__media--placeholder { display: flex; align-items: center; justify-content: center; background: #c4c4c4; }
+.course__placeholder { font-family: var(--font-heading); font-size: 18px; color: var(--color-text-on-accent); }
+.course__caption { grid-area: caption; display: flex; flex-direction: column; gap: var(--spacing-16); padding-right: var(--spacing-40); }
+.course__tags { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--spacing-16); margin: 0; padding: 0; list-style: none; font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-secondary); }
+.course__dot { width: 4px; height: 4px; background: var(--color-text-secondary); }
+.course__title { margin: 0; font-family: var(--font-heading); font-size: var(--font-size-lg); font-weight: 400; line-height: normal; color: var(--color-text-primary); }
+.course__info { grid-area: info; align-self: end; display: flex; flex-direction: column; align-items: flex-start; gap: var(--spacing-24); padding-right: 48px; }
+.course--reverse .course__info { padding-right: 0; padding-left: 48px; }
+.course__desc { margin: 0; font-family: var(--font-heading); font-size: 18px; line-height: normal; color: var(--color-text-secondary); }
+/* przycisk obrysowany (przycisk/secondary small z makiety): 1px #4b545c, bez tła, 14/22, chevron */
+.btn--outline {
+  padding: calc(var(--spacing-12) - 1px) calc(var(--spacing-16) - 1px);
+  border: 1px solid var(--color-button-secondary-border);
+  border-radius: var(--radius-32);
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-primary);
+}
+.btn--outline img { width: 24px; height: 24px; }
+
+/* =========================================================
    Responsywność (brak makiet – propozycja do akceptacji)
    ========================================================= */
 @media (max-width: 1200px) {
@@ -2140,6 +2190,10 @@ html.has-drawer { overflow: hidden; }
 }
 
 @media (max-width: 900px) {
+  /* Rozwój i szkolenia – węższe ekrany (brak makiety): zdjęcie, podpis, opis jeden pod drugim */
+  .course, .course--reverse { grid-template-columns: minmax(0, 1fr); grid-template-areas: "media" "caption" "info"; }
+  .course__info, .course--reverse .course__info { padding: 0; }
+  .course__caption { padding-right: 0; }
   /* 4F Dane – węższe ekrany: liczby pod tytułem i butem */
   .case-intro--4f .case-intro__side { align-self: stretch; flex-basis: auto; }
   /* CTRL+ Wprowadzenie – węższe ekrany: liczby i przycisk pod tytułem */
@@ -2788,6 +2842,15 @@ html.has-drawer { overflow: hidden; }
   .effect { padding-top: var(--spacing-24); }
   .effect__value { font-size: var(--font-size-lg); }
   .effect__label { font-size: var(--font-size-sm); line-height: 22px; }
+
+  /* Rozwój i szkolenia – mobile (brak makiety, wersja tymczasowa wg wzorców innych stron) */
+  .page-hero { padding-bottom: var(--spacing-32); }
+  .page-hero__content.container { padding: var(--spacing-24) var(--spacing-16); }
+  .page-hero__title { font-size: var(--font-size-lg); background-image: linear-gradient(115.6deg, #f7f7f7 0.64%, #838383 92.03%); }
+  .courses__list.container { gap: var(--spacing-56); padding: var(--spacing-32) var(--spacing-16) var(--spacing-56); }
+  .course { row-gap: var(--spacing-16); }
+  .course__title { font-size: 18px; }
+  .course__desc { font-size: var(--font-size-md); line-height: 22px; }
 
   /* Stopka (makieta mobile 375) */
   .site-footer { padding: var(--spacing-16); }
