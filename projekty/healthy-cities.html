@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthy Cities – Aleksandra Kuta</title>
+  <meta name="description" content="Healthy Cities – jak zamienić aktywność użytkowników w 15 tysięcy posadzonych drzew.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css?v=85">
+</head>
+<body>
+
+  <!-- ============ NAWIGACJA ============ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Główna nawigacja">
+      <a href="../index.html" class="nav__logo" aria-label="Strona główna">
+        <img src="../assets/icons/logo.svg" alt="" width="44" height="44">
+      </a>
+
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+        <img src="../assets/icons/menu.svg" alt="" width="24" height="24">
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <a href="../doswiadczenie.html" class="nav__link">Doświadczenie i CV</a>
+        <a href="../rozwoj.html" class="nav__link">Rozwój i szkolenia</a>
+        <a href="../index.html#projekty" class="btn btn--cta">
+          Wybrane projekty
+          <img src="../assets/icons/arrow-up-right.svg" alt="" width="24" height="24">
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HEADER (web 3334:6468, mobile 3334:5895) ============ -->
+    <section class="case-hero case-hero--hc" aria-labelledby="case-title">
+      <div class="case-hero__content container">
+        <div class="case-hero__heading">
+          <div class="case-hero__logo case-hero__logo--hc">
+            <img src="../assets/icons/hc/logo-luxmed.svg" alt="LUX MED" width="107" height="32">
+          </div>
+
+          <h1 id="case-title" class="case-hero__title">
+            Healthy Cities - jak zamienić aktywność użytkowników w 15 tysięcy posadzonych drzew
+          </h1>
+        </div>
+
+        <dl class="case-info">
+          <div class="case-info__item">
+            <dt>Moja rola</dt>
+            <dd>UX/UI Designer</dd>
+          </div>
+          <div class="case-info__item">
+            <dt>Czas</dt>
+            <dd>2024</dd>
+          </div>
+          <div class="case-info__item">
+            <dt>Obszar</dt>
+            <dd>Research, Grywalizacja, CSR</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="case-hero__media container">
+        <picture>
+          <source media="(max-width: 720px)" srcset="../assets/images/projekty/hc-header-mobile.jpg">
+          <img src="../assets/images/projekty/hc-header.jpg" alt="Aplikacja Healthy Cities z licznikiem kroków na ekranie telefonu i odznaka Mobile Trends Award 2024" width="1200" height="544">
+        </picture>
+      </div>
+    </section>
+    <!-- ============ NAWIGACJA CASE STUDY (sticky; logika w js/main.js) – linki tylko do gotowych sekcji ============ -->
+    <nav class="case-nav" aria-label="Sekcje case study">
+      <div class="case-nav__bar">
+        <ul class="case-nav__list">
+          <li><a href="#wprowadzenie" class="case-nav__link" data-label="Wprowadzenie">Wprowadzenie</a></li>
+          <li><a href="#kontekst" class="case-nav__link" data-label="Kontekst zmian">Kontekst zmian</a></li>
+          <li><a href="#research" class="case-nav__link" data-label="Research">Research</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- ============ WPROWADZENIE (web 3334:6606) – układ .case-intro jak 4F ============ -->
+    <section class="case-intro case-intro--hc" id="wprowadzenie" aria-labelledby="intro-title">
+      <div class="container case-intro__inner">
+        <div class="case-intro__main">
+          <h2 id="intro-title" class="case-intro__title"><span class="case-intro__muted">Nowa aplikacja miała angażować użytkowników, ale </span>problemy z synchronizacją danych wpływały<span class="case-intro__muted"> na ich doświadczenie</span></h2>
+          <div class="case-intro__media">
+            <img src="../assets/images/projekty/hc-wprowadzenie.jpg" alt="Szara pinezka lokalizacji" width="400" height="400" loading="lazy">
+          </div>
+        </div>
+        <div class="case-intro__side">
+          <ul class="intro-facts">
+            <li class="intro-fact"><span class="intro-fact__value">15 286</span><span class="intro-fact__label">Uczestników wyzwania</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">1,5 mln km</span><span class="intro-fact__label">Pokonanego dystansu</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">1,9 mld</span><span class="intro-fact__label">Wykonanych kroków</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">15 286</span><span class="intro-fact__label">Posadzonych drzew</span></li>
+          </ul>
+          <div class="case-intro__action">
+            <!-- „Case Study w pigułce” – drawer czeka na treść (makieta 3362:3462 to jeszcze kopia z CTRL+) -->
+            <a class="btn btn--cta case-intro__btn" role="link" aria-disabled="true">Case Study w pigułce <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============ KONTEKST (web 3353:7119) – układ .case-decision jak 4F ============ -->
+    <section class="case-decision case-decision--hc" id="kontekst" aria-labelledby="context-title">
+      <div class="container case-decision__inner">
+        <div class="case-decision__top">
+          <div class="case-decision__text">
+            <p class="case-decision__eyebrow">Kontekst</p>
+            <h2 id="context-title" class="case-decision__title">Poprzednia wersja aplikacji nie zapewniała wiarygodnego monitorowania aktywności i nie odpowiadała na potrzeby uczestników</h2>
+            <p class="case-decision__lead">Zidentyfikowaliśmy 3 obszary wymagające zmian</p>
+          </div>
+          <div class="case-decision__media">
+            <img src="../assets/images/projekty/hc-kontekst.jpg" alt="Zielona tarcza z wbitymi rzutkami" width="516" height="478" loading="lazy">
+          </div>
+        </div>
+        <hr class="case-decision__divider">
+        <ul class="benefits">
+          <li class="benefit">
+            <img class="benefit__icon" src="../assets/icons/hc/dane.svg" alt="" width="24" height="24">
+            <div class="benefit__text">
+              <h3 class="benefit__title">Niewiarygodne dane</h3>
+              <p class="benefit__desc">Błędy w zliczaniu kroków, rozbieżności w raportach i niekompletne dane uczestników.</p>
+            </div>
+          </li>
+          <li class="benefit">
+            <img class="benefit__icon" src="../assets/icons/hc/uzytkownik.svg" alt="" width="24" height="24">
+            <div class="benefit__text">
+              <h3 class="benefit__title">Ograniczone doświadczenie użytkownika</h3>
+              <p class="benefit__desc">Długi onboarding, ograniczona funkcjonalność i brak możliwości rejestrowania dodatkowych aktywności.</p>
+            </div>
+          </li>
+          <li class="benefit">
+            <img class="benefit__icon" src="../assets/icons/hc/wsparcie.svg" alt="" width="24" height="24">
+            <div class="benefit__text">
+              <h3 class="benefit__title">Niewystarczające wsparcie</h3>
+              <p class="benefit__desc">Wolna obsługa zgłoszeń i ograniczone możliwości zarządzania uczestnikami grup.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- ============ RESEARCH (web 3372:5094 / hover 3372:5161; mobile – brak makiety) – lista, zdjęcie po najechaniu ============ -->
+    <section class="case-needs" id="research" aria-labelledby="research-title">
+      <div class="container case-needs__inner">
+        <div class="case-needs__top">
+          <p class="case-decision__eyebrow">Research</p>
+          <h2 id="research-title" class="case-needs__title">Użytkownicy potrzebowali większej kontroli nad aktywnością i udziałem w wyzwaniu</h2>
+        </div>
+        <ul class="needs">
+          <li class="need">
+            <div class="need__media"><img src="../assets/images/projekty/hc-research-1.jpg" alt="Kłódka na klawiaturze laptopa" width="200" height="200" loading="lazy"></div>
+            <div class="need__text">
+              <p class="need__label">Prosta rejestracja</p>
+              <h3 class="need__title">Szybkie logowanie różnymi metodami</h3>
+            </div>
+          </li>
+          <li class="need">
+            <div class="need__media"><img src="../assets/images/projekty/hc-research-2.jpg" alt="Ludzie na przejściu dla pieszych z lotu ptaka" width="200" height="200" loading="lazy"></div>
+            <div class="need__text">
+              <p class="need__label">Elastyczne grupy</p>
+              <h3 class="need__title">Jednoczesna reprezentacja miasta i firmy</h3>
+            </div>
+          </li>
+          <li class="need">
+            <div class="need__media"><img src="../assets/images/projekty/hc-research-3.jpg" alt="Niebieskie sześciany z jednym szarym" width="200" height="200" loading="lazy"></div>
+            <div class="need__text">
+              <p class="need__label">Wiarygodne dane</p>
+              <h3 class="need__title">Dokładna synchronizacja kroków i dodatkowe aktywności</h3>
+            </div>
+          </li>
+          <li class="need">
+            <div class="need__media"><img src="../assets/images/projekty/hc-research-4.jpg" alt="Słuchawki z mikrofonem obok laptopa" width="200" height="200" loading="lazy"></div>
+            <div class="need__text">
+              <p class="need__label">Wsparcie</p>
+              <h3 class="need__title">Szybka pomoc i zarządzanie uczestnikami</h3>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/main.js?v=85"></script>
+</body>
+</html>

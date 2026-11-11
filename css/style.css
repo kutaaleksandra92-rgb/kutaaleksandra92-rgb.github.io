@@ -1281,13 +1281,7 @@ body {
   color: var(--color-text-secondary);
 }
 .feature__muted { color: var(--color-text-accent); }
-/* Urządzenia z myszą: grafika ukryta, pokazuje się po najechaniu na wiersz (bez animacji) */
-@media (hover: hover) and (min-width: 721px) {
-  .feature__media { display: none; }
-  .feature:hover { padding-block: var(--spacing-24); }
-  .feature:hover .feature__media { display: block; }
-  .feature:hover .feature__title { color: var(--color-text-primary); }
-}
+/* Urządzenia z myszą (≥721): grafika po najechaniu – wspólny blok „Lista z grafiką po najechaniu” na końcu pliku (sekcja Healthy Cities) */
 
 /* ---------- Case study: Trade-off (kafle danych) ---------- */
 .case-tradeoff__inner {
@@ -2894,4 +2888,148 @@ html.has-drawer { overflow: hidden; }
     flex-wrap: wrap;
     gap: var(--spacing-8);
   }
+}
+
+/* ==========================================================================
+   Healthy Cities (projekty/healthy-cities.html, 11.11; web – pełna ramka 3334:5708, mobile – tylko header 3334:5895, reszta tymczasowo)
+   ========================================================================== */
+/* Header: logo LUX MED bez kafla, kąt gradientu tytułu z makiety */
+.case-hero__logo--hc {
+  width: auto;
+  height: auto;
+  justify-content: flex-start;
+  border-radius: 0;
+  background: none;
+}
+.case-hero__logo--hc img { width: 107px; height: 32px; }
+@media (min-width: 901px) {
+  .case-hero--hc .case-hero__title { background-image: linear-gradient(103.31deg, #f7f7f7 0.64%, #838383 92.03%); }
+}
+
+/* Wprowadzenie (3334:6606): jak 4F – kolumna liczb 409 przyklejona do dołu, pinezka 400×400; liczby i przycisk co 24 px */
+.case-intro--hc .case-intro__inner { gap: var(--spacing-64); }
+.case-intro--hc .case-intro__side { flex-basis: 409px; align-self: flex-end; gap: var(--spacing-24); }
+.case-intro--hc .intro-facts { gap: var(--spacing-24); }
+.case-intro--hc .case-intro__media { width: 400px; }
+.case-intro__btn[aria-disabled="true"] { cursor: default; } /* drawer „w pigułce” jeszcze bez treści */
+
+/* Kontekst (3353:7119): układ Decyzji z 4F – tło secondary, padding 80/80, odstęp 80, tytuł 32 */
+.case-decision--hc { background: var(--color-bg-secondary); }
+.case-decision--hc .case-decision__inner { padding-bottom: var(--spacing-80); }
+.case-decision--hc .case-decision__top { gap: var(--spacing-80); }
+.case-decision--hc .case-decision__title { font-size: var(--font-size-2xl); }
+
+/* Research (3372:5094 / 3372:5161): lista nieklikalna, wiersze o stałej wysokości 280 + linia;
+   zachowanie po najechaniu – wspólny blok z Decyzją III 4F (niżej) */
+.case-needs { background: var(--color-bg-primary); }
+.case-needs__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-40);
+  padding-block: var(--spacing-80);
+}
+.case-needs__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+.case-needs__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 400; /* w Figmie Medium – decyzja o spójności nagłówków sekcji (48 Regular) */
+  line-height: normal;
+}
+.needs { margin: 0; padding: 0; list-style: none; }
+.need {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-40);
+  height: 281px;
+  padding: 0 var(--spacing-32);
+  border-bottom: 1px solid var(--color-border-nav);
+}
+.need__media {
+  flex: none;
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-8);
+  overflow: hidden;
+  background: var(--color-bg-surface);
+}
+.need__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.need__text {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.need__label {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: normal;
+  color: var(--color-text-tertiary);
+}
+.need__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Lista z grafiką po najechaniu (Research HC + Decyzja III 4F; wg nagrania Oli 11.11) ----------
+   Urządzenia z myszą, ≥721 px: wiersz ma stałą wysokość; po najechaniu grafika rozsuwa się od zera do 200 px
+   (z lekkim „dojazdem” skali), tekst przesuwa się w prawo, tytuł zmienia kolor z secondary na primary. */
+@media (hover: hover) and (min-width: 721px) {
+  .feature { height: 249px; padding-block: 0; gap: 0; } /* 200 + 2 × 24 + linia – wysokość stanu po najechaniu */
+  .need { gap: 0; }
+  .feature__media, .need__media {
+    position: relative;
+    width: 0;
+    margin-right: 0;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1), margin-right 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .feature__media img, .need__media img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    max-width: none;
+    opacity: 0;
+    transform: translateX(-50%) scale(1.15);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  }
+  .feature:hover .feature__media, .need:hover .need__media { width: 200px; margin-right: var(--spacing-40); }
+  .feature:hover .feature__media img, .need:hover .need__media img { opacity: 1; transform: translateX(-50%) scale(1); }
+  .feature__title, .need__title { transition: color 0.4s ease; }
+  .feature:hover .feature__title, .need:hover .need__title { color: var(--color-text-primary); }
+}
+@media (hover: hover) and (min-width: 721px) and (prefers-reduced-motion: reduce) {
+  .feature__media, .need__media, .feature__media img, .need__media img, .feature__title, .need__title { transition: none; }
+}
+
+@media (max-width: 900px) {
+  .case-intro--hc .case-intro__side { align-self: stretch; flex-basis: auto; }
+}
+
+@media (max-width: 720px) {
+  /* Header (makieta mobile 3334:5895): logo w polu 64 px, dolny odstęp 24 */
+  .case-hero--hc { padding-bottom: var(--spacing-24); }
+  .case-hero__logo--hc { height: 64px; align-items: flex-start; }
+  .case-hero--hc .case-hero__title { background-image: linear-gradient(105.05deg, #f7f7f7 0.64%, #838383 92.03%); }
+  /* Wprowadzenie, Kontekst, Research – brak makiety mobile: tymczasowo jak 4F */
+  .case-intro--hc .case-intro__media { width: 100%; }
+  .case-decision--hc .case-decision__inner.container { padding-bottom: var(--spacing-32); }
+  .case-decision--hc .case-decision__title { font-size: var(--font-size-lg); }
+  .case-needs__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
+  .case-needs__top { gap: var(--spacing-8); }
+  .case-needs__title { font-size: var(--font-size-lg); font-weight: 500; }
+  .need { height: auto; gap: var(--spacing-24); padding: var(--spacing-24) 0; }
+  .need__media { width: 120px; height: 120px; border-radius: var(--radius-4); }
+  .need__label { font-family: var(--font-body); font-size: var(--font-size-sm); line-height: 22px; }
+  .need__title { font-size: var(--font-size-md); line-height: 22px; }
 }
