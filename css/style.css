@@ -2913,8 +2913,8 @@ html.has-drawer { overflow: hidden; }
 .case-intro--hc .case-intro__media { width: 400px; }
 .case-intro__btn[aria-disabled="true"] { cursor: default; } /* drawer „w pigułce” jeszcze bez treści */
 
-/* Kontekst (3353:7119): układ Decyzji z 4F – tło secondary, padding 80/80, odstęp 80, tytuł 32 */
-.case-decision--hc { background: var(--color-bg-secondary); }
+/* Kontekst (3353:7119): układ Decyzji z 4F – tło primary (Ola zmieniła 11.11), padding 80/80, odstęp 80, tytuł 32 */
+.case-decision--hc { background: var(--color-bg-primary); }
 .case-decision--hc .case-decision__inner { padding-bottom: var(--spacing-80); }
 .case-decision--hc .case-decision__top { gap: var(--spacing-80); }
 .case-decision--hc .case-decision__title { font-size: var(--font-size-2xl); }
@@ -3037,7 +3037,7 @@ html.has-drawer { overflow: hidden; }
 /* Healthy Cities – Strategia (#strategia, 11.11; web 3380:3358, mobile – brak makiety)
    Hover kolumny wg przykładu Oli z Figma Make (Sekcja-strategii-UX): delikatne tło kolumny, linia accent 2 px
    wysuwa się od lewej na dole kolumny, ikona dostaje tło accent, obraca się o −5° i powiększa o 5% (0.3–0.35 s). */
-.case-directions { background: var(--color-bg-primary); }
+.case-directions { background: var(--color-bg-secondary); } /* 11.11: Ola zmieniła tło na secondary */
 .case-directions__inner {
   display: flex;
   flex-direction: column;
