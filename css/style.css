@@ -3033,3 +3033,164 @@ html.has-drawer { overflow: hidden; }
   .need__label { font-family: var(--font-body); font-size: var(--font-size-sm); line-height: 22px; }
   .need__title { font-size: var(--font-size-md); line-height: 22px; }
 }
+
+/* Healthy Cities – Strategia (#strategia, 11.11; web 3380:3358, mobile – brak makiety)
+   Hover kolumny wg przykładu Oli z Figma Make (Sekcja-strategii-UX): delikatne tło kolumny, linia accent 2 px
+   wysuwa się od lewej na dole kolumny, ikona dostaje tło accent, obraca się o −5° i powiększa o 5% (0.3–0.35 s). */
+.case-directions { background: var(--color-bg-primary); }
+.case-directions__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-80);
+  padding-block: var(--spacing-80);
+}
+.case-directions__top {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-80);
+}
+.case-directions__heading {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+.case-directions__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-4xl);
+  font-weight: 400;
+  line-height: normal;
+  background: linear-gradient(104.12deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.case-directions__lead {
+  flex: 1 0 0;
+  min-width: 0;
+  line-height: 28px;
+  color: var(--color-text-secondary);
+}
+.directions {
+  position: relative;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-block: 1px solid var(--color-border-nav);
+}
+/* biała linia 2 px nad pierwszą kolumną – stała, jak w makiecie i w Make */
+.directions::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: calc((100% - 64px) / 4);
+  height: 2px;
+  background: var(--color-text-primary);
+}
+.direction {
+  position: relative;
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-80);
+  min-height: 360px;
+  padding: var(--spacing-32) var(--spacing-32) var(--spacing-40);
+  border-right: 1px solid var(--color-border-nav);
+  transition: background 0.3s ease;
+}
+.direction:first-child { padding-left: 0; }
+.direction:last-child { padding-right: 0; border-right: 0; }
+.direction::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--color-bg-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.direction__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+}
+.direction__num {
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-tertiary);
+}
+.direction__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--color-border-nav);
+  border-radius: var(--radius-16);
+  background: var(--color-button-secondary-bg);
+  color: var(--color-text-primary);
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.direction__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+.direction__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  line-height: normal;
+}
+.direction__desc {
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-tertiary);
+}
+@media (hover: hover) {
+  .direction:hover { background: rgba(255, 255, 255, 0.035); } /* wartość z Make – brak tokenu */
+  .direction:hover::after { transform: scaleX(1); }
+  .direction:hover .direction__icon {
+    color: var(--color-text-on-accent);
+    background: var(--color-bg-accent);
+    border-color: var(--color-bg-accent);
+    transform: rotate(-5deg) scale(1.05);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .direction, .direction::after, .direction__icon { transition: none; }
+}
+@media (max-width: 900px) {
+  .case-directions__top { flex-direction: column; align-items: stretch; gap: var(--spacing-24); }
+  .case-directions__heading, .case-directions__lead { flex: none; }
+  .directions { flex-wrap: wrap; }
+  .directions::before { width: 50%; }
+  .direction { flex: 0 0 50%; min-height: 0; padding: var(--spacing-32) var(--spacing-24) var(--spacing-40); border-bottom: 1px solid var(--color-border-nav); }
+  .direction:nth-child(odd) { padding-left: 0; }
+  .direction:nth-child(even) { padding-right: 0; border-right: 0; }
+  .direction:nth-last-child(-n+2) { border-bottom: 0; }
+}
+@media (max-width: 720px) {
+  /* brak makiety mobile – tymczasowo: kolumny jedna pod drugą */
+  .case-directions__inner.container { gap: var(--spacing-24); padding: var(--spacing-32) var(--spacing-16); }
+  .case-directions__heading { gap: var(--spacing-8); }
+  .case-directions__title { font-size: var(--font-size-lg); background-image: linear-gradient(105.05deg, #f7f7f7 0.64%, #838383 92.03%); }
+  .case-directions__lead { font-size: var(--font-size-sm); line-height: 22px; }
+  .directions::before { width: 100%; }
+  .direction { flex-basis: 100%; gap: var(--spacing-24); padding: var(--spacing-24) 0; border-right: 0; border-bottom: 1px solid var(--color-border-nav); }
+  .direction:nth-last-child(-n+2) { border-bottom: 1px solid var(--color-border-nav); }
+  .direction:last-child { border-bottom: 0; }
+  .direction__icon { width: 48px; height: 48px; border-radius: var(--radius-12, 12px); }
+  .direction__title { font-size: 18px; }
+}
