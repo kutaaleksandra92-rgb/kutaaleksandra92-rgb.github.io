@@ -232,3 +232,48 @@ document.querySelectorAll('[data-pill-back]').forEach((link) => {
     }
   });
 });
+
+// Strona Główna – „Środowisko pracy”: pasek kafli przesuwa się sam (CSS), a kafel najbliżej środka ekranu
+// dostaje .is-active (powiększenie o 20% + wersja kolorowa). Liczone w rAF tylko, gdy sekcja jest widoczna.
+document.querySelectorAll('[data-tools]').forEach((viewport) => {
+  const tools = [...viewport.querySelectorAll('.tool')];
+  if (!tools.length) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let active = null;
+  let frame = 0;
+  let visible = false;
+
+  const update = () => {
+    const box = viewport.getBoundingClientRect();
+    const center = box.left + box.width / 2;
+    let best = null;
+    let bestDistance = Infinity;
+    tools.forEach((tool) => {
+      const tile = tool.firstElementChild.getBoundingClientRect();
+      if (!tile.width) return; // ukryta kopia listy
+      const distance = Math.abs(tile.left + tile.width / 2 - center);
+      if (distance < bestDistance) { bestDistance = distance; best = tool; }
+    });
+    if (best !== active) {
+      if (active) active.classList.remove('is-active');
+      if (best) best.classList.add('is-active');
+      active = best;
+    }
+  };
+
+  const loop = () => {
+    update();
+    frame = visible && !reduced.matches ? requestAnimationFrame(loop) : 0;
+  };
+  const start = () => { if (!frame) frame = requestAnimationFrame(loop); };
+
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (visible) start();
+  }).observe(viewport);
+
+  // bez animacji (prefers-reduced-motion) – aktualizacja przy ręcznym przewijaniu i zmianie rozmiaru
+  viewport.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+});

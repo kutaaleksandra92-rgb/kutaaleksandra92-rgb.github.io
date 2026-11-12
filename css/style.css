@@ -141,7 +141,7 @@ body {
 .nav__toggle { display: none; }
 
 /* ---------- Hero / header (Strona Główna) ---------- */
-/* Nawigacja leży na tle headera */
+/* 12.11 – nowy header (Figma 3300:8854): wyśrodkowane tagi + tytuł, bez grafiki w tle; nawigacja leży na headerze */
 .page-home .site-header {
   position: absolute;
   top: 0;
@@ -151,94 +151,67 @@ body {
 }
 
 .hero {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 768px;
-  padding-top: 108px; /* wysokość nawigacji */
-  overflow: hidden;
+  padding-top: 108px; /* wysokość nawigacji; treść wyśrodkowana w pozostałej części (200 / 201 px jak w Figmie) */
   background: var(--color-bg-primary);
 }
-/* Tło rozciągnięte na całą szerokość okna (na 1440 px wygląda 1:1 jak w Figmie) */
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  object-fit: fill;
-  pointer-events: none;
-}
 .hero__content {
-  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: var(--spacing-48);
+  align-items: center;
+  gap: var(--spacing-24);
+  text-align: center;
 }
-
-.tags {
+/* Tagi oddzielone kwadratami 4×4 obróconymi o 45° (romby) */
+.hero__tags,
+.meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-16);
-}
-.tag {
-  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 11px 15px; /* 12/16 w Figmie – obramowanie 1px mieści się w wymiarach */
-  background: var(--color-bg-tag);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-24);
+  gap: var(--spacing-8) var(--spacing-16);
   font-size: var(--font-size-sm);
   line-height: 22px;
+  color: var(--color-text-secondary);
+}
+.hero__tags { justify-content: center; }
+.hero__tags > li,
+.meta > li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
   white-space: nowrap;
 }
-.tag__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--color-bg-accent);
-  box-shadow: 0 0 6px 0 var(--color-accent-glow);
+.hero__tags > li + li::before,
+.meta > li + li::before {
+  content: "";
+  flex: none;
+  width: 4px;
+  height: 4px;
+  margin-inline: 0.83px; /* romb ma 5,66 px szerokości – odstępy jak w Figmie */
+  background: rgba(255, 255, 255, 0.8);
+  transform: rotate(45deg);
 }
-
 .hero__title {
   max-width: 1200px;
   font-family: var(--font-heading);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-4xl);
   font-weight: 400;
   line-height: normal;
-  background-image: linear-gradient(104.58deg, #f7f7f7 0.64%, #838383 92.03%);
+  background-image: linear-gradient(102.6deg, #f7f7f7 0.64%, #838383 92.03%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.highlights {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
-  gap: 0 var(--spacing-8);
-  width: 100%;
-  padding: 0 160px 0 var(--spacing-80);
-  font-family: var(--font-heading);
-  font-size: 18px;
-  line-height: normal;
-}
-.highlights > li { white-space: nowrap; }
-.highlights__dot img { width: 4px; height: 4px; }
-.highlights__break { flex-basis: 100%; height: var(--spacing-8); } /* łamie wiersz; sam tworzy odstęp 8px między wierszami */
-
-/* ---------- Sekcja: Wybrane projekty ---------- */
-.projects {
-  background: linear-gradient(149deg, #0d0d0e 0%, #0d0d0e 70.87%, #12160a 101.57%);
-}
+/* ---------- Sekcja: Wybrane projekty (12.11 – Figma 2981:7096) ---------- */
+.projects { background: var(--color-bg-primary); }
 .projects__inner {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-88);
+  gap: var(--spacing-80);
   padding-top: var(--spacing-80);
   padding-bottom: var(--spacing-120);
 }
@@ -252,7 +225,7 @@ body {
   margin: 0;
   font-family: var(--font-heading);
   font-size: var(--font-size-3xl);
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
 }
 .section-head__lead {
@@ -270,15 +243,25 @@ body {
   color: var(--color-text-primary);
 }
 .project__media {
+  position: relative;
   display: block;
   overflow: hidden;
-  border-radius: var(--radius-8);
+  border-radius: var(--radius-4);
   background: var(--color-bg-surface);
 }
 .project__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* Logo 4F na zdjęciu (64 px, krycie 80%, 32 px od lewej, 19 px od dołu) */
+.project__media .project__logo {
+  position: absolute;
+  left: var(--spacing-32);
+  bottom: 4.847%; /* 19 z 392 – skaluje się razem z kaflem */
+  width: 64px;
+  height: 64px;
+  opacity: 0.8;
 }
 .project__body {
   display: flex;
@@ -293,19 +276,6 @@ body {
   line-height: normal;
 }
 
-/* Tagi projektu (Redesign • Decyzje • …) */
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--spacing-8) var(--spacing-16);
-  color: var(--color-bg-accent);
-  font-size: var(--font-size-xs);
-  line-height: 20px;
-}
-.meta > li { white-space: nowrap; }
-.meta__dot img { width: 4px; height: 4px; }
-
 /* 1. Kafel 4F + tekst z prawej, wyrównane do dołu */
 .projects__feature {
   display: flex;
@@ -314,10 +284,7 @@ body {
 }
 .project--featured { flex: 0 0 63.1667%; } /* 758 z 1200 – skaluje się z szerokością strony */
 .project--featured .project__media { height: auto; aspect-ratio: 758 / 392; }
-.project--featured .project__body {
-  gap: var(--spacing-8);
-  padding-right: var(--spacing-40);
-}
+.project--featured .project__body { padding-right: var(--spacing-40); }
 .project--featured .meta { max-width: 398px; }
 .project--featured .project__title { font-size: var(--font-size-lg); }
 .projects__note {
@@ -336,13 +303,150 @@ body {
   gap: var(--spacing-80);
 }
 .project--small { flex: 0 0 36.25%; } /* 435 z 1200 */
-.project--small .project__media {
-  height: auto;
-  aspect-ratio: 435 / 329;
-  border-radius: var(--radius-4);
-}
+.project--small .project__media { height: auto; aspect-ratio: 435 / 329; }
 .project--large { flex: 1 0 0; }
-.project--large .project__media { height: auto; aspect-ratio: 685 / 392; }
+.project--large .project__media { height: auto; aspect-ratio: 685 / 392; border-radius: var(--radius-8); }
+
+/* ---------- Sekcja: Środowisko pracy (12.11 – Figma 3395:4577 / kolor 3395:4617 / środek 3395:4729) ---------- */
+/* Pasek kafli przesuwa się sam w pętli (jak cytaty CTRL+); kafel na środku ekranu powiększa się o 20% i przechodzi w wersję kolorową (js/main.js [data-tools]) */
+.tools {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-48);
+  padding-block: var(--spacing-80);
+  background: var(--color-bg-primary);
+}
+.tools__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  background-image: linear-gradient(127.97deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tools__viewport { overflow: hidden; padding-block: var(--spacing-40); }
+.tools__track {
+  display: flex;
+  width: max-content;
+  animation: tools-scroll 40.5s linear infinite; /* ok. 40 px/s jak cytaty CTRL+ (zestaw 7 kafli = 1619 px), kafel co ok. 5,8 s */
+}
+.tools__list { display: flex; align-items: center; }
+/* Kafel 100 + 60 + romb 8×8 (11,31 px) + 60 */
+.tool {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding-right: 60px;
+}
+.tool::after {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-inline: 1.66px; /* romb ma 11,31 px szerokości */
+  background: rgba(255, 255, 255, 0.8);
+  transform: rotate(45deg);
+}
+.tool__tile {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 100px;
+  height: 100px;
+  transition: transform 0.6s cubic-bezier(.22, 1, .36, 1);
+}
+.tool__icon {
+  position: absolute;
+  inset: 0;
+  width: 100px;
+  height: 100px;
+  max-width: none;
+}
+.tool__icon--color {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.tool.is-active .tool__tile { transform: scale(1.2); }
+.tool.is-active .tool__icon--color { opacity: 1; }
+@keyframes tools-scroll { to { transform: translateX(-33.3333%); } }
+
+/* ---------- Stopka Strony Głównej (12.11 – Figma 3395:3358) ---------- */
+.home-footer {
+  border-top: 1px solid var(--color-border-nav);
+  background: var(--color-bg-primary);
+}
+.home-footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-80);
+  padding-block: var(--spacing-120);
+}
+.home-footer__tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--spacing-8) var(--spacing-16) var(--spacing-8) var(--spacing-12);
+  font-size: var(--font-size-xs);
+  line-height: 20px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+.home-footer__dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-bg-accent);
+}
+.home-footer__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-40);
+  width: 100%;
+}
+.home-footer__title {
+  max-width: 800px;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-4xl);
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  background-image: linear-gradient(102.6deg, #f7f7f7 0.64%, #838383 92.03%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Przycisk CTA, rozmiar small */
+.home-footer__cta {
+  padding: var(--spacing-8) var(--spacing-12);
+  font-size: var(--font-size-xs);
+  line-height: 20px;
+}
+.home-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+  width: 100%;
+}
+.home-footer__contact {
+  flex: 1 0 0;
+  line-height: 28px;
+  color: var(--color-text-secondary);
+}
+.home-footer__contact--end { text-align: right; }
+.home-footer__copy {
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
 
 /* ---------- Case study: header ---------- */
 .case-hero {
@@ -447,95 +551,6 @@ body {
   object-position: top;
   border-radius: var(--radius-4);
   background: #09090a;
-}
-
-
-/* ---------- Stopka ---------- */
-.site-footer {
-  padding: var(--spacing-40);
-}
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--spacing-32);
-  padding: var(--spacing-64) var(--spacing-80);
-  border-radius: var(--radius-8);
-  background: var(--color-bg-secondary);
-}
-.footer__logo { width: 44px; height: 44px; }
-
-.footer__top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--spacing-24);
-  width: 100%;
-}
-.footer__title {
-  flex: 0 1 763px;
-  min-width: 0;
-  font-family: var(--font-heading);
-  font-size: var(--font-size-3xl);
-  font-weight: 400;
-  line-height: normal;
-  background-image: linear-gradient(103.94deg, #f7f7f7 0.64%, #838383 92.03%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-/* Przycisk CTA, rozmiar medium */
-.footer__cta {
-  flex: none;
-  padding: var(--spacing-12) var(--spacing-16);
-  font-size: var(--font-size-sm);
-  line-height: 22px;
-}
-
-.footer__contact {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-40);
-  width: 100%;
-  margin: 0;
-  padding-block: var(--spacing-24);
-  border-top: 0.5px solid var(--color-border-nav);
-}
-.footer__contact-item {
-  flex: 1 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-}
-.footer__contact dt,
-.footer__label {
-  font-size: var(--font-size-sm);
-  line-height: normal;
-  color: var(--color-text-tertiary);
-}
-.footer__contact dd {
-  margin: 0;
-  line-height: 28px;
-  color: var(--color-text-secondary);
-}
-
-.footer__bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-24);
-  width: 100%;
-  padding-top: var(--spacing-56);
-  border-top: 0.5px solid var(--color-border-nav);
-}
-.footer__label { white-space: nowrap; }
-.footer__tools { display: contents; }
-.footer__tools img { display: block; width: 48px; height: 48px; }
-.footer__copy {
-  font-size: var(--font-size-xs);
-  line-height: 20px;
-  color: var(--color-text-tertiary);
-  white-space: nowrap;
 }
 
 
@@ -2232,8 +2247,6 @@ html.has-drawer { overflow: hidden; }
   :root { --page-gutter: 32px; }
   .nav, .nav__menu { gap: 32px; }
   .hero__title { font-size: 40px; }
-  .highlights { padding: 0; row-gap: var(--spacing-8); }
-  .highlights__break { height: 0; }
 
   /* Projekty – tymczasowo: kafle jeden pod drugim (do czasu makiet mobile) */
   .projects__inner { padding-block: 64px; gap: 48px; }
@@ -2281,31 +2294,16 @@ html.has-drawer { overflow: hidden; }
   .btn--cta { margin-top: 8px; }
 
   .page-home .site-header { position: relative; }
+  /* Header SG – mobile tymczasowo (brak makiety) */
   .hero { height: auto; padding: 48px 0 64px; }
-  .hero__content { gap: 32px; }
   .hero__title { font-size: 32px; }
-  .tag { font-size: 14px; padding: 10px 14px; }
-  .highlights {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 18px;
-  }
-  .highlights > li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    white-space: normal;
-  }
-  .highlights > li:not(.highlights__dot):not(.highlights__break)::before {
-    content: "";
-    flex: none;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-text-primary);
-  }
-  .highlights__dot, .highlights__break { display: none !important; }
+  /* Środowisko pracy i stopka SG – mobile tymczasowo (brak makiety) */
+  .tools { gap: var(--spacing-24); padding-block: var(--spacing-32); }
+  .tools__title { font-size: var(--font-size-lg); }
+  .home-footer__inner { gap: var(--spacing-40); padding: var(--spacing-56) var(--spacing-16); }
+  .home-footer__title { font-size: var(--font-size-lg); }
+  .home-footer__bottom { flex-direction: column; gap: var(--spacing-8); text-align: center; }
+  .home-footer__contact, .home-footer__contact--end { flex: none; text-align: center; }
 
   /* Case study – header (makieta mobile 375) */
   .case-hero { padding-bottom: var(--spacing-32); }
@@ -2846,48 +2844,6 @@ html.has-drawer { overflow: hidden; }
   .course__title { font-size: 18px; }
   .course__desc { font-size: var(--font-size-md); line-height: 22px; }
 
-  /* Stopka (makieta mobile 375) */
-  .site-footer { padding: var(--spacing-16); }
-  .footer {
-    gap: var(--spacing-24);
-    padding: var(--spacing-24);
-    border-radius: var(--radius-24);
-  }
-  .footer__top {
-    flex-direction: column;
-    gap: var(--spacing-24);
-  }
-  .footer__title {
-    flex: none;
-    width: 100%;
-    font-size: var(--font-size-lg);
-    background: none;
-    color: var(--color-text-primary);
-  }
-  .footer__cta {
-    margin-top: 0;
-    padding: var(--spacing-8) var(--spacing-12);
-    font-size: var(--font-size-xs);
-    line-height: 20px;
-  }
-  .footer__contact {
-    flex-direction: column;
-    gap: var(--spacing-8);
-    padding: var(--spacing-24) 0 0;
-  }
-  .footer__contact-item { flex: none; width: 100%; }
-  .footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: var(--spacing-16);
-    padding-top: var(--spacing-24);
-  }
-  .footer__tools {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-8);
-  }
 }
 
 /* ==========================================================================
@@ -3193,4 +3149,11 @@ html.has-drawer { overflow: hidden; }
   .direction:last-child { border-bottom: 0; }
   .direction__icon { width: 48px; height: 48px; border-radius: var(--radius-12, 12px); }
   .direction__title { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Środowisko pracy: bez ruchu – pasek przewijany ręcznie, jedna lista */
+  .tools__viewport { overflow-x: auto; }
+  .tools__track { animation: none; }
+  .tools__list[aria-hidden="true"] { display: none; }
+  .tool__tile, .tool__icon--color { transition: none; }
 }
