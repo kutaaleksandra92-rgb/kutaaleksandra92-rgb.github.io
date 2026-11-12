@@ -233,32 +233,37 @@ document.querySelectorAll('[data-pill-back]').forEach((link) => {
   });
 });
 
-// Strona Główna – „Środowisko pracy”: pasek kafli przesuwa się sam (CSS), a kafel najbliżej środka ekranu
-// dostaje .is-active (powiększenie o 20% + wersja kolorowa). Liczone w rAF tylko, gdy sekcja jest widoczna.
+// Strona Główna – „Środowisko pracy”: pasek kafli przesuwa się sam (CSS). Każdy kafel płynnie rośnie (do 1.2)
+// i nabiera koloru, im bliżej jest środka ekranu – pełne powiększenie i kolor dokładnie na środku.
+// Zasięg efektu = pół odstępu między kaflami (ok. 116 px). Liczone w rAF tylko, gdy sekcja jest widoczna.
 document.querySelectorAll('[data-tools]').forEach((viewport) => {
-  const tools = [...viewport.querySelectorAll('.tool')];
-  if (!tools.length) return;
+  const tiles = [...viewport.querySelectorAll('.tool__tile')].map((tile) => ({
+    tile,
+    color: tile.querySelector('.tool__icon--color'),
+    last: -1,
+  }));
+  if (!tiles.length) return;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let active = null;
   let frame = 0;
   let visible = false;
 
   const update = () => {
     const box = viewport.getBoundingClientRect();
     const center = box.left + box.width / 2;
-    let best = null;
-    let bestDistance = Infinity;
-    tools.forEach((tool) => {
-      const tile = tool.firstElementChild.getBoundingClientRect();
-      if (!tile.width) return; // ukryta kopia listy
-      const distance = Math.abs(tile.left + tile.width / 2 - center);
-      if (distance < bestDistance) { bestDistance = distance; best = tool; }
+    const first = tiles[0].tile.parentElement;
+    const pitch = first.offsetWidth || 231; // kafel + romb + odstępy
+    const reach = pitch / 2;
+    tiles.forEach((t) => {
+      const r = t.tile.getBoundingClientRect();
+      if (!r.width) return; // ukryta kopia listy
+      const distance = Math.abs(r.left + r.width / 2 - center);
+      const x = Math.max(0, 1 - distance / reach);
+      const e = Math.round(x * x * (3 - 2 * x) * 1000) / 1000; // smoothstep
+      if (e === t.last) return;
+      t.last = e;
+      t.tile.style.transform = e ? `scale(${1 + 0.2 * e})` : '';
+      t.color.style.opacity = e;
     });
-    if (best !== active) {
-      if (active) active.classList.remove('is-active');
-      if (best) best.classList.add('is-active');
-      active = best;
-    }
   };
 
   const loop = () => {

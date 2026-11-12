@@ -308,7 +308,7 @@ body {
 .project--large .project__media { height: auto; aspect-ratio: 685 / 392; border-radius: var(--radius-8); }
 
 /* ---------- Sekcja: Środowisko pracy (12.11 – Figma 3395:4577 / kolor 3395:4617 / środek 3395:4729) ---------- */
-/* Pasek kafli przesuwa się sam w pętli (jak cytaty CTRL+); kafel na środku ekranu powiększa się o 20% i przechodzi w wersję kolorową (js/main.js [data-tools]) */
+/* Pasek kafli przesuwa się sam w pętli; kafel płynnie rośnie (do +20%) i nabiera koloru, im bliżej środka ekranu – maksimum dokładnie na środku (js/main.js [data-tools]) */
 .tools {
   display: flex;
   flex-direction: column;
@@ -332,7 +332,7 @@ body {
 .tools__track {
   display: flex;
   width: max-content;
-  animation: tools-scroll 40.5s linear infinite; /* ok. 40 px/s jak cytaty CTRL+ (zestaw 7 kafli = 1619 px), kafel co ok. 5,8 s */
+  animation: tools-scroll 20.25s linear infinite; /* 12.11 wieczór: przyspieszone 2× – ok. 80 px/s (zestaw 7 kafli = 1619 px), kafel co ok. 2,9 s */
 }
 .tools__list { display: flex; align-items: center; }
 /* Kafel 100 + 60 + romb 8×8 (11,31 px) + 60 */
@@ -357,7 +357,7 @@ body {
   flex: none;
   width: 100px;
   height: 100px;
-  transition: transform 0.6s cubic-bezier(.22, 1, .36, 1);
+  will-change: transform; /* powiększenie liczone w js/main.js zależnie od odległości od środka */
 }
 .tool__icon {
   position: absolute;
@@ -366,12 +366,7 @@ body {
   height: 100px;
   max-width: none;
 }
-.tool__icon--color {
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-.tool.is-active .tool__tile { transform: scale(1.2); }
-.tool.is-active .tool__icon--color { opacity: 1; }
+.tool__icon--color { opacity: 0; } /* krycie liczone w js/main.js */
 @keyframes tools-scroll { to { transform: translateX(-33.3333%); } }
 
 /* ---------- Stopka Strony Głównej (12.11 – Figma 3395:3358) ---------- */
@@ -3155,5 +3150,4 @@ html.has-drawer { overflow: hidden; }
   .tools__viewport { overflow-x: auto; }
   .tools__track { animation: none; }
   .tools__list[aria-hidden="true"] { display: none; }
-  .tool__tile, .tool__icon--color { transition: none; }
 }
