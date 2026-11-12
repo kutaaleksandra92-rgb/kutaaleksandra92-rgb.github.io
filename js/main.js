@@ -169,7 +169,7 @@ document.querySelectorAll('[data-parallax]').forEach((board) => {
   web.addEventListener('change', () => { if (!web.matches) { tx = ty = x = y = 0; items.forEach(({ el }) => { el.style.transform = ''; }); } });
 });
 
-// CTRL+ „Case Study w pigułce” – na webie drawer z prawej (maska, płynne wysunięcie), na mobile zwykły link do ctrl-w-pigulce.html
+// „Case Study w pigułce” (case study + Strona Główna) – na webie drawer z prawej (maska, płynne wysunięcie), na mobile zwykły link (strona „w pigułce” / pełne case study)
 document.querySelectorAll('[data-drawer-open]').forEach((trigger) => {
   const drawer = document.getElementById(trigger.dataset.drawerOpen);
   if (!drawer) return;

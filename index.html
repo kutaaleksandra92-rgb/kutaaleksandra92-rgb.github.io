@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=90">
+  <link rel="stylesheet" href="css/style.css?v=91">
 </head>
 <body class="page-home">
 
@@ -67,7 +67,7 @@
         <!-- Projekt 1: 4F (duży kafel + tekst z prawej) -->
         <div class="projects__feature">
           <div class="project project--featured">
-            <a href="projekty/4f.html" class="project__media" aria-label="Aplikacja mobilna 4F – zobacz projekt">
+            <a href="projekty/4f.html" class="project__media" aria-label="Aplikacja mobilna 4F – Case Study w pigułce" data-drawer-open="pigulka-4f" aria-haspopup="dialog">
               <img src="assets/images/projekty/projekt-4f.jpg?v=2" alt="Aplikacja mobilna 4F na ekranie telefonu" width="758" height="392" loading="lazy">
               <img class="project__logo" src="assets/icons/logo-4f-kafel.svg" alt="" width="64" height="64">
             </a>
@@ -87,7 +87,7 @@
         <div class="projects__row">
           <!-- Projekt 2: CTRL+ -->
           <div class="project project--small">
-            <a href="projekty/ctrl.html" class="project__media" aria-label="CTRL+ – zobacz projekt">
+            <a href="projekty/ctrl.html" class="project__media" aria-label="CTRL+ – Case Study w pigułce" data-drawer-open="pigulka-ctrl" aria-haspopup="dialog">
               <img src="assets/images/projekty/projekt-ctrl.jpg?v=2" alt="Fiolka CTRL+ z płynem na różowym tle" width="435" height="329" loading="lazy">
             </a>
             <div class="project__body">
@@ -103,7 +103,7 @@
 
           <!-- Projekt 3: Healthy Cities (Mobile Trends Awards) -->
           <div class="project project--large">
-            <a href="projekty/healthy-cities.html" class="project__media" aria-label="Healthy Cities – zobacz projekt">
+            <a href="projekty/healthy-cities.html" class="project__media" aria-label="Healthy Cities – Case Study w pigułce" data-drawer-open="pigulka-hc" aria-haspopup="dialog">
               <img src="assets/images/projekty/projekt-mta.jpg?v=2" alt="Ekran aplikacji z wyzwaniem krokowym i znakiem Mobile Trends Award 2024" width="685" height="392" loading="lazy">
             </a>
             <div class="project__body">
@@ -261,6 +261,115 @@
         </div>
       </div>
     </section>
+    <!-- ============ DRAWERY „Case Study w pigułce” (web; klik w zdjęcie projektu – js/main.js [data-drawer-open]; na mobile zdjęcie prowadzi do pełnego case study) ============ -->
+    <!-- 4F – treść z projekty/4f.html -->
+    <div class="drawer" id="pigulka-4f" role="dialog" aria-modal="true" aria-labelledby="pill-title-4f" hidden>
+      <div class="drawer__mask" data-drawer-close></div>
+      <div class="drawer__panel pill">
+        <div class="pill__scroll">
+          <div class="pill__head">
+            <div class="pill__heading">
+              <p class="pill__meta">Senior Product Designer · Strategia · Omnichannel · Lojalność</p>
+              <h2 id="pill-title-4f" class="pill__title">Aplikacja mobilna 4F | Od sprzedaży do ekosystemu lojalnościowego</h2>
+            </div>
+            <button type="button" class="pill__close" data-drawer-close aria-label="Zamknij"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M30 10L10 30M10 10L30 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <section class="pill__block" aria-labelledby="pill-challenge-4f">
+            <h3 id="pill-challenge-4f" class="pill__subtitle">Wyzwanie biznesowe</h3>
+            <p class="pill__text">Aplikacja sprzedawała, ale nie budowała długofalowej relacji z klientami. 87% porzuceń koszyka i niewykorzystany potencjał lojalności w salonach</p>
+          </section>
+          <section class="pill__tile" aria-labelledby="pill-findings-4f">
+            <h3 id="pill-findings-4f" class="pill__subtitle">3 kluczowe decyzje</h3>
+            <ol class="findings">
+              <li class="finding"><h4 class="finding__title">4F TEAM</h4><p class="finding__desc">Program lojalnościowy oparty na punktach i benefitach</p></li>
+              <li class="finding"><h4 class="finding__title">Skrócenie checkoutu z 4 do 2 kroków</h4><p class="finding__desc">Mniej kroków, BLIK na pierwszym planie wraz z portfelami cyfrowymi</p></li>
+              <li class="finding"><h4 class="finding__title">Konto jako centrum relacji</h4><p class="finding__desc">Personalizacja, grywalizacja i omnichannel</p></li>
+            </ol>
+          </section>
+          <section class="pill__effects" aria-labelledby="pill-effects-4f">
+            <h3 id="pill-effects-4f" class="pill__subtitle pill__subtitle--decision">Efekty biznesowe</h3>
+            <ul class="effects">
+              <li class="effect"><span class="effect__value">+50%</span><span class="effect__label">Przychodów ze sprzedaży w aplikacji r/r</span></li>
+              <li class="effect"><span class="effect__value">1,05M</span><span class="effect__label">Nowych członków programu 4F TEAM</span></li>
+              <li class="effect"><span class="effect__value">9,37/10</span><span class="effect__label">Na podstawie 32 tys. odpowiedzi</span></li>
+            </ul>
+          </section>
+        </div>
+        <div class="pill__bar">
+          <a href="projekty/4f.html" class="btn btn--cta pill__cta">Przeczytaj pełne Case Study (ok. 5 min.) <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTRL+ – treść z projekty/ctrl.html -->
+    <div class="drawer" id="pigulka-ctrl" role="dialog" aria-modal="true" aria-labelledby="pill-title-ctrl" hidden>
+      <div class="drawer__mask" data-drawer-close></div>
+      <div class="drawer__panel pill">
+        <div class="pill__scroll">
+          <div class="pill__head">
+            <div class="pill__heading">
+              <p class="pill__meta">Product Designer · Discovery · 18 IDI</p>
+              <h2 id="pill-title-ctrl" class="pill__title">CTRL+ | Product Discovery dla nowego produktu</h2>
+            </div>
+            <button type="button" class="pill__close" data-drawer-close aria-label="Zamknij"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M30 10L10 30M10 10L30 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <section class="pill__block" aria-labelledby="pill-challenge-ctrl">
+            <h3 id="pill-challenge-ctrl" class="pill__subtitle">Wyzwanie biznesowe</h3>
+            <p class="pill__text">Marka spożywcza planowała wejście na rynek spersonalizowanej suplementacji. Discovery miało zweryfikować potencjał biznesowy i zasadność inwestycji.</p>
+          </section>
+          <section class="pill__tile" aria-labelledby="pill-findings-ctrl">
+            <h3 id="pill-findings-ctrl" class="pill__subtitle">3 kluczowe odkrycia</h3>
+            <ol class="findings">
+              <li class="finding"><h4 class="finding__title">Potrzeba ≠ gotowość do zakupu</h4><p class="finding__desc">15 z 18 badanych dostrzegało wartość personalizacji, ale barierą było zaufanie do marki i wiarygodności medycznej.</p></li>
+              <li class="finding"><h4 class="finding__title">Brak realnej przewagi</h4><p class="finding__desc">Planowane funkcjonalności były już standardem u konkurencji.</p></li>
+              <li class="finding"><h4 class="finding__title">Nieopłacalny model wejścia</h4><p class="finding__desc">Projekt wymagał kosztownej budowy całego ekosystemu: technologii, ekspertyzy medycznej i marketingu.</p></li>
+            </ol>
+          </section>
+          <section class="pill__decision" aria-labelledby="pill-decision-ctrl">
+            <h3 id="pill-decision-ctrl" class="pill__subtitle pill__subtitle--decision">Decyzja biznesowa</h3>
+            <p class="pill__decision-text"><span class="pill__decision-lead">Zatrzymanie projektu przed fazą UI/DEV</span><br>Zamiast inwestować w produkt o niepotwierdzonym potencjale, firma uniknęła kosztownego wdrożenia i mogła przekierować budżet na inne inicjatywy.</p>
+          </section>
+        </div>
+        <div class="pill__bar">
+          <a href="projekty/ctrl.html" class="btn btn--cta pill__cta">Przeczytaj pełne Case Study <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Healthy Cities – PLACEHOLDER (treść w przygotowaniu) -->
+    <div class="drawer" id="pigulka-hc" role="dialog" aria-modal="true" aria-labelledby="pill-title-hc" hidden>
+      <div class="drawer__mask" data-drawer-close></div>
+      <div class="drawer__panel pill">
+        <div class="pill__scroll">
+          <div class="pill__head">
+            <div class="pill__heading">
+              <p class="pill__meta">[Rola] · [Zakres] · [Metody]</p>
+              <h2 id="pill-title-hc" class="pill__title">Healthy Cities | [Tytuł case study]</h2>
+            </div>
+            <button type="button" class="pill__close" data-drawer-close aria-label="Zamknij"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M30 10L10 30M10 10L30 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <section class="pill__block" aria-labelledby="pill-challenge-hc">
+            <h3 id="pill-challenge-hc" class="pill__subtitle">Wyzwanie biznesowe</h3>
+            <p class="pill__text">[Placeholder] Opis wyzwania biznesowego – treść w przygotowaniu.</p>
+          </section>
+          <section class="pill__tile" aria-labelledby="pill-findings-hc">
+            <h3 id="pill-findings-hc" class="pill__subtitle">3 kluczowe [odkrycia / decyzje]</h3>
+            <ol class="findings">
+              <li class="finding"><h4 class="finding__title">[Punkt 1]</h4><p class="finding__desc">[Placeholder] Krótki opis – treść w przygotowaniu.</p></li>
+              <li class="finding"><h4 class="finding__title">[Punkt 2]</h4><p class="finding__desc">[Placeholder] Krótki opis – treść w przygotowaniu.</p></li>
+              <li class="finding"><h4 class="finding__title">[Punkt 3]</h4><p class="finding__desc">[Placeholder] Krótki opis – treść w przygotowaniu.</p></li>
+            </ol>
+          </section>
+          <section class="pill__decision" aria-labelledby="pill-decision-hc">
+            <h3 id="pill-decision-hc" class="pill__subtitle pill__subtitle--decision">[Efekt / decyzja]</h3>
+            <p class="pill__decision-text"><span class="pill__decision-lead">[Placeholder] Najważniejszy wynik</span><br>Treść w przygotowaniu.</p>
+          </section>
+        </div>
+        <div class="pill__bar">
+          <a href="projekty/healthy-cities.html" class="btn btn--cta pill__cta">Przeczytaj pełne Case Study <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- ============ STOPKA ============ -->
@@ -282,6 +391,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=90"></script>
+  <script src="js/main.js?v=91"></script>
 </body>
 </html>
