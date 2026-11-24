@@ -13,7 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=92">
+  <link rel="stylesheet" href="css/style.css?v=93">
+  <!-- ROBOCZE (24.11): oznaczenie kafla bez zdjęcia (Warsztat) – usunąć przed publikacją -->
+  <link rel="stylesheet" href="css/robocze.css?v=1">
 </head>
 <body class="page-home">
 
@@ -119,6 +121,26 @@
               <h3 class="project__title">Nagroda Mobile Trends Awards 2025 za strategiczne wykorzystanie grywalizacji w budowaniu zaangażowania użytkowników</h3>
             </div>
           </div>
+        </div>
+
+        <!-- Projekt 4: Warsztat strategiczny (24.11 – brak makiety; układ jak kafel 4F; zdjęcie do uzupełnienia) -->
+        <div class="projects__feature">
+          <div class="project project--featured">
+            <a href="projekty/warsztat-mvp.html" class="project__media" aria-label="Warsztat strategiczny – Case Study w pigułce" data-drawer-open="pigulka-ws" aria-haspopup="dialog">
+              <!-- DO UZUPEŁNIENIA: zdjęcie kafla projekt-warsztat.jpg 1516 × 784 (758 × 392 @2x) – podmienić span na <img> i usunąć styl .project__placeholder -->
+              <span class="project__placeholder">Do uzupełnienia · zdjęcie kafla 758 × 392</span>
+            </a>
+            <div class="project__body">
+              <ul class="meta" aria-label="Zakres">
+                <li>Warsztat</li>
+              <li>Discovery</li>
+              <li>Decyzje</li>
+              <li>4 min czytania</li>
+              </ul>
+              <h3 class="project__title">Pięć godzin, które zamieniły wizję w zakres MVP</h3>
+            </div>
+          </div>
+          <p class="projects__note"><span class="projects__note-muted">Klient miał badania, brand i wizję, ale</span> nie miał zakresu, więc nie było wyceny ani startu prac</p>
         </div>
       </div>
     </section>
@@ -373,6 +395,44 @@
         </div>
       </div>
     </div>
+    <!-- ============ DRAWER Warsztat – kopia z projekty/warsztat-mvp.html (przy zmianach treści aktualizować oba miejsca + warsztat-mvp-w-pigulce.html) ============ -->
+    <div class="drawer" id="pigulka-ws" role="dialog" aria-modal="true" aria-labelledby="pill-title-ws" hidden>
+      <div class="drawer__mask" data-drawer-close></div>
+      <div class="drawer__panel pill">
+        <div class="pill__scroll">
+          <div class="pill__head">
+            <div class="pill__heading">
+              <p class="pill__meta">Facylitacja · Discovery &amp; Define · 5 h · 11 osób</p>
+              <h2 id="pill-title-ws" class="pill__title">Warsztat strategiczny | Od wizji do zakresu MVP</h2>
+            </div>
+            <button type="button" class="pill__close" data-drawer-close aria-label="Zamknij"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M30 10L10 30M10 10L30 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <section class="pill__block" aria-labelledby="pill-challenge-ws">
+            <h3 id="pill-challenge-ws" class="pill__subtitle">Problem</h3>
+            <p class="pill__text">Klient miał badania, brand i wizję, ale nie miał zakresu. Bez niego nie było wyceny ani startu prac.</p>
+          </section>
+          <section class="pill__tile" aria-labelledby="pill-findings-ws">
+            <h3 id="pill-findings-ws" class="pill__subtitle">Co zrobiłam</h3>
+            <ol class="findings">
+              <li class="finding"><h4 class="finding__title">Benchmarki przypięte do lęków</h4><p class="finding__desc">Przykłady z rynku pokazywane przez insighty z badań, a nie przez estetykę.</p></li>
+              <li class="finding"><h4 class="finding__title">Service Blueprint zamiast listy funkcji</h4><p class="finding__desc">Pytanie „kto to obsłuży?” oddzielało MVP od życzeń.</p></li>
+              <li class="finding"><h4 class="finding__title">Wykonawcy przy stole</h4><p class="finding__desc">Backend, frontend i QA sprawdzali wykonalność w trakcie decyzji.</p></li>
+            </ol>
+          </section>
+          <section class="pill__effects" aria-labelledby="pill-effects-ws">
+            <h3 id="pill-effects-ws" class="pill__subtitle pill__subtitle--decision">Wynik</h3>
+            <ul class="effects">
+              <li class="effect"><span class="effect__value">135</span><span class="effect__label">Wymagań w specyfikacji z ustaleń warsztatu</span></li>
+              <li class="effect"><span class="effect__value">7 faz</span><span class="effect__label">Service Blueprintu i 7 filarów portalu</span></li>
+              <li class="effect"><span class="effect__value">&lt; 11 tyg.</span><span class="effect__label">Do pierwszej działającej wersji</span></li>
+            </ul>
+          </section>
+        </div>
+        <div class="pill__bar">
+          <a href="projekty/warsztat-mvp.html" class="btn btn--cta pill__cta">Przeczytaj pełne Case Study (ok. 4 min.) <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- ============ STOPKA ============ -->
@@ -394,6 +454,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=92"></script>
+  <script src="js/main.js?v=93"></script>
 </body>
 </html>

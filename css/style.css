@@ -3174,3 +3174,65 @@ html.has-drawer { overflow: hidden; }
   opacity: 0;
   will-change: transform, opacity;
 }
+
+/* ============================================================
+   Case study „Warsztat strategiczny” (projekty/warsztat-mvp.html, 24.11)
+   Brak makiety – strona złożona z istniejących komponentów (CTRL+, HC).
+   Tylko modyfikatory --ws i kilka nowych elementów; wspólne klasy bez zmian.
+   ============================================================ */
+/* Header jak CTRL+ (bez logo – case study anonimowe) */
+@media (min-width: 901px) {
+  .case-hero--ws .case-hero__content { gap: var(--spacing-64); padding-top: var(--spacing-120); }
+  .case-hero--ws .case-hero__title { background-image: linear-gradient(100.08deg, #f7f7f7 0.64%, #838383 92.03%); }
+}
+
+/* Badania / Wynik – kafle .verdict-tile bez ikon; liczba jako tytuł */
+.verdict-tile__title--stat { font-size: var(--font-size-3xl); font-weight: 400; }
+.case-verdict--ws-result { background: var(--color-bg-secondary); } /* przeplot tła: Decyzje #0d0d0e → Wynik #111112 */
+.case-verdict--ws-result .verdict-tile { background: var(--color-bg-primary); }
+.case-verdict--ws-result .verdict-tile--accent { background: var(--color-bg-accent); }
+
+/* Wynik – rząd 3 artefaktów */
+.artifacts { display: flex; gap: var(--spacing-20); margin: 0; padding: 0; list-style: none; }
+.artifact { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-16); }
+.artifact__media { aspect-ratio: 4 / 3; border-radius: var(--radius-8); overflow: hidden; }
+.artifact__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.artifact__title { margin: var(--spacing-8) 0 0; font-family: var(--font-heading); font-size: var(--font-size-lg); font-weight: 500; line-height: normal; }
+.artifact__desc { margin: 0; line-height: 28px; color: var(--color-text-tertiary); }
+
+/* Kluczowe decyzje – „Było” przekreślone nad decyzją */
+.limit__was { margin: 0 0 var(--spacing-4); font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-tertiary); }
+.limit__was-label { margin-right: 4px; }
+.limit__was s { text-decoration-thickness: 1px; }
+.case-limits--ws .limit__title { font-size: var(--font-size-lg); }
+.case-limits--ws .case-limits__side { align-items: stretch; gap: var(--spacing-64); }
+
+/* Świadomie po MVP – tagi jak „Cytat uczestnika” w CTRL+ */
+.post-mvp { display: flex; flex-direction: column; gap: var(--spacing-16); padding-top: var(--spacing-32); border-top: 1px solid var(--color-border-nav); }
+.post-mvp__title { margin: 0; font-family: var(--font-heading); font-size: 18px; font-weight: 400; line-height: normal; color: var(--color-text-secondary); }
+.post-mvp__list { display: flex; flex-wrap: wrap; gap: var(--spacing-8); margin: 0; padding: 0; list-style: none; }
+.post-mvp__item {
+  padding: 12px var(--spacing-16);
+  border: 0.5px solid var(--color-border-subtle);
+  border-radius: 24px;
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-tertiary);
+}
+.post-mvp__note { margin: 0; font-size: var(--font-size-sm); line-height: 22px; color: var(--color-text-tertiary); }
+
+/* Refleksja – akapit pod cytatem */
+.case-reflection__note { margin: var(--spacing-12) 0 0; max-width: 800px; font-family: var(--font-body); font-size: var(--font-size-md); line-height: 28px; color: var(--color-text-secondary); }
+
+@media (max-width: 900px) {
+  .artifacts { flex-direction: column; gap: var(--spacing-40); }
+}
+@media (max-width: 720px) {
+  .verdict-tile__title--stat { font-size: var(--font-size-2xl); }
+  .artifacts { flex-direction: row; gap: var(--spacing-16); width: calc(100% + 2 * var(--spacing-16)); margin-inline: calc(-1 * var(--spacing-16)); padding-inline: var(--spacing-16); overflow-x: auto; scrollbar-width: none; }
+  .artifacts::-webkit-scrollbar { display: none; }
+  .artifact { flex: 0 0 280px; }
+  .artifact__title, .case-limits--ws .limit__title { font-size: 18px; }
+  .artifact__desc, .case-reflection__note { font-size: var(--font-size-sm); line-height: 22px; }
+  .case-limits--ws .case-limits__side { gap: var(--spacing-24); }
+}

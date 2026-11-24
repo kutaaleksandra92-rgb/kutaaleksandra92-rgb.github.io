@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warsztat strategiczny – Aleksandra Kuta</title>
+  <meta name="description" content="Pięć godzin, które zamieniły wizję w zakres MVP – case study warsztatu discovery &amp; define.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css?v=93">
+  <!-- ROBOCZE (24.11): oznaczenia miejsc do uzupełnienia + podgląd efektów ładowania. Przed publikacją usunąć ten plik i robocze.js -->
+  <link rel="stylesheet" href="../css/robocze.css?v=1">
+</head>
+<body>
+
+  <!-- ============ NAWIGACJA ============ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Główna nawigacja">
+      <a href="../index.html" class="nav__logo" aria-label="Strona główna">
+        <img src="../assets/icons/logo.svg" alt="" width="44" height="44">
+      </a>
+
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+        <img src="../assets/icons/menu.svg" alt="" width="24" height="24">
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <a href="../doswiadczenie.html" class="nav__link">Doświadczenie i CV</a>
+        <a href="../rozwoj.html" class="nav__link">Rozwój i szkolenia</a>
+        <a href="../index.html#projekty" class="btn btn--cta">
+          Wybrane projekty
+          <img src="../assets/icons/arrow-up-right.svg" alt="" width="24" height="24">
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HEADER (24.11 – brak makiety; układ jak CTRL+ – bez logo, case study anonimowe) ============ -->
+    <section class="case-hero case-hero--ws" aria-labelledby="case-title">
+      <div class="case-hero__content container">
+        <div class="case-hero__heading">
+          <h1 id="case-title" class="case-hero__title">
+            Pięć godzin, które zamieniły wizję w zakres MVP
+          </h1>
+        </div>
+
+        <dl class="case-info">
+          <div class="case-info__item">
+            <dt>Moja rola</dt>
+            <dd>Projekt i prowadzenie warsztatu</dd>
+          </div>
+          <div class="case-info__item">
+            <dt>Czas</dt>
+            <dd>09.2026</dd>
+          </div>
+          <div class="case-info__item">
+            <dt>Obszar</dt>
+            <dd>Discovery &amp; Define</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="case-hero__media container">
+        <!-- DO UZUPEŁNIENIA: zdjęcie headera – podmienić blok na <picture> jak w ctrl.html (ws-header.jpg 2400×1088 / ws-header-mobile.jpg 1029×744) -->
+        <div class="todo-media todo-media--hero" data-todo="Zdjęcie headera">
+          <p class="todo-media__label">Do uzupełnienia · zdjęcie headera</p>
+          <p class="todo-media__desc">Zdjęcie z warsztatu (ludzie przy tablicy) albo kolaż: fragment blueprintu, karteczki, 2–3 slajdy. Logo i nazwa klienta zasłonięte.</p>
+          <p class="todo-media__size">web 1200 × 544 (eksport 2400 × 1088) · mobile 343 × 248 (1029 × 744)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NAWIGACJA CASE STUDY (sticky; logika w js/main.js) ============ -->
+    <nav class="case-nav" aria-label="Sekcje case study">
+      <div class="case-nav__bar">
+        <ul class="case-nav__list">
+          <li><a href="#wprowadzenie" class="case-nav__link" data-label="Wprowadzenie">Wprowadzenie</a></li>
+          <li><a href="#kontekst" class="case-nav__link" data-label="Kontekst" data-sections="kontekst badania">Kontekst</a></li>
+          <li><a href="#podejscie" class="case-nav__link" data-label="Podejście">Podejście</a></li>
+          <li><a href="#przebieg" class="case-nav__link" data-label="Przebieg">Przebieg</a></li>
+          <li><a href="#decyzje" class="case-nav__link" data-label="Decyzje" data-sections="spor decyzje">Decyzje</a></li>
+          <li><a href="#wynik" class="case-nav__link" data-label="Wynik">Wynik</a></li>
+          <li><a href="#refleksja" class="case-nav__link" data-label="Refleksja">Refleksja</a></li>
+          <li><a href="#odkryj-wiecej" class="case-nav__link" data-label="Odkryj więcej">Odkryj więcej</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ============ WPROWADZENIE – układ .case-intro jak CTRL+ ============ -->
+    <section class="case-intro" id="wprowadzenie" aria-labelledby="intro-title">
+      <div class="container case-intro__inner">
+        <div class="case-intro__main">
+          <h2 id="intro-title" class="case-intro__title"><span class="case-intro__muted">Klient miał badania, brand i wizję, ale </span>nie miał zakresu<span class="case-intro__muted">, więc nie było wyceny ani startu prac</span></h2>
+          <!-- DO UZUPEŁNIENIA: grafika 319 × 201 (jak kapsuła w CTRL+) -->
+          <div class="case-intro__media todo-media" style="--todo-ar: 319 / 201" data-todo="Grafika we wprowadzeniu">
+            <p class="todo-media__label">Do uzupełnienia</p>
+            <p class="todo-media__desc">Grafika / obiekt jak kapsuła w CTRL+</p>
+            <p class="todo-media__size">319 × 201 · mobile 343 × 343</p>
+          </div>
+        </div>
+        <div class="case-intro__side">
+          <ul class="intro-facts">
+            <li class="intro-fact"><span class="intro-fact__value">5 h</span><span class="intro-fact__label">Warsztatu discovery &amp; define</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">11</span><span class="intro-fact__label">Osób z dwóch firm przy jednym stole</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">135</span><span class="intro-fact__label">Wymagań w specyfikacji z ustaleń warsztatu</span></li>
+            <li class="intro-fact"><span class="intro-fact__value">&lt; 11 tyg.</span><span class="intro-fact__label">Do pierwszej działającej wersji serwisu</span></li>
+          </ul>
+          <div class="case-intro__action">
+            <!-- web: otwiera drawer (js/main.js [data-drawer-open]); mobile: osobna strona -->
+            <a href="warsztat-mvp-w-pigulce.html" class="btn btn--cta case-intro__btn" data-drawer-open="pigulka" aria-haspopup="dialog">Case Study w pigułce <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KONTEKST – układ .case-business jak CTRL+ ============ -->
+    <section class="case-business" id="kontekst" aria-labelledby="business-title">
+      <div class="container case-business__inner">
+        <div class="case-business__top">
+          <!-- DO UZUPEŁNIENIA: zdjęcie 516 × 478 -->
+          <div class="case-business__media todo-media" data-todo="Zdjęcie w Kontekście">
+            <p class="todo-media__label">Do uzupełnienia</p>
+            <p class="todo-media__desc">Zdjęcie / ilustracja: dom jednorodzinny, kotłownia, modernizacja (bez marki klienta)</p>
+            <p class="todo-media__size">516 × 478 · mobile 343 × 318</p>
+          </div>
+          <div class="case-business__text">
+            <div class="case-business__heading">
+              <p class="case-business__eyebrow">Kontekst</p>
+              <h2 id="business-title" class="case-business__title">Wszystko gotowe oprócz zakresu</h2>
+            </div>
+            <p class="case-business__lead">Klient łączy regionalne firmy grzewcze w ogólnopolską markę modernizacji kotłowni w domach jednorodzinnych. Wchodzi na rynek zrażony agresywną sprzedażą door-to-door. Miał badania, brand w przygotowaniu i długą listę ambicji.</p>
+            <p class="case-business__goal"><strong>Pytanie warsztatu:</strong> co budujemy w pierwszej wersji, dla kogo i kto za co odpowiada?</p>
+          </div>
+        </div>
+        <div class="case-business__idea">
+          <h3 class="case-business__subtitle">Lista ambicji na starcie</h3>
+          <ol class="idea-steps">
+            <li class="idea-step"><span class="idea-step__num">01</span><span class="idea-step__title">Konfigurator</span></li>
+            <li class="idea-step"><span class="idea-step__num">02</span><span class="idea-step__title">Transparentna cena</span></li>
+            <li class="idea-step"><span class="idea-step__num">03</span><span class="idea-step__title">SLA poniżej godziny</span></li>
+            <li class="idea-step"><span class="idea-step__num">04</span><span class="idea-step__title">Sieć instalatorów</span></li>
+            <li class="idea-step"><span class="idea-step__num">05</span><span class="idea-step__title">Program partnerski</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BADANIA – układ .case-verdict jak CTRL+ (kafle bez ikon, liczba jako tytuł) ============ -->
+    <section class="case-verdict case-verdict--ws" id="badania" aria-labelledby="research-title">
+      <div class="container case-verdict__inner">
+        <div class="case-verdict__heading">
+          <p class="case-verdict__eyebrow">Badania klienta</p>
+          <h2 id="research-title" class="case-verdict__title">Badania mówiły co innego niż lista ambicji</h2>
+          <p class="case-verdict__lead">Klienci nie szukali technologii, tylko sposobu, żeby nie popełnić błędu</p>
+        </div>
+        <ul class="verdict-list">
+          <li class="verdict-tile verdict-tile--accent">
+            <h3 class="verdict-tile__title verdict-tile__title--stat">52,9%</h3>
+            <p class="verdict-tile__desc">klientów najbardziej obawiało się złej decyzji</p>
+          </li>
+          <li class="verdict-tile">
+            <h3 class="verdict-tile__title verdict-tile__title--stat">64,7%</h3>
+            <p class="verdict-tile__desc">rezygnowało po poznaniu końcowej ceny</p>
+          </li>
+          <li class="verdict-tile">
+            <h3 class="verdict-tile__title">Instalatorzy</h3>
+            <p class="verdict-tile__desc">nie chcieli więcej leadów, tylko mniej przypadkowych rozmów</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PODEJŚCIE – układ .case-directions jak Strategia HC (3 kolumny zamiast 4) ============ -->
+    <section class="case-directions case-directions--ws" id="podejscie" aria-labelledby="approach-title">
+      <div class="container case-directions__inner">
+        <div class="case-directions__top">
+          <div class="case-directions__heading">
+            <p class="case-decision__eyebrow">Podejście</p>
+            <h2 id="approach-title" class="case-directions__title">Każda godzina kończy się decyzją</h2>
+          </div>
+          <p class="case-directions__lead">Nie zaczynaliśmy od pustej tablicy. Przed warsztatem przeanalizowałam badania klienta, zdefiniowałam persony, przygotowałam wstępną ścieżkę klienta i szablon Service Blueprintu. Zespół dostał hipotezę do poprawienia, a nie pustą kartkę.</p>
+        </div>
+        <ol class="directions">
+          <li class="direction">
+            <div class="direction__head">
+              <span class="direction__num">01</span>
+              <span class="direction__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span>
+            </div>
+            <div class="direction__text">
+              <h3 class="direction__title">Benchmarki przypięte do lęków, nie do estetyki</h3>
+              <p class="direction__desc">Każdy przykład z rynku pokazywałyśmy przez insight z badań, np. „klient boi się, że portal wciśnie mu najdroższe rozwiązanie”. Rozmawialiśmy o zaufaniu, nie o gustach.</p>
+            </div>
+          </li>
+          <li class="direction">
+            <div class="direction__head">
+              <span class="direction__num">02</span>
+              <span class="direction__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 15h18M9 4v16M15 4v16"/></svg></span>
+            </div>
+            <div class="direction__text">
+              <h3 class="direction__title">Service Blueprint zamiast listy funkcji</h3>
+              <p class="direction__desc">Ten produkt to usługa z ekspertem, CRM i instalatorem w tle. Pytanie „kto to obsłuży?” najszybciej oddzielało MVP od życzeń.</p>
+            </div>
+          </li>
+          <li class="direction">
+            <div class="direction__head">
+              <span class="direction__num">03</span>
+              <span class="direction__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg></span>
+            </div>
+            <div class="direction__text">
+              <h3 class="direction__title">Wykonawcy przy stole</h3>
+              <p class="direction__desc">Backend, frontend i QA uczestniczyli w strategii, więc wykonalność sprawdzaliśmy w trakcie podejmowania decyzji, a nie tydzień później, przy wycenie.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ PRZEBIEG – układ .case-stages jak Etapy prac CTRL+ ============ -->
+    <section class="case-stages" id="przebieg" aria-labelledby="stages-title">
+      <div class="container case-stages__inner">
+        <h2 id="stages-title" class="case-stages__title">Dwie pętle, jeden rytm</h2>
+        <p class="case-stages__sub">Inspiracja → mapowanie → decyzja</p>
+        <!-- DO UZUPEŁNIENIA: diagram agendy lub zdjęcie tablicy z sortowania kart -->
+        <div class="case-stages__media todo-media" data-todo="Diagram agendy / tablica sortowania kart">
+          <p class="todo-media__label">Do uzupełnienia</p>
+          <p class="todo-media__desc">Diagram agendy (dwie pętle, trzy decyzje) przerysowany w stylu strony albo zdjęcie tablicy z sortowania kart</p>
+          <p class="todo-media__size">516 × 478 · mobile kwadrat 343</p>
+        </div>
+        <ol class="stage-list">
+          <li class="stage">
+            <h3 class="stage__title">Pętla 1: konfigurator</h3>
+            <p class="stage__desc">Serce produktu. Benchmarki przypięte do lęków z badań, mapowanie ścieżki na Service Blueprincie i decyzja, co konfigurator robi w pierwszej wersji.</p>
+          </li>
+          <li class="stage">
+            <h3 class="stage__title">Pętla 2: portal</h3>
+            <p class="stage__desc">Wszystko, co otacza konfigurator. Ten sam rytm, a w części mapowania <strong class="stage__strong">sortowanie kart</strong>, z którego powstała architektura portalu.</p>
+          </li>
+          <li class="stage">
+            <h3 class="stage__title">Kto, co i na kiedy? <span class="stage__accent">Żadne ustalenie bez właściciela</span></h3>
+            <p class="stage__desc">Ostatnie 20 minut: każda decyzja dostała osobę odpowiedzialną i termin, zanim wyszła z sali.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ NAJTRUDNIEJSZY MOMENT – układ .case-outcome jak Wynik CTRL+ ============ -->
+    <section class="case-outcome case-outcome--ws" id="spor" aria-labelledby="conflict-title">
+      <div class="container case-outcome__inner">
+        <div class="case-outcome__heading">
+          <p class="case-outcome__eyebrow">Najtrudniejszy moment: cena</p>
+          <h2 id="conflict-title" class="case-outcome__title">Transparentność, ale bez ujawniania składowych ceny</h2>
+        </div>
+        <p class="case-outcome__text">Właściciele chcieli być transparentni, ale nie chcieli ujawniać składowych ceny instalacji. Zamiast wybierać między tymi wartościami, wynegocjowaliśmy kompromis: strona pokazuje cenę urządzenia razem z montażem, a o cenę samego urządzenia można zapytać telefonicznie. Klient dostaje uczciwą informację, a firma chroni swoją politykę cenową.</p>
+      </div>
+    </section>
+
+    <!-- ============ KLUCZOWE DECYZJE – układ .case-limits jak Ograniczenia CTRL+ (+ „było” przekreślone, pasek „Po MVP”) ============ -->
+    <section class="case-limits case-limits--ws" id="decyzje" aria-labelledby="decisions-title">
+      <div class="container case-limits__inner">
+        <div class="case-limits__side">
+          <div class="case-limits__heading">
+            <p class="case-limits__eyebrow">Kluczowe decyzje</p>
+            <h2 id="decisions-title" class="case-limits__title">Od ambicji do zakresu</h2>
+          </div>
+          <div class="post-mvp">
+            <h3 class="post-mvp__title">Świadomie po MVP</h3>
+            <ul class="post-mvp__list">
+              <li class="post-mvp__item">Wyszukiwarka dotacji</li>
+              <li class="post-mvp__item">Asystent AI</li>
+              <li class="post-mvp__item">Kody QR na urządzeniach</li>
+              <li class="post-mvp__item">Mapy ciepła</li>
+            </ul>
+            <p class="post-mvp__note">„Jeszcze nie” było równie ważnym wynikiem jak lista funkcji.</p>
+          </div>
+        </div>
+        <ol class="limits">
+          <li class="limit">
+            <span class="limit__num">01</span>
+            <div class="limit__text">
+              <p class="limit__was"><span class="limit__was-label">Było:</span> <s>Platforma z konfiguratorem</s></p>
+              <h3 class="limit__title">Operator procesu: dobór, ekspert, montaż i serwis pod jedną odpowiedzialnością</h3>
+              <p class="limit__desc">Klient boi się pośrednika, który zostawi go z przypadkowym wykonawcą.</p>
+            </div>
+          </li>
+          <li class="limit">
+            <span class="limit__num">02</span>
+            <div class="limit__text">
+              <p class="limit__was"><span class="limit__was-label">Było:</span> <s>Transparentna cena</s></p>
+              <h3 class="limit__title">Widełki ceny urządzenia z montażem i jawny zakres</h3>
+              <p class="limit__desc">Same pakiety nie odpowiadały na pytanie „co dostaję?”.</p>
+            </div>
+          </li>
+          <li class="limit">
+            <span class="limit__num">03</span>
+            <div class="limit__text">
+              <p class="limit__was"><span class="limit__was-label">Było:</span> <s>Pełny katalog</s></p>
+              <h3 class="limit__title">Najwyżej 3 opcje, jedna rekomendowana, z zaletami i ograniczeniami</h3>
+              <p class="limit__desc">Paraliż decyzyjny i lęk przed „wciskaniem”.</p>
+            </div>
+          </li>
+          <li class="limit">
+            <span class="limit__num">04</span>
+            <div class="limit__text">
+              <p class="limit__was"><span class="limit__was-label">Było:</span> <s>Formularz na starcie</s></p>
+              <h3 class="limit__title">Wynik bez e-maila, dane dopiero przy prośbie o rozmowę</h3>
+              <p class="limit__desc">Za wczesny formularz obniża zaufanie.</p>
+            </div>
+          </li>
+          <li class="limit">
+            <span class="limit__num">05</span>
+            <div class="limit__text">
+              <p class="limit__was"><span class="limit__was-label">Było:</span> <s>SLA poniżej godziny</s></p>
+              <h3 class="limit__title">Kontakt w 24 h z wyborem pory rozmowy</h3>
+              <p class="limit__desc">Sieć nie dowiezie godziny, lepiej obiecać mniej i dotrzymać.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ WYNIK – układ .case-verdict jak Decyzja CTRL+ + rząd 3 artefaktów ============ -->
+    <section class="case-verdict case-verdict--ws case-verdict--ws-result" id="wynik" aria-labelledby="result-title">
+      <div class="container case-verdict__inner">
+        <div class="case-verdict__heading">
+          <p class="case-verdict__eyebrow">Wynik</p>
+          <h2 id="result-title" class="case-verdict__title">Zakres, który dało się wycenić i zbudować</h2>
+          <p class="case-verdict__lead">Z warsztatu wyszliśmy z jedną definicją produktu i trzema artefaktami</p>
+        </div>
+        <ul class="artifacts">
+          <li class="artifact">
+            <!-- DO UZUPEŁNIENIA: uproszczony Service Blueprint -->
+            <div class="artifact__media todo-media" data-todo="Artefakt: Service Blueprint">
+              <p class="todo-media__label">Do uzupełnienia</p>
+              <p class="todo-media__desc">Uproszczony schemat: 7 faz × 4 warstwy, decyzje w akcencie</p>
+            </div>
+            <h3 class="artifact__title">Service Blueprint w 7 fazach</h3>
+            <p class="artifact__desc">Od typu budynku po serwis, z rozpisanym zapleczem</p>
+          </li>
+          <li class="artifact">
+            <div class="artifact__media todo-media" data-todo="Artefakt: architektura portalu">
+              <p class="todo-media__label">Do uzupełnienia</p>
+              <p class="todo-media__desc">Mapa 7 filarów jako drzewo nawigacji</p>
+            </div>
+            <h3 class="artifact__title">Architektura portalu w 7 filarach</h3>
+            <p class="artifact__desc">Wynik sortowania kart w drugiej pętli</p>
+          </li>
+          <li class="artifact">
+            <div class="artifact__media todo-media" data-todo="Artefakt: macierz odpowiedzialności">
+              <p class="todo-media__label">Do uzupełnienia</p>
+              <p class="todo-media__desc">Macierz / okładka specyfikacji z rozmytym tekstem</p>
+            </div>
+            <h3 class="artifact__title">Macierz odpowiedzialności</h3>
+            <p class="artifact__desc">Kto, co i na kiedy, z terminami</p>
+          </li>
+        </ul>
+        <ul class="verdict-list">
+          <li class="verdict-tile verdict-tile--accent">
+            <h3 class="verdict-tile__title">Specyfikacja z warsztatu, nie z briefu</h3>
+            <p class="verdict-tile__desc">Dokument ze 135 wymaganiami formalizuje ustalenia z warsztatu. Otwarte zostały tylko kwestie, których warsztat nie rozstrzygnął.</p>
+          </li>
+          <li class="verdict-tile">
+            <h3 class="verdict-tile__title">Szybki start</h3>
+            <p class="verdict-tile__desc">Niespełna 11 tygodni później zespół przeglądał pierwszą działającą wersję serwisu. Projekt jest wciąż w realizacji.</p>
+          </li>
+          <li class="verdict-tile">
+            <h3 class="verdict-tile__title">Wspólny język</h3>
+            <p class="verdict-tile__desc">Nazwy z warsztatu, np. „konfiguracja odwrócona”, trafiły do specyfikacji i na ekrany.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ REFLEKSJA – wspólny układ z 4F / CTRL+ ============ -->
+    <section class="case-reflection case-reflection--ctrl" id="refleksja" aria-labelledby="reflection-title">
+      <div class="container case-reflection__inner">
+        <img class="case-reflection__photo" src="../assets/images/aleksandra-kuta.jpg" alt="Aleksandra Kuta" width="120" height="120" loading="lazy">
+        <div class="case-reflection__text">
+          <h2 id="reflection-title" class="case-reflection__eyebrow">Refleksja</h2>
+          <blockquote class="case-reflection__quote"><span class="case-reflection__muted">“Klient, który wie, czego chce, zwykle wie, czego chce docelowo. </span>Rolą projektantki jest pomóc wybrać, co sprawdzamy najpierw”</blockquote>
+          <!-- DO UZUPEŁNIENIA: potwierdzić „co zrobiłabym inaczej” – po potwierdzeniu usunąć klasę todo-text i atrybut data-todo -->
+          <p class="case-reflection__note todo-text" data-todo="Refleksja – do potwierdzenia">Blueprint przesunął rozmowę z „jakie funkcje chcemy” na „kto to obsłuży” i był najskuteczniejszym filtrem całego dnia. Dziś od razu zaplanowałabym osobny, krótszy warsztat o logice doboru urządzeń i ustaliłabym bazowe wartości KPI jeszcze podczas warsztatu.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ODKRYJ WIĘCEJ – wspólny układ z 4F / CTRL+ ============ -->
+    <section class="case-more" id="odkryj-wiecej" aria-labelledby="more-title">
+      <a href="#top" class="up-btn" data-scroll-top aria-label="Chyba jestem za daleko, wracamy! Przewiń na górę strony">
+        <img class="up-btn__ring" src="../assets/icons/4f/up-ring.svg" alt="" width="108" height="108">
+        <svg class="up-btn__arrow" width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true"><path d="M20.8635 8.69336V33.0343M10.4316 19.1252L20.8635 8.69336L31.2953 19.1252" stroke="currentColor" stroke-width="3.47727" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="container case-more__inner">
+        <h2 id="more-title" class="case-more__title">Odkryj więcej</h2>
+        <ul class="more-list">
+          <li class="more">
+            <a class="more__link" href="ctrl.html">
+              <div class="more__media"><img src="../assets/images/projekty/ctrl-header.jpg?v=2" alt="Fiolka suplementu CTRL+ z rozlanym złotym płynem" loading="lazy"></div>
+              <p class="more__label">Product Discovery | IDI | Decyzja</p>
+              <h3 class="more__title">Od pomysłu do...rezygnacji, jak podjąć trudną decyzję na podstawie danych</h3>
+            </a>
+          </li>
+          <li class="more">
+            <a class="more__link" href="4f.html">
+              <div class="more__media">
+                <picture>
+                  <source media="(max-width: 720px)" srcset="../assets/images/projekty/4f-header-mobile.jpg?v=4">
+                  <img src="../assets/images/projekty/4f-header.jpg?v=4" alt="Aplikacja mobilna 4F na ekranie telefonu" loading="lazy">
+                </picture>
+              </div>
+              <p class="more__label">Konwersja | Omnichannel | Lojalność</p>
+              <h3 class="more__title">Aplikacja mobilna 4F. Ewolucja z kanału sprzedaży w ekosystem lojalnościowy</h3>
+            </a>
+          </li>
+          <li class="more">
+            <a class="more__link" href="healthy-cities.html">
+              <div class="more__media">
+                <picture>
+                  <source media="(max-width: 720px)" srcset="../assets/images/projekty/hc-header-mobile.jpg">
+                  <img src="../assets/images/projekty/hc-header.jpg" alt="Aplikacja Healthy Cities z licznikiem kroków na ekranie telefonu" loading="lazy">
+                </picture>
+              </div>
+              <p class="more__label">CSR | Grywalizacja | Research</p>
+              <h3 class="more__title">Healthy Cities – jak zamienić aktywność użytkowników w 15 tysięcy posadzonych drzew</h3>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ DRAWER „Case Study w pigułce” – tylko web; na mobile osobna strona warsztat-mvp-w-pigulce.html ============ -->
+    <div class="drawer" id="pigulka" role="dialog" aria-modal="true" aria-labelledby="pill-title" hidden>
+      <div class="drawer__mask" data-drawer-close></div>
+      <div class="drawer__panel pill">
+        <div class="pill__scroll">
+          <div class="pill__head">
+            <div class="pill__heading">
+              <p class="pill__meta">Facylitacja · Discovery &amp; Define · 5 h · 11 osób</p>
+              <h2 id="pill-title" class="pill__title">Warsztat strategiczny | Od wizji do zakresu MVP</h2>
+            </div>
+            <button type="button" class="pill__close" data-drawer-close aria-label="Zamknij i wróć do case study"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M30 10L10 30M10 10L30 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <section class="pill__block" aria-labelledby="pill-challenge">
+            <h3 id="pill-challenge" class="pill__subtitle">Problem</h3>
+            <p class="pill__text">Klient miał badania, brand i wizję, ale nie miał zakresu. Bez niego nie było wyceny ani startu prac.</p>
+          </section>
+          <section class="pill__tile" aria-labelledby="pill-findings">
+            <h3 id="pill-findings" class="pill__subtitle">Co zrobiłam</h3>
+            <ol class="findings">
+              <li class="finding"><h4 class="finding__title">Benchmarki przypięte do lęków</h4><p class="finding__desc">Przykłady z rynku pokazywane przez insighty z badań, a nie przez estetykę.</p></li>
+              <li class="finding"><h4 class="finding__title">Service Blueprint zamiast listy funkcji</h4><p class="finding__desc">Pytanie „kto to obsłuży?” oddzielało MVP od życzeń.</p></li>
+              <li class="finding"><h4 class="finding__title">Wykonawcy przy stole</h4><p class="finding__desc">Backend, frontend i QA sprawdzali wykonalność w trakcie decyzji.</p></li>
+            </ol>
+          </section>
+          <section class="pill__effects" aria-labelledby="pill-effects">
+            <h3 id="pill-effects" class="pill__subtitle pill__subtitle--decision">Wynik</h3>
+            <ul class="effects">
+              <li class="effect"><span class="effect__value">135</span><span class="effect__label">Wymagań w specyfikacji z ustaleń warsztatu</span></li>
+              <li class="effect"><span class="effect__value">7 faz</span><span class="effect__label">Service Blueprintu i 7 filarów portalu</span></li>
+              <li class="effect"><span class="effect__value">&lt; 11 tyg.</span><span class="effect__label">Do pierwszej działającej wersji</span></li>
+            </ul>
+          </section>
+        </div>
+        <div class="pill__bar">
+          <button type="button" class="btn btn--cta pill__cta" data-drawer-close>Przeczytaj pełne Case Study (ok. 4 min.) <svg class="btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.05011 16.9498L16.9496 7.05027M11.2927 7.05027H16.9496V12.7071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/main.js?v=93"></script>
+  <!-- ROBOCZE: podgląd efektów ładowania + lista miejsc do uzupełnienia -->
+  <script src="../js/robocze.js?v=1"></script>
+</body>
+</html>
