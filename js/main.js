@@ -282,3 +282,61 @@ document.querySelectorAll('[data-tools]').forEach((viewport) => {
   window.addEventListener('resize', update);
   update();
 });
+
+// Header SG – miniatury projektów pojawiają się pod kursorem i znikają (wg nagrania header.mov).
+// Tylko mysz (hover + pointer fine) i ≥721 px; wyłączone przy prefers-reduced-motion.
+document.querySelectorAll('[data-hero-trail]').forEach((hero) => {
+  const layer = hero.querySelector('.hero__trail');
+  const srcs = hero.dataset.heroTrail.trim().split(/\s+/);
+  const enabled = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 721px)');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!layer || !srcs.length) return;
+
+  const W = 248, H = 180;
+  const STEP = 110;      // co ile px ruchu kursora pojawia się kolejna miniatura
+  const POOL = 14;       // maks. liczba miniatur naraz
+  let pool = null, next = 0, img = 0, z = 0, last = null;
+
+  const build = () => {
+    pool = Array.from({ length: POOL }, () => {
+      const el = document.createElement('img');
+      el.className = 'hero__trail-img';
+      el.alt = '';
+      el.decoding = 'async';
+      layer.appendChild(el);
+      return el;
+    });
+    srcs.forEach((s) => { new Image().src = s; }); // wczytanie z wyprzedzeniem
+  };
+
+  const spawn = (x, y) => {
+    const el = pool[next];
+    next = (next + 1) % POOL;
+    el.getAnimations().forEach((a) => a.cancel());
+    el.src = srcs[img];
+    img = (img + 1) % srcs.length;
+    el.style.zIndex = ++z;
+    const at = `translate(${x - W / 2}px, ${y - H / 2}px)`;
+    el.animate(
+      [
+        { opacity: 0, transform: `${at} scale(0.85)` },
+        { opacity: 1, transform: `${at} scale(1)`, offset: 0.2 },
+        { opacity: 1, transform: `${at} scale(1)`, offset: 0.55 },
+        { opacity: 0, transform: `${at} scale(0.96)` },
+      ],
+      { duration: 1400, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' }
+    );
+  };
+
+  hero.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse' || !enabled.matches || reduced.matches) return;
+    if (!pool) build();
+    const r = hero.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    if (!last) { last = { x, y }; spawn(x, y); return; }
+    if (Math.hypot(x - last.x, y - last.y) < STEP) return;
+    last = { x, y };
+    spawn(x, y);
+  });
+  hero.addEventListener('pointerleave', () => { last = null; });
+});

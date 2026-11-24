@@ -3151,3 +3151,26 @@ html.has-drawer { overflow: hidden; }
   .tools__track { animation: none; }
   .tools__list[aria-hidden="true"] { display: none; }
 }
+
+/* ============================================================
+   Header SG – miniatury projektów za kursorem (24.11, wg nagrania Oli header.mov)
+   Tylko web z myszą (JS sprawdza hover/pointer i ≥721 px); mobile bez zmian.
+   ============================================================ */
+.hero { position: relative; overflow: hidden; }
+.hero__content { position: relative; }
+.hero__trail {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* nad tytułem, pod nawigacją (z-index 2) */
+  pointer-events: none;
+}
+.hero__trail-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 248px; /* miniatury w Figmie 248×180 (sekcja „mini foty header”) */
+  height: 180px;
+  object-fit: cover;
+  opacity: 0;
+  will-change: transform, opacity;
+}

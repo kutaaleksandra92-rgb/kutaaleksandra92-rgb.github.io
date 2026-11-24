@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=91">
+  <link rel="stylesheet" href="css/style.css?v=92">
 </head>
 <body class="page-home">
 
@@ -41,7 +41,10 @@
 
   <main>
     <!-- ============ HEADER / HERO ============ -->
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" aria-labelledby="hero-title"
+      data-hero-trail="assets/images/hero/hero-4f.jpg assets/images/hero/hero-ctrl.jpg assets/images/hero/hero-hc.jpg assets/images/hero/hero-esa.jpg">
+      <!-- Miniatury projektów podążające za kursorem (tylko web z myszą) – lista obrazów w data-hero-trail -->
+      <div class="hero__trail" aria-hidden="true"></div>
       <div class="hero__content container">
         <ul class="hero__tags" aria-label="W skrócie">
           <li>10+ lat doświadczenia</li>
@@ -391,6 +394,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=91"></script>
+  <script src="js/main.js?v=92"></script>
 </body>
 </html>
