@@ -8,9 +8,9 @@
    Wybrany efekt przenieść do style.css / main.js.
    ============================================================ */
 :root {
-  --todo: #ffb547;
-  --todo-bg: rgba(255, 181, 71, 0.06);
-  --todo-line: rgba(255, 181, 71, 0.55);
+  --todo: #5cc8ff; /* 24.11: błękit – odróżnia się od akcentu #f05b3d */
+  --todo-bg: rgba(92, 200, 255, 0.06);
+  --todo-line: rgba(92, 200, 255, 0.55);
 }
 
 /* ---------- 1. Miejsca do uzupełnienia ---------- */
@@ -24,7 +24,7 @@
   border: 1.5px dashed var(--todo-line);
   border-radius: var(--radius-8);
   background:
-    repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 181, 71, 0.045) 14px 15px),
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(92, 200, 255, 0.045) 14px 15px),
     var(--todo-bg);
   text-align: center;
 }
@@ -155,7 +155,7 @@ html.fx-reset [data-fx], html.fx-reset [data-fx] > * { transition: none !importa
   border: 1.5px dashed var(--todo-line);
   border-radius: inherit;
   background:
-    repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 181, 71, 0.045) 14px 15px),
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(92, 200, 255, 0.045) 14px 15px),
     var(--todo-bg);
   font-family: var(--font-heading);
   font-size: 12px;

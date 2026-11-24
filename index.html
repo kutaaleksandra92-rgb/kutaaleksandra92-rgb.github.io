@@ -9,13 +9,13 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Fonty: Poppins (tekst, nawigacja) i Space Grotesk (nagłówki) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Fonty Aspekta hostowane lokalnie (24.11) – 400 tekst, 500 nagłówki -->
+  <link rel="preload" href="assets/fonts/Aspekta-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Aspekta-500.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/style.css?v=94">
+  <link rel="stylesheet" href="css/style.css?v=95">
   <!-- ROBOCZE (24.11): oznaczenie kafla bez zdjęcia (Warsztat) – usunąć przed publikacją -->
-  <link rel="stylesheet" href="css/robocze.css?v=1">
+  <link rel="stylesheet" href="css/robocze.css?v=2">
   <!-- Efekt pojawiania się treści (wariant C, 24.11): klasa przed pierwszym malowaniem – bez mignięcia. Gdy main.js się nie wczyta, po 3 s treść pokazuje się bez efektu. -->
   <script>
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
@@ -51,7 +51,7 @@
   <main>
     <!-- ============ HEADER / HERO ============ -->
     <section class="hero" aria-labelledby="hero-title"
-      data-hero-trail="assets/images/hero/hero-4f.jpg assets/images/hero/hero-ctrl.jpg assets/images/hero/hero-hc.jpg assets/images/hero/hero-esa.jpg">
+      data-hero-trail="assets/images/hero/hero-4f.jpg?v=2 assets/images/hero/hero-ctrl.jpg assets/images/hero/hero-hc.jpg assets/images/hero/hero-esa.jpg">
       <!-- Miniatury projektów podążające za kursorem (tylko web z myszą) – lista obrazów w data-hero-trail -->
       <div class="hero__trail" aria-hidden="true"></div>
       <div class="hero__content container">
@@ -461,6 +461,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=94"></script>
+  <script src="js/main.js?v=95"></script>
 </body>
 </html>

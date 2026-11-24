@@ -2,30 +2,43 @@
    Portfolio – Aleksandra Kuta
    Tokeny (zmienne) przeniesione 1:1 z Figmy (plik „Redesign”)
    ========================================================= */
+/* ============================================================
+   Fonty – Aspekta (24.11, styl „dark premium” wg inspiracji Oli; SIL OFL 1.1, assets/fonts/Aspekta-LICENSE.txt)
+   Hostowane lokalnie zamiast Google Fonts. Rodzina „Aspekta Display” dla nagłówków ma wagi przesunięte o stopień
+   (400 w CSS → plik 500, 500 → 600, 700 → 700), żeby nagłówki były jak w inspiracji bez zmiany setek reguł font-weight.
+   ============================================================ */
+@font-face { font-family: "Aspekta"; src: url("../assets/fonts/Aspekta-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Aspekta"; src: url("../assets/fonts/Aspekta-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Aspekta"; src: url("../assets/fonts/Aspekta-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Aspekta"; src: url("../assets/fonts/Aspekta-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Aspekta Display"; src: url("../assets/fonts/Aspekta-500.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Aspekta Display"; src: url("../assets/fonts/Aspekta-600.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Aspekta Display"; src: url("../assets/fonts/Aspekta-700.woff2") format("woff2"); font-weight: 600 700; font-style: normal; font-display: swap; }
+
 :root {
   /* Kolory */
-  --color-bg-primary: #0d0d0e;
-  --color-bg-accent: #c7ff2c;
-  --color-bg-secondary: #111112;
-  --color-bg-surface: #161616;
-  --color-surface-fill: #141517;
-  --color-bg-tag: #181919;
-  --color-border-subtle: #303031;
+  --color-bg-primary: #000000; /* 24.11 dark premium (wcześniej #0d0d0e) */
+  --color-bg-accent: #f05b3d; /* 24.11 akcent z inspiracji (wcześniej limonka #c7ff2c) */
+  --color-bg-secondary: #0a0a0a; /* wcześniej #111112 */
+  --color-bg-surface: #121212; /* wcześniej #161616 */
+  --color-surface-fill: #121212; /* wcześniej #141517 */
+  --color-bg-tag: #121212; /* wcześniej #181919 */
+  --color-border-subtle: rgba(255, 255, 255, 0.12); /* wcześniej #303031 */
   --color-text-primary: #ffffff;
-  --color-text-secondary: rgba(255, 255, 255, 0.8);
+  --color-text-secondary: rgba(255, 255, 255, 0.6); /* inspiracja: biały 60% (wcześniej 80%) */
   --color-text-accent: #737373;
-  --color-text-tertiary: #8f8f8f;
-  --color-divider: #303031;
-  --color-border-nav: rgba(255, 255, 255, 0.1);
-  --color-button-secondary-bg-2: rgba(75, 84, 92, 0.4);
-  --color-button-secondary-border: #4b545c;
+  --color-text-tertiary: rgba(255, 255, 255, 0.5); /* wcześniej #8f8f8f */
+  --color-divider: rgba(255, 255, 255, 0.12); /* wcześniej #303031 */
+  --color-border-nav: rgba(255, 255, 255, 0.12); /* inspiracja: linie biały 12% */
+  --color-button-secondary-bg-2: rgba(255, 255, 255, 0.06); /* wcześniej rgba(75,84,92,.4) */
+  --color-button-secondary-border: rgba(255, 255, 255, 0.6); /* inspiracja: obrys biały 60% (wcześniej #4b545c) */
   --color-button-secondary-bg: rgba(255, 255, 255, 0.05);
-  --color-text-on-accent: #060a12;
-  --color-accent-glow: rgba(215, 238, 149, 0.6);
+  --color-text-on-accent: #000000; /* czarny na #f05b3d – kontrast 6,4:1 */
+  --color-accent-glow: rgba(240, 91, 61, 0.5);
 
   /* Typografia */
-  --font-body: "Poppins", system-ui, sans-serif;
-  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Aspekta", system-ui, sans-serif; /* 24.11 (wcześniej Poppins) */
+  --font-heading: "Aspekta Display", "Aspekta", system-ui, sans-serif; /* 24.11 (wcześniej Space Grotesk) – wagi o stopień grubsze, patrz @font-face */
   --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-md: 16px;
@@ -545,7 +558,7 @@ body {
   object-fit: cover;
   object-position: top;
   border-radius: var(--radius-4);
-  background: #09090a;
+  background: #000000;
 }
 
 
@@ -1187,7 +1200,7 @@ body {
   padding: 0;
   border: 0;
   border-radius: var(--radius-16);
-  background: #222222;
+  background: #121212;
   color: var(--color-text-primary);
   cursor: pointer;
   transform: translateY(-50%);
@@ -1831,7 +1844,7 @@ body {
 .research-tile--accent { background: var(--color-bg-accent); }
 .research-tile--accent .research-tile__num,
 .research-tile--accent .research-tile__title { color: var(--color-text-on-accent); }
-.research-tile--accent .research-tile__desc { color: #48512f; } /* z makiety – brak tokenu */
+.research-tile--accent .research-tile__desc { color: rgba(0, 0, 0, 0.7); } /* 24.11: tekst na akcencie #f05b3d (wcześniej #48512f na limonce) */
 @media (min-width: 1201px) {
   .research-board { display: block; height: 886px; }
   .research-vial { display: block; position: absolute; left: 19.25%; top: 576px; width: 460px; height: 390px; object-fit: cover; } /* 231 / 1200 */
@@ -1976,7 +1989,7 @@ body {
 .verdict-tile__desc { margin: 0; line-height: 28px; color: var(--color-text-tertiary); }
 .verdict-tile--accent { background: var(--color-bg-accent); }
 .verdict-tile--accent .verdict-tile__title { color: var(--color-text-on-accent); }
-.verdict-tile--accent .verdict-tile__desc { color: #48512f; } /* jak w Research – brak tokenu */
+.verdict-tile--accent .verdict-tile__desc { color: rgba(0, 0, 0, 0.7); } /* 24.11: jak w Research */
 
 /* ---------- Case study CTRL+: Ograniczenia (makieta web 3268:4415) ---------- */
 .case-limits { background: var(--color-bg-primary); }
@@ -2147,7 +2160,7 @@ html.has-drawer { overflow: hidden; }
   background-clip: text;
   color: transparent;
 }
-.courses { background: linear-gradient(161deg, #0d0d0e 0%, #0d0d0e 71.33%, #12160a 102.19%); }
+.courses { background: linear-gradient(161deg, #000000 0%, #000000 71.33%, #1a0c08 102.19%); } /* 24.11: poświata w odcieniu akcentu (wcześniej limonkowa #12160a) */
 .courses__list { display: flex; flex-direction: column; gap: var(--spacing-80); margin: 0; padding-top: var(--spacing-80); padding-bottom: var(--spacing-120); list-style: none; }
 /* wiersz: zdjęcie 758 + podpis pod nim | opis z przyciskiem wyrównany do dołu zdjęcia (kolumna 402, gap 40); co drugi odwrócony */
 .course {
@@ -3251,3 +3264,10 @@ html.reveal [data-reveal]:not(.is-revealed) { opacity: 0; filter: blur(12px); tr
 @media (prefers-reduced-motion: reduce) {
   html.reveal [data-reveal] { opacity: 1 !important; filter: none !important; transform: none !important; transition: none !important; }
 }
+
+/* ============================================================
+   Typografia „dark premium” (24.11): ciasny odstęp liter w nagłówkach i dużych liczbach (−2% jak w inspiracji)
+   ============================================================ */
+h1, h2, h3,
+.intro-fact__value, .effect__value, .rating__value, .result__value, .project__title, .projects__note,
+.home-footer__title, .case-reflection__quote, .need__title, .direction__title { letter-spacing: -0.02em; }
