@@ -13,11 +13,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=93">
+  <link rel="stylesheet" href="css/style.css?v=94">
   <!-- ROBOCZE (24.11): oznaczenie kafla bez zdjęcia (Warsztat) – usunąć przed publikacją -->
   <link rel="stylesheet" href="css/robocze.css?v=1">
+  <!-- Efekt pojawiania się treści (wariant C, 24.11): klasa przed pierwszym malowaniem – bez mignięcia. Gdy main.js się nie wczyta, po 3 s treść pokazuje się bez efektu. -->
+  <script>
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      document.documentElement.classList.add('reveal');
+      setTimeout(function () { if (!window.__revealReady) document.documentElement.classList.remove('reveal'); }, 3000);
+    }
+  </script>
 </head>
-<body class="page-home">
+<body class="page-home" data-reveal-page>
 
   <!-- ============ NAWIGACJA ============ -->
   <header class="site-header">
@@ -454,6 +461,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=93"></script>
+  <script src="js/main.js?v=94"></script>
 </body>
 </html>

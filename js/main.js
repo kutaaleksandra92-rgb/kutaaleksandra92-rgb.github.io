@@ -340,3 +340,44 @@ document.querySelectorAll('[data-hero-trail]').forEach((hero) => {
   });
   hero.addEventListener('pointerleave', () => { last = null; });
 });
+
+/* Pojawianie się treści – wariant C „Rozmycie” (24.11). Na razie tylko SG (body[data-reveal-page]).
+   html.reveal ustawia skrypt w <head> (bez prefers-reduced-motion). Elementy w obrębie sekcji pojawiają się kolejno co 0,08 s (maks. 0,6 s). */
+if (document.body.hasAttribute('data-reveal-page') && document.documentElement.classList.contains('reveal')) {
+  window.__revealReady = true;
+  const REVEAL_TARGETS = [
+    '.hero__tags', '.hero__title',
+    '.section-head__title', '.section-head__lead', '.project', '.projects__note',
+    '.tools__title', '.tools__viewport',
+    '.home-footer__tag', '.home-footer__title', '.home-footer__cta', '.home-footer__bottom',
+  ].join(',');
+  const STAGGER = 0.08;
+  const MAX_DELAY = 0.6;
+  const groups = new Map();
+  document.querySelectorAll(REVEAL_TARGETS).forEach((el) => {
+    el.setAttribute('data-reveal', '');
+    const group = el.closest('section, footer') || document.body;
+    if (!groups.has(group)) groups.set(group, []);
+    groups.get(group).push(el);
+  });
+  groups.forEach((els) => els.forEach((el, i) => el.style.setProperty('--reveal-delay', `${Math.min(i * STAGGER, MAX_DELAY)}s`)));
+
+  const reveal = (el) => {
+    el.classList.add('is-revealed');
+    const delay = parseFloat(el.style.getPropertyValue('--reveal-delay')) || 0;
+    /* po efekcie zdejmujemy atrybut – wracają zwykłe przejścia/hovery elementu */
+    setTimeout(() => {
+      el.removeAttribute('data-reveal');
+      el.classList.remove('is-revealed');
+      el.style.removeProperty('--reveal-delay');
+    }, (delay + 1.2) * 1000);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      reveal(entry.target);
+      io.unobserve(entry.target);
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.01 });
+  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+}
