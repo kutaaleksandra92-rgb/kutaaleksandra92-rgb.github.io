@@ -1,20 +1,32 @@
 // Menu mobilne – otwieranie / zamykanie
+// 26.11: na Stronie Głównej menu mobilne na cały ekran (Figma 3445:8281) – własny przycisk zamknięcia [data-nav-close],
+// blokada przewijania strony, Esc zamyka, fokus wraca na przycisk menu.
 const toggle = document.querySelector('.nav__toggle');
 const menu = document.getElementById('nav-menu');
 
 if (toggle && menu) {
-  toggle.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    toggle.setAttribute('aria-label', open ? 'Otwórz menu' : 'Zamknij menu');
-    menu.classList.toggle('is-open', !open);
-  });
+  const closeBtn = menu.querySelector('[data-nav-close]');
+  const setOpen = (open) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+    menu.classList.toggle('is-open', open);
+    if (closeBtn) {
+      document.documentElement.classList.toggle('has-nav-open', open);
+      if (open) closeBtn.focus({ preventScroll: true });
+    }
+  };
+  toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => { setOpen(false); toggle.focus({ preventScroll: true }); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) { setOpen(false); toggle.focus({ preventScroll: true }); }
+    });
+    // po powiększeniu okna do wersji web menu nie może zostać otwarte
+    window.matchMedia('(min-width: 721px)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+  }
 
   menu.querySelectorAll('a').forEach((link) =>
-    link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      menu.classList.remove('is-open');
-    })
+    link.addEventListener('click', () => setOpen(false))
   );
 }
 
@@ -233,56 +245,6 @@ document.querySelectorAll('[data-pill-back]').forEach((link) => {
   });
 });
 
-// Strona Główna – „Środowisko pracy”: pasek kafli przesuwa się sam (CSS). Każdy kafel płynnie rośnie (do 1.2)
-// i nabiera koloru, im bliżej jest środka ekranu – pełne powiększenie i kolor dokładnie na środku.
-// Zasięg efektu = pół odstępu między kaflami (ok. 116 px). Liczone w rAF tylko, gdy sekcja jest widoczna.
-document.querySelectorAll('[data-tools]').forEach((viewport) => {
-  const tiles = [...viewport.querySelectorAll('.tool__tile')].map((tile) => ({
-    tile,
-    color: tile.querySelector('.tool__icon--color'),
-    last: -1,
-  }));
-  if (!tiles.length) return;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let frame = 0;
-  let visible = false;
-
-  const update = () => {
-    const box = viewport.getBoundingClientRect();
-    const center = box.left + box.width / 2;
-    const first = tiles[0].tile.parentElement;
-    const pitch = first.offsetWidth || 231; // kafel + romb + odstępy
-    const reach = pitch / 2;
-    tiles.forEach((t) => {
-      const r = t.tile.getBoundingClientRect();
-      if (!r.width) return; // ukryta kopia listy
-      const distance = Math.abs(r.left + r.width / 2 - center);
-      const x = Math.max(0, 1 - distance / reach);
-      const e = Math.round(x * x * (3 - 2 * x) * 1000) / 1000; // smoothstep
-      if (e === t.last) return;
-      t.last = e;
-      t.tile.style.transform = e ? `scale(${1 + 0.2 * e})` : '';
-      t.color.style.opacity = e;
-    });
-  };
-
-  const loop = () => {
-    update();
-    frame = visible && !reduced.matches ? requestAnimationFrame(loop) : 0;
-  };
-  const start = () => { if (!frame) frame = requestAnimationFrame(loop); };
-
-  new IntersectionObserver(([entry]) => {
-    visible = entry.isIntersecting;
-    if (visible) start();
-  }).observe(viewport);
-
-  // bez animacji (prefers-reduced-motion) – aktualizacja przy ręcznym przewijaniu i zmianie rozmiaru
-  viewport.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-});
-
 // Header SG – miniatury projektów pojawiają się pod kursorem i znikają (wg nagrania header.mov).
 // Tylko mysz (hover + pointer fine) i ≥721 px; wyłączone przy prefers-reduced-motion.
 document.querySelectorAll('[data-hero-trail]').forEach((hero) => {
@@ -342,42 +304,59 @@ document.querySelectorAll('[data-hero-trail]').forEach((hero) => {
 });
 
 /* Pojawianie się treści – wariant C „Rozmycie” (24.11). Na razie tylko SG (body[data-reveal-page]).
-   html.reveal ustawia skrypt w <head> (bez prefers-reduced-motion). Elementy w obrębie sekcji pojawiają się kolejno co 0,08 s (maks. 0,6 s). */
+   html.reveal ustawia skrypt w <head> (bez prefers-reduced-motion).
+   26.11: efekt w obie strony – element, który całkiem zniknie z ekranu, wraca do stanu ukrytego (bez animacji)
+   i pojawia się ponownie, gdy znów wjedzie w widok (z dołu albo z góry). Elementy wchodzące razem
+   pojawiają się kolejno co 0,08 s (maks. 0,6 s) w kolejności zgodnej z kierunkiem przewijania. */
 if (document.body.hasAttribute('data-reveal-page') && document.documentElement.classList.contains('reveal')) {
   window.__revealReady = true;
   const REVEAL_TARGETS = [
     '.hero__tags', '.hero__title',
-    '.section-head__title', '.section-head__lead', '.project', '.projects__note',
-    '.tools__title', '.tools__viewport',
+    '.section-head__title', '.section-head__lead', '.project__media', '.project__body', '.projects__note',
+    '.stack__title', '.stack__item',
     '.home-footer__tag', '.home-footer__title', '.home-footer__cta', '.home-footer__bottom',
   ].join(',');
   const STAGGER = 0.08;
   const MAX_DELAY = 0.6;
-  const groups = new Map();
-  document.querySelectorAll(REVEAL_TARGETS).forEach((el) => {
-    el.setAttribute('data-reveal', '');
-    const group = el.closest('section, footer') || document.body;
-    if (!groups.has(group)) groups.set(group, []);
-    groups.get(group).push(el);
-  });
-  groups.forEach((els) => els.forEach((el, i) => el.style.setProperty('--reveal-delay', `${Math.min(i * STAGGER, MAX_DELAY)}s`)));
+  const DURATION = 1.1;
+  const timers = new WeakMap();
+  const els = [...document.querySelectorAll(REVEAL_TARGETS)];
+  els.forEach((el) => el.setAttribute('data-reveal', ''));
 
-  const reveal = (el) => {
+  let lastY = window.scrollY;
+  let goingUp = false;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y !== lastY) goingUp = y < lastY;
+    lastY = y;
+  }, { passive: true });
+
+  const show = (el, delay) => {
+    clearTimeout(timers.get(el));
+    el.style.setProperty('--reveal-delay', `${delay}s`);
+    el.classList.remove('is-settled');
     el.classList.add('is-revealed');
-    const delay = parseFloat(el.style.getPropertyValue('--reveal-delay')) || 0;
-    /* po efekcie zdejmujemy atrybut – wracają zwykłe przejścia/hovery elementu */
-    setTimeout(() => {
-      el.removeAttribute('data-reveal');
-      el.classList.remove('is-revealed');
+    /* po efekcie zdejmujemy przejście (.is-settled) – wracają zwykłe hovery elementu */
+    timers.set(el, setTimeout(() => {
+      el.classList.add('is-settled');
       el.style.removeProperty('--reveal-delay');
-    }, (delay + 1.2) * 1000);
+    }, (delay + DURATION + 0.1) * 1000));
   };
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      reveal(entry.target);
-      io.unobserve(entry.target);
-    });
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.01 });
-  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+  const hide = (el) => {
+    clearTimeout(timers.get(el));
+    el.classList.remove('is-revealed', 'is-settled');
+    el.style.removeProperty('--reveal-delay');
+  };
+
+  /* pojawianie: element wchodzi w widok (od dołu z zapasem 12%, od góry 4%) */
+  const showIO = new IntersectionObserver((entries) => {
+    const entering = entries.filter((e) => e.isIntersecting && !e.target.classList.contains('is-revealed'));
+    entering.sort((a, b) => (goingUp ? -1 : 1) * (a.boundingClientRect.top - b.boundingClientRect.top));
+    entering.forEach((e, i) => show(e.target, Math.min(i * STAGGER, MAX_DELAY)));
+  }, { rootMargin: '-4% 0px -12% 0px', threshold: 0.01 });
+  /* chowanie: element całkiem poza ekranem */
+  const hideIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (!e.isIntersecting) hide(e.target); });
+  }, { rootMargin: '0px', threshold: 0 });
+  els.forEach((el) => { showIO.observe(el); hideIO.observe(el); });
 }

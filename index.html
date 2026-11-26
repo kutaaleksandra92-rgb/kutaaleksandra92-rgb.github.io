@@ -8,14 +8,11 @@
   <meta name="description" content="Portfolio Aleksandry Kuty – Senior Product Designer i Team Leader. 10+ lat doświadczenia, 50+ projektów.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Fonty: Poppins (tekst, nawigacja) i Space Grotesk (nagłówki) -->
   <!-- Fonty Aspekta hostowane lokalnie (24.11) – 400 tekst, 500 nagłówki -->
   <link rel="preload" href="assets/fonts/Aspekta-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/Aspekta-500.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/style.css?v=95">
-  <!-- ROBOCZE (24.11): oznaczenie kafla bez zdjęcia (Warsztat) – usunąć przed publikacją -->
-  <link rel="stylesheet" href="css/robocze.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=96">
   <!-- Efekt pojawiania się treści (wariant C, 24.11): klasa przed pierwszym malowaniem – bez mignięcia. Gdy main.js się nie wczyta, po 3 s treść pokazuje się bez efektu. -->
   <script>
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
@@ -26,7 +23,7 @@
 </head>
 <body class="page-home" data-reveal-page>
 
-  <!-- ============ NAWIGACJA ============ -->
+  <!-- ============ NAWIGACJA (26.11 – web 3426:5195, mobile 3445:7811, menu mobile 3445:8281) ============ -->
   <header class="site-header">
     <nav class="nav container" aria-label="Główna nawigacja">
       <a href="index.html" class="nav__logo" aria-label="Strona główna">
@@ -34,16 +31,27 @@
       </a>
 
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
-        <img src="assets/icons/menu.svg" alt="" width="24" height="24">
+        <img src="assets/icons/sg/menu.svg" alt="" width="24" height="24">
       </button>
 
       <div class="nav__menu" id="nav-menu">
-        <a href="doswiadczenie.html" class="nav__link">Doświadczenie i CV</a>
-        <a href="rozwoj.html" class="nav__link">Rozwój i szkolenia</a>
-        <a href="#projekty" class="btn btn--cta">
-          Wybrane projekty
-          <img src="assets/icons/arrow-up-right.svg" alt="" width="24" height="24">
-        </a>
+        <!-- tylko menu mobilne: logo i zamknięcie -->
+        <div class="nav__menu-top">
+          <img src="assets/icons/logo.svg" alt="" width="44" height="44">
+          <button class="nav__close" type="button" data-nav-close aria-label="Zamknij menu">
+            <img src="assets/icons/sg/close.svg" alt="" width="24" height="24">
+          </button>
+        </div>
+        <div class="nav__links">
+          <a href="doswiadczenie.html" class="nav__link">Doświadczenie i CV<img class="nav__chevron" src="assets/icons/sg/chevron.svg" alt="" width="24" height="24"></a>
+          <a href="rozwoj.html" class="nav__link">Rozwój i szkolenia<img class="nav__chevron" src="assets/icons/sg/chevron.svg" alt="" width="24" height="24"></a>
+        </div>
+        <div class="nav__cta-wrap">
+          <a href="#projekty" class="btn btn--cta nav__cta">
+            Wybrane projekty
+            <img src="assets/icons/sg/arrow-thin.svg" alt="" width="24" height="24">
+          </a>
+        </div>
       </div>
     </nav>
   </header>
@@ -51,7 +59,7 @@
   <main>
     <!-- ============ HEADER / HERO ============ -->
     <section class="hero" aria-labelledby="hero-title"
-      data-hero-trail="assets/images/hero/hero-4f.jpg?v=2 assets/images/hero/hero-ctrl.jpg assets/images/hero/hero-hc.jpg assets/images/hero/hero-esa.jpg">
+      data-hero-trail="assets/images/hero/hero-4f.jpg?v=3 assets/images/hero/hero-ctrl.jpg?v=2 assets/images/hero/hero-hc.jpg?v=2 assets/images/hero/hero-esa.jpg?v=2 assets/images/hero/hero-warsztat.jpg">
       <!-- Miniatury projektów podążające za kursorem (tylko web z myszą) – lista obrazów w data-hero-trail -->
       <div class="hero__trail" aria-hidden="true"></div>
       <div class="hero__content container">
@@ -68,7 +76,7 @@
       </div>
     </section>
 
-    <!-- ============ WYBRANE PROJEKTY ============ -->
+    <!-- ============ WYBRANE PROJEKTY (26.11 – web 3426:5206, mobile 3445:8928…9077) ============ -->
     <section class="projects" id="projekty" aria-labelledby="projects-title">
       <div class="container projects__inner">
         <div class="section-head">
@@ -76,19 +84,23 @@
           <p class="section-head__lead">Projekty, w których odpowiadałam za proces projektowy, decyzje lub doświadczenie użytkownika</p>
         </div>
 
-        <!-- Projekt 1: 4F (duży kafel + tekst z prawej) -->
-        <div class="projects__feature">
+        <!-- Projekt 1: 4F (duży kafel + tekst z prawej; mobile: tytuł, tekst, zdjęcie) -->
+        <div class="projects__feature projects__feature--4f">
           <div class="project project--featured">
             <a href="projekty/4f.html" class="project__media" aria-label="Aplikacja mobilna 4F – Case Study w pigułce" data-drawer-open="pigulka-4f" aria-haspopup="dialog">
-              <img src="assets/images/projekty/projekt-4f.jpg?v=2" alt="Aplikacja mobilna 4F na ekranie telefonu" width="758" height="392" loading="lazy">
+              <picture>
+                <source media="(max-width: 720px)" srcset="assets/images/projekty/projekt-4f-mobile.jpg">
+                <img src="assets/images/projekty/projekt-4f.jpg?v=2" alt="Aplikacja mobilna 4F na ekranie telefonu" width="758" height="392" loading="lazy">
+              </picture>
               <img class="project__logo" src="assets/icons/logo-4f-kafel.svg" alt="" width="64" height="64">
+              <span class="project__time">5 min. czytania</span>
             </a>
             <div class="project__body">
               <ul class="meta" aria-label="Zakres">
                 <li>Redesign</li>
-              <li>Decyzje</li>
-              <li>Wyniki</li>
-              <li>Refleksja</li>
+                <li>Decyzje</li>
+                <li>Wyniki</li>
+                <li>Refleksja</li>
               </ul>
               <h3 class="project__title">Aplikacja mobilna 4F. Ewolucja z kanału sprzedaży w ekosystem lojalnościowy</h3>
             </div>
@@ -100,14 +112,18 @@
           <!-- Projekt 2: CTRL+ -->
           <div class="project project--small">
             <a href="projekty/ctrl.html" class="project__media" aria-label="CTRL+ – Case Study w pigułce" data-drawer-open="pigulka-ctrl" aria-haspopup="dialog">
-              <img src="assets/images/projekty/projekt-ctrl.jpg?v=2" alt="Fiolka CTRL+ z płynem na różowym tle" width="435" height="329" loading="lazy">
+              <picture>
+                <source media="(max-width: 720px)" srcset="assets/images/projekty/projekt-ctrl-mobile.jpg">
+                <img src="assets/images/projekty/projekt-ctrl.jpg?v=3" alt="Szklane fiolki z płynem na czarno-białym zdjęciu" width="435" height="329" loading="lazy">
+              </picture>
+              <span class="project__time">X min. czytania</span>
             </a>
             <div class="project__body">
               <ul class="meta" aria-label="Zakres">
                 <li>Product Discovery</li>
-              <li>IDI</li>
-              <li>Wyniki</li>
-              <li>Refleksja</li>
+                <li>IDI</li>
+                <li>Wyniki</li>
+                <li>Refleksja</li>
               </ul>
               <h3 class="project__title">Od pomysłu do...rezygnacji, jak podjąć trudną decyzję na podstawie danych</h3>
             </div>
@@ -116,183 +132,86 @@
           <!-- Projekt 3: Healthy Cities (Mobile Trends Awards) -->
           <div class="project project--large">
             <a href="projekty/healthy-cities.html" class="project__media" aria-label="Healthy Cities – Case Study w pigułce" data-drawer-open="pigulka-hc" aria-haspopup="dialog">
-              <img src="assets/images/projekty/projekt-mta.jpg?v=2" alt="Ekran aplikacji z wyzwaniem krokowym i znakiem Mobile Trends Award 2024" width="685" height="392" loading="lazy">
+              <picture>
+                <source media="(max-width: 720px)" srcset="assets/images/projekty/projekt-mta-mobile.jpg">
+                <img src="assets/images/projekty/projekt-mta.jpg?v=3" alt="Ekran aplikacji LUX MED z wyzwaniem krokowym" width="685" height="392" loading="lazy">
+              </picture>
+              <span class="project__time">8 min. czytania</span>
             </a>
             <div class="project__body">
               <ul class="meta" aria-label="Zakres">
                 <li>CSR</li>
-              <li>Grywalizacja</li>
-              <li>Warsztaty</li>
-              <li>Refleksja</li>
+                <li>Grywalizacja</li>
+                <li>Warsztaty</li>
+                <li>Refleksja</li>
               </ul>
               <h3 class="project__title">Nagroda Mobile Trends Awards 2025 za strategiczne wykorzystanie grywalizacji w budowaniu zaangażowania użytkowników</h3>
             </div>
           </div>
         </div>
 
-        <!-- Projekt 4: Warsztat strategiczny (24.11 – brak makiety; układ jak kafel 4F; zdjęcie do uzupełnienia) -->
-        <div class="projects__feature">
+        <!-- Projekt 4: Warsztat strategiczny -->
+        <div class="projects__feature projects__feature--ws">
           <div class="project project--featured">
             <a href="projekty/warsztat-mvp.html" class="project__media" aria-label="Warsztat strategiczny – Case Study w pigułce" data-drawer-open="pigulka-ws" aria-haspopup="dialog">
-              <!-- DO UZUPEŁNIENIA: zdjęcie kafla projekt-warsztat.jpg 1516 × 784 (758 × 392 @2x) – podmienić span na <img> i usunąć styl .project__placeholder -->
-              <span class="project__placeholder">Do uzupełnienia · zdjęcie kafla 758 × 392</span>
+              <picture>
+                <source media="(max-width: 720px)" srcset="assets/images/projekty/projekt-warsztat-mobile.jpg">
+                <img src="assets/images/projekty/projekt-warsztat.jpg" alt="Logo Dom Ciepła na czerwono-pomarańczowym tle" width="758" height="392" loading="lazy">
+              </picture>
+              <span class="project__time">4 min. czytania</span>
             </a>
             <div class="project__body">
               <ul class="meta" aria-label="Zakres">
+                <li>Research</li>
                 <li>Warsztat</li>
-              <li>Discovery</li>
-              <li>Decyzje</li>
-              <li>4 min czytania</li>
+                <li>Odpowiedzialność</li>
+                <li>Decyzje</li>
               </ul>
-              <h3 class="project__title">Pięć godzin, które zamieniły wizję w zakres MVP</h3>
+              <h3 class="project__title">Pięć godzin, które zmieniły wizję w zakres MVP</h3>
             </div>
           </div>
-          <p class="projects__note"><span class="projects__note-muted">Klient miał badania, brand i wizję, ale</span> nie miał zakresu, więc nie było wyceny ani startu prac</p>
+          <p class="projects__note">Klient miał fundamenty strategiczne – badania, brand i&nbsp;wizję produktu, ale brakowało planu, zakresu funkcjonalnego i&nbsp;uporządkowanego backlogu, który pozwoliłby przejść do realizacji.</p>
         </div>
       </div>
     </section>
-    <!-- ============ ŚRODOWISKO PRACY ============ -->
-    <section class="tools" aria-labelledby="tools-title">
+
+    <!-- ============ ŚRODOWISKO PRACY (26.11 – web 3426:5256, mobile 3445:9549) ============ -->
+    <section class="stack" aria-labelledby="stack-title">
       <div class="container">
-        <h2 id="tools-title" class="tools__title">Środowisko pracy</h2>
+        <h2 id="stack-title" class="stack__title">Środowisko pracy</h2>
       </div>
-      <div class="tools__viewport" data-tools>
-        <div class="tools__track">
-          <ul class="tools__list" aria-label="Narzędzia">
-            <li class="tool">
-              <span class="tool__tile tool__tile--jira">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/jira.svg" alt="Jira" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/jira-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--figma">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/figma.svg" alt="Figma" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/figma-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--azure-devops">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/azure-devops.svg" alt="Azure DevOps" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/azure-devops-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--miro">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/miro.svg" alt="Miro" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/miro-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--claude">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/claude.svg" alt="Claude" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/claude-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--slack">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/slack.svg" alt="Slack" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/slack-kolor.png" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--adobe">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/adobe.svg" alt="Adobe Creative Cloud" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/adobe-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-          </ul>
-          <ul class="tools__list" aria-hidden="true">
-            <li class="tool">
-              <span class="tool__tile tool__tile--jira">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/jira.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/jira-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--figma">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/figma.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/figma-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--azure-devops">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/azure-devops.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/azure-devops-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--miro">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/miro.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/miro-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--claude">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/claude.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/claude-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--slack">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/slack.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/slack-kolor.png" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--adobe">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/adobe.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/adobe-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-          </ul>
-          <ul class="tools__list" aria-hidden="true">
-            <li class="tool">
-              <span class="tool__tile tool__tile--jira">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/jira.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/jira-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--figma">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/figma.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/figma-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--azure-devops">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/azure-devops.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/azure-devops-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--miro">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/miro.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/miro-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--claude">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/claude.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/claude-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--slack">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/slack.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/slack-kolor.png" alt="" width="100" height="100">
-              </span>
-            </li>
-            <li class="tool">
-              <span class="tool__tile tool__tile--adobe">
-                <img class="tool__icon" src="assets/icons/narzedzia/kafle/adobe.svg" alt="" width="100" height="100">
-                <img class="tool__icon tool__icon--color" src="assets/icons/narzedzia/kafle/adobe-kolor.svg" alt="" width="100" height="100">
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <ul class="stack__list">
+          <li class="stack__item">
+            <span class="stack__label"><span class="stack__name">Miro</span><ul class="stack__tags" aria-label="Zastosowanie"><li>[ Warsztaty</li><li>Research</li><li>Planowanie ]</li></ul></span>
+            <img class="stack__icon" src="assets/icons/narzedzia/lista/miro.svg" alt="" width="24" height="24">
+          </li>
+          <li class="stack__item">
+            <span class="stack__label"><span class="stack__name">Claude</span><ul class="stack__tags" aria-label="Zastosowanie"><li>[ Projekt</li><li>Kontrola</li><li>Dokumentacja ]</li></ul></span>
+            <img class="stack__icon" src="assets/icons/narzedzia/lista/claude.svg" alt="" width="24" height="25">
+          </li>
+          <li class="stack__item">
+            <span class="stack__label"><span class="stack__name">Slack</span><ul class="stack__tags" aria-label="Zastosowanie"><li>[ Komunikacja</li><li>Współpraca ]</li></ul></span>
+            <img class="stack__icon" src="assets/icons/narzedzia/lista/slack.svg" alt="" width="24" height="24">
+          </li>
+          <li class="stack__item">
+            <span class="stack__label"><span class="stack__name">Jira</span><ul class="stack__tags" aria-label="Zastosowanie"><li>[ Backlog</li><li>Współpraca</li><li>Planowanie ]</li></ul></span>
+            <img class="stack__icon" src="assets/icons/narzedzia/lista/jira.svg" alt="" width="24" height="24">
+          </li>
+          <li class="stack__item">
+            <span class="stack__label"><span class="stack__name">Figma</span><ul class="stack__tags" aria-label="Zastosowanie"><li>[ UX/UI</li><li>Design system</li><li>Dokumentacja ]</li></ul></span>
+            <img class="stack__icon" src="assets/icons/narzedzia/lista/figma.svg" alt="" width="17" height="24">
+          </li>
+          <li class="stack__item">
+            <span class="stack__label"><span class="stack__name">Azure DevOps</span><ul class="stack__tags" aria-label="Zastosowanie"><li>[ Backlog</li><li>Współpraca</li><li>Planowanie ]</li></ul></span>
+            <img class="stack__icon" src="assets/icons/narzedzia/lista/azure-devops.svg" alt="" width="24" height="24">
+          </li>
+          <li class="stack__item">
+            <span class="stack__label"><span class="stack__name">Adobe Creative Cloud</span><ul class="stack__tags" aria-label="Zastosowanie"><li>[ Materiały marketingowe ]</li></ul></span>
+            <img class="stack__icon" src="assets/icons/narzedzia/lista/adobe.svg" alt="" width="24" height="18">
+          </li>
+      </ul>
     </section>
+
     <!-- ============ DRAWERY „Case Study w pigułce” (web; klik w zdjęcie projektu – js/main.js [data-drawer-open]; na mobile zdjęcie prowadzi do pełnego case study) ============ -->
     <!-- 4F – treść z projekty/4f.html -->
     <div class="drawer" id="pigulka-4f" role="dialog" aria-modal="true" aria-labelledby="pill-title-4f" hidden>
@@ -442,15 +361,16 @@
     </div>
   </main>
 
-  <!-- ============ STOPKA ============ -->
+  <!-- ============ STOPKA (26.11 – web 3426:5273, mobile 3445:9717) ============ -->
   <footer class="home-footer">
     <div class="container home-footer__inner">
       <p class="home-footer__tag"><span class="home-footer__dot" aria-hidden="true"></span>Senior Product Designer</p>
       <div class="home-footer__main">
-        <p class="home-footer__title">Dziękuję za poświęcony czas i&nbsp;zapraszam do kontaktu</p>
-        <a href="https://www.linkedin.com/in/aleksandrakuta92" class="btn btn--cta home-footer__cta" target="_blank" rel="noopener">
+        <p class="home-footer__title">Dziękuję za poświęcony czas i zapraszam do kontaktu</p>
+        <a href="https://www.linkedin.com/in/aleksandrakuta92" class="home-footer__cta" target="_blank" rel="noopener">
+          <img src="assets/icons/sg/linkedin.svg" alt="" width="20" height="20">
           Odezwij się na Linkedin
-          <img src="assets/icons/arrow-up-right-dark.svg" alt="" width="24" height="24">
+          <img src="assets/icons/sg/arrow.svg" alt="" width="24" height="24">
         </a>
       </div>
       <div class="home-footer__bottom">
@@ -461,6 +381,17 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=95"></script>
+  <!-- ============ BANER „Portfolio w skrócie” (26.11 – web 3442:2766, mobile 3445:10039) – przyklejony do dołu ekranu.
+       Link do skróconego portfolio – DO UZUPEŁNIENIA (Ola podeśle); na razie przycisk nieaktywny. ============ -->
+  <aside class="sg-banner" aria-label="Portfolio w skrócie">
+    <p class="sg-banner__text">Brak czasu na czytanie? Skrócony przegląd projektów znajdziesz pod przyciskiem</p>
+    <a class="sg-banner__btn" role="link" aria-disabled="true" data-todo="link do skróconego portfolio">
+      <img src="assets/icons/sg/pdf.svg" alt="" width="20" height="20">
+      Portfolio w skrócie
+      <img src="assets/icons/sg/arrow.svg" alt="" width="24" height="24">
+    </a>
+  </aside>
+
+  <script src="js/main.js?v=96"></script>
 </body>
 </html>
